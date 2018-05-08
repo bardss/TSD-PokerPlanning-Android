@@ -40,9 +40,7 @@ abstract class BaseActivity : Activity(), BaseView {
     }
 
     internal fun initExtras(presenter: BasePresenter?) {
-        if (presenter != null) {
-            presenter!!.initExtras(intent)
-        }
+        presenter?.initExtras(intent)
     }
 
     abstract fun providePresenter(): BasePresenter?
