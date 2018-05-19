@@ -6,5 +6,7 @@
     <color name="colorAccent">#FF4081</color>
     <color name="colorGray">#95989A</color>
     <color name="colorError">#FF0000</color>
+    <color name="colorLightBlue">#8AADF3</color>
+    <color name="colorDarkGray">#646668</color>
 
 </resources>
