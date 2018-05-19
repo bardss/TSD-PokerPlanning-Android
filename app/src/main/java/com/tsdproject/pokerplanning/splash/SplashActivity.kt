@@ -4,9 +4,9 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import com.tsdproject.pokerplanning.R
-import com.tsdproject.pokerplanning.access.AccessActivity
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
+import com.tsdproject.pokerplanning.participants.ParticipantsActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : BaseActivity(), SplashView {
@@ -31,7 +31,7 @@ class SplashActivity : BaseActivity(), SplashView {
 
     private fun setupNextViewDelay() {
         presenter.handleSplashScreen({
-            startActivity(Intent(this, AccessActivity::class.java))
+            startActivity(Intent(this, ParticipantsActivity::class.java))
         })
     }
 

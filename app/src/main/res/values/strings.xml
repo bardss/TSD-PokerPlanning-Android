@@ -4,5 +4,7 @@
     <string name="login">login</string>
     <string name="password">password</string>
     <string name="blank_edit_text_error">This field can not be blank</string>
+    <string name="ready">ready</string>
+    <string name="room">Room</string>
 
 </resources>
