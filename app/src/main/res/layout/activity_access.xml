@@ -8,43 +8,50 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
-            android:textColor="@android:color/black"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:text="@string/app_name"
+            android:textColor="@android:color/black"
             android:textSize="32sp" />
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:src="@drawable/logo" />
 
     </LinearLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
         android:background="@android:color/white"
         android:orientation="vertical">
 
+        <LinearLayout
+            android:paddingBottom="60dp"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
         <com.rey.material.widget.EditText
             android:id="@+id/loginEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="fill"
+            android:layout_marginBottom="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="40dp"
             android:background="@android:color/transparent"
             android:hint="@string/login"
             android:imeOptions="actionSearch"
@@ -68,7 +75,6 @@
             android:layout_gravity="fill"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
             android:background="@android:color/transparent"
             android:hint="@string/password"
             android:imeOptions="actionSearch"
@@ -84,23 +90,23 @@
             app:et_supportMode="helper"
             app:et_supportTextErrorColor="@color/colorError" />
 
+        </LinearLayout>
+
         <Button
-            android:background="@color/colorDarkGray"
             android:id="@+id/loginButton"
             android:layout_width="100dp"
             android:layout_height="40dp"
-            android:layout_gravity="center_horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:layout_marginEnd="60dp"
-            android:layout_marginStart="60dp"
-            android:layout_marginTop="40dp"
+            android:background="@color/colorDarkGray"
             android:text="@string/login"
             android:textAlignment="center"
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="16sp" />
 
-    </LinearLayout>
+    </RelativeLayout>
 
     <View
         android:layout_width="match_parent"

@@ -1,13 +1,12 @@
 package com.tsdproject.pokerplanning.createroom
 
 import android.os.Bundle
+import com.rey.material.widget.EditText
 import com.tsdproject.pokerplanning.R
-import com.tsdproject.pokerplanning.access.AccessPresenter
-import com.tsdproject.pokerplanning.access.AccessPresenterImpl
-import com.tsdproject.pokerplanning.access.AccessView
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
-import kotlinx.android.synthetic.main.activity_access.*
+import com.tsdproject.pokerplanning.model.utils.EditTextUtil
+import kotlinx.android.synthetic.main.activity_create_room.*
 
 
 class CreateRoomActivity : BaseActivity(), CreateRoomView {
@@ -22,5 +21,19 @@ class CreateRoomActivity : BaseActivity(), CreateRoomView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_room)
         presenter = CreateRoomPresenterImpl(this)
+        setupButtons()
+    }
+
+    private fun setupButtons() {
+        createRoomButton.setOnClickListener({ onCreateButtonClick() })
+        joinRoomButton.setOnClickListener({ onJoinButtonClick() })
+    }
+
+    fun onJoinButtonClick() {
+        EditTextUtil.setEmptyEditTextError(tableIdEditText)
+    }
+
+    fun onCreateButtonClick() {
+        EditTextUtil.setEmptyEditTextError(tableNameEditText)
     }
 }
