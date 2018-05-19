@@ -3,7 +3,7 @@ package com.tsdproject.pokerplanning.accessTest
 import android.widget.TextView
 import com.rey.material.widget.EditText
 import com.tsdproject.pokerplanning.R
-import com.tsdproject.pokerplanning.participants.ParticipantsActivity
+import com.tsdproject.pokerplanning.access.AccessActivity
 import junit.framework.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -14,11 +14,11 @@ import org.robolectric.RobolectricTestRunner
 @RunWith(RobolectricTestRunner::class)
 class AccessActivityTest {
 
-    lateinit var accessActivity: ParticipantsActivity
+    lateinit var accessActivity: AccessActivity
 
     @Before
     fun initData() {
-        accessActivity = Robolectric.setupActivity(ParticipantsActivity::class.java)
+        accessActivity = Robolectric.setupActivity(AccessActivity::class.java)
     }
 
     @Test
