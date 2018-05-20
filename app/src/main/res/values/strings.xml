@@ -4,6 +4,12 @@
     <string name="login">login</string>
     <string name="password">password</string>
     <string name="blank_edit_text_error">This field can not be blank</string>
+    <string name="create_room">create room</string>
+    <string name="table_name">table name</string>
+    <string name="create">create</string>
+    <string name="join_room">join room</string>
+    <string name="table_id">table id</string>
+    <string name="join">join</string>
     <string name="ready">ready</string>
     <string name="room">Room</string>
 

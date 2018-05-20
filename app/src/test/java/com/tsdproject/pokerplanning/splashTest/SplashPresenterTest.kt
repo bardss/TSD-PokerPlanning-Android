@@ -42,7 +42,5 @@ class SplashPresenterTest {
         Handler().postDelayed({
             assertTrue(value)
         }, sleepTime)
-
     }
-
 }

@@ -15,12 +15,6 @@ class ApplicationContext : MultiDexApplication() {
     }
 
     companion object {
-        private var mAppContext: Context? = null
-
-        var appContext: Context?
-            get() = mAppContext
-            set(mAppContext) {
-                ApplicationContext.mAppContext = mAppContext
-            }
+        lateinit var appContext: Context
     }
 }

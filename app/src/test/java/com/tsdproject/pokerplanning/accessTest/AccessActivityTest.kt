@@ -61,6 +61,4 @@ class AccessActivityTest {
         loginButton.performClick()
         assertEquals(passwordEditText.error, accessActivity.resources.getString(R.string.blank_edit_text_error))
     }
-
-
 }
