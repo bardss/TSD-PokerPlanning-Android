@@ -10,5 +10,7 @@
     <string name="join_room">join room</string>
     <string name="table_id">table id</string>
     <string name="join">join</string>
+    <string name="ready">ready</string>
+    <string name="room">Room</string>
 
 </resources>

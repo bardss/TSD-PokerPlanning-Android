@@ -1,11 +1,12 @@
 package com.tsdproject.pokerplanning.createroom
 
+import android.content.Intent
 import android.os.Bundle
-import com.rey.material.widget.EditText
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
 import com.tsdproject.pokerplanning.model.utils.EditTextUtil
+import com.tsdproject.pokerplanning.participants.ParticipantsActivity
 import kotlinx.android.synthetic.main.activity_create_room.*
 
 
@@ -29,11 +30,17 @@ class CreateRoomActivity : BaseActivity(), CreateRoomView {
         joinRoomButton.setOnClickListener({ onJoinButtonClick() })
     }
 
-    fun onJoinButtonClick() {
-        EditTextUtil.setEmptyEditTextError(tableIdEditText)
+    private fun onJoinButtonClick() {
+        EditTextUtil.checkIfEditTextEmpty(tableIdEditText)
+        if (tableIdEditText.error.isNullOrEmpty()) {
+            startActivity(Intent(this, ParticipantsActivity::class.java))
+        }
     }
 
-    fun onCreateButtonClick() {
-        EditTextUtil.setEmptyEditTextError(tableNameEditText)
+    private fun onCreateButtonClick() {
+        EditTextUtil.checkIfEditTextEmpty(tableNameEditText)
+        if (tableNameEditText.error.isNullOrEmpty()) {
+            startActivity(Intent(this, ParticipantsActivity::class.java))
+        }
     }
 }

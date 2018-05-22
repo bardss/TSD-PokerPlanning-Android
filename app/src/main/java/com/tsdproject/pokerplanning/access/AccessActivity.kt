@@ -3,7 +3,6 @@ package com.tsdproject.pokerplanning.access
 import android.content.Intent
 import android.os.Bundle
 import com.tsdproject.pokerplanning.R
-import com.tsdproject.pokerplanning.base.ApplicationContext
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
 import com.tsdproject.pokerplanning.createroom.CreateRoomActivity
@@ -25,15 +24,15 @@ class AccessActivity : BaseActivity(), AccessView {
         loginButton.setOnClickListener { onLoginButtonClick() }
     }
 
-    fun onLoginButtonClick() {
-        EditTextUtil.setEmptyEditTextError(loginEditText)
-        EditTextUtil.setEmptyEditTextError(passwordEditText)
+    private fun onLoginButtonClick() {
+        EditTextUtil.checkIfEditTextEmpty(loginEditText)
+        EditTextUtil.checkIfEditTextEmpty(passwordEditText)
         if (!isCredentialsError()) {
             startActivity(Intent(this, CreateRoomActivity::class.java))
         }
     }
 
-    fun isCredentialsError(): Boolean {
+    private fun isCredentialsError(): Boolean {
         val isLoginError = !loginEditText.error.isNullOrEmpty()
         val isPasswordError = !passwordEditText.error.isNullOrEmpty()
         return isLoginError || isPasswordError

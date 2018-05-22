@@ -1,7 +1,6 @@
 package com.tsdproject.pokerplanning.createRoomTest
 
 import android.widget.TextView
-import com.rey.material.widget.Button
 import com.rey.material.widget.EditText
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.createroom.CreateRoomActivity
