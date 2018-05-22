@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorLightBlue"
+    android:orientation="vertical"
+    android:paddingBottom="50dp">
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/logo" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
+        android:layout_weight="1"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/create_room"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="26sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/tableNameEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@android:color/transparent"
+                android:hint="@string/table_name"
+                android:imeOptions="actionSearch"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:touchscreenBlocksFocus="true"
+                app:et_dividerColor="@color/colorGray"
+                app:et_dividerErrorColor="@color/colorError"
+                app:et_dividerHeight="2dp"
+                app:et_labelEnable="true"
+                app:et_labelTextColor="@color/colorGray"
+                app:et_supportMode="helper"
+                app:et_supportTextColor="@android:color/black"
+                app:et_supportTextErrorColor="@color/colorError" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/createRoomButton"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:background="@color/colorDarkGray"
+            android:text="@string/create"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@android:color/white">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:text="@string/join_room"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="26sp" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/tableIdEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:background="@android:color/transparent"
+                android:hint="@string/table_id"
+                android:imeOptions="actionSearch"
+                android:inputType="textPersonName"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:touchscreenBlocksFocus="true"
+                app:et_dividerColor="@color/colorGray"
+                app:et_dividerErrorColor="@color/colorError"
+                app:et_dividerHeight="2dp"
+                app:et_labelEnable="true"
+                app:et_labelTextColor="@color/colorGray"
+                app:et_supportMode="helper"
+                app:et_supportTextColor="@android:color/black"
+                app:et_supportTextErrorColor="@color/colorError" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/joinRoomButton"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp"
+            android:background="@color/colorDarkGray"
+            android:text="@string/join"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

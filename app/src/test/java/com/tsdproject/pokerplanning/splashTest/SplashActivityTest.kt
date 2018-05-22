@@ -34,5 +34,4 @@ class SplashActivityTest {
         val typeface = Typeface.createFromAsset(splashActivity.assets, "fonts/SourceCodePro-Regular.ttf")
         assertEquals(appNameTextView.typeface, typeface)
     }
-
 }

@@ -1,9 +1,13 @@
 package com.tsdproject.pokerplanning.access
 
+import android.content.Intent
 import android.os.Bundle
 import com.tsdproject.pokerplanning.R
+import com.tsdproject.pokerplanning.base.ApplicationContext
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
+import com.tsdproject.pokerplanning.createroom.CreateRoomActivity
+import com.tsdproject.pokerplanning.model.utils.EditTextUtil
 import kotlinx.android.synthetic.main.activity_access.*
 
 class AccessActivity : BaseActivity(), AccessView {
@@ -22,21 +26,16 @@ class AccessActivity : BaseActivity(), AccessView {
     }
 
     fun onLoginButtonClick() {
-        checkCredentialsEditTexts()
+        EditTextUtil.setEmptyEditTextError(loginEditText)
+        EditTextUtil.setEmptyEditTextError(passwordEditText)
+        if (!isCredentialsError()) {
+            startActivity(Intent(this, CreateRoomActivity::class.java))
+        }
     }
 
-    fun checkCredentialsEditTexts() {
-        val isLoginEditTextEmpty = loginEditText.text.isEmpty()
-        val isPasswordEditTextEmpty = passwordEditText.text.isEmpty()
-        if (isLoginEditTextEmpty) {
-            loginEditText.error = getString(R.string.blank_edit_text_error)
-        } else {
-            loginEditText.clearError()
-        }
-        if (isPasswordEditTextEmpty) {
-            passwordEditText.error = getString(R.string.blank_edit_text_error)
-        } else {
-            passwordEditText.clearError()
-        }
+    fun isCredentialsError(): Boolean {
+        val isLoginError = !loginEditText.error.isNullOrEmpty()
+        val isPasswordError = !passwordEditText.error.isNullOrEmpty()
+        return isLoginError || isPasswordError
     }
 }
