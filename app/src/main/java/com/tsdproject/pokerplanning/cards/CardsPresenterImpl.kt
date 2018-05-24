@@ -14,10 +14,6 @@ class CardsPresenterImpl(var view: CardsView): CardsPresenter {
         val layoutManager = CarouselLayoutManager(CarouselLayoutManager.HORIZONTAL, false)
         layoutManager.setPostLayoutListener(CarouselZoomPostLayoutListener())
         layoutManager.maxVisibleItems = 15
-        layoutManager.addOnItemSelectionListener({ adapterPosition ->
-
-        })
         return layoutManager
     }
-
 }
