@@ -37,6 +37,7 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'io.paperdb:paperdb:2.6'
     implementation 'com.github.rey5137:material:1.2.4'
+    implementation 'com.azoft.carousellayoutmanager:carousel:1.2.1'
 
     //testing
     androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {

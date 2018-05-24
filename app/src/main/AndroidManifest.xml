@@ -20,6 +20,7 @@
         <activity android:name=".participants.ParticipantsActivity"/>
         <activity android:name=".access.AccessActivity"/>
         <activity android:name=".createroom.CreateRoomActivity"/>
+        <activity android:name=".cards.CardsActivity"/>
     </application>
 
 </manifest>
