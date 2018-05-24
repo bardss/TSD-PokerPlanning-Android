@@ -6,6 +6,7 @@ import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.splash.SplashActivity
 import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
+import kotlinx.android.synthetic.main.activity_splash.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -30,7 +31,7 @@ class SplashActivityTest {
 
     @Test
     fun shouldHaveRegularFont() {
-        val appNameTextView = splashActivity.findViewById<TextView>(R.id.appNameTextView)
+        val appNameTextView = splashActivity.appNameTextView
         val typeface = Typeface.createFromAsset(splashActivity.assets, "fonts/SourceCodePro-Regular.ttf")
         assertEquals(appNameTextView.typeface, typeface)
     }

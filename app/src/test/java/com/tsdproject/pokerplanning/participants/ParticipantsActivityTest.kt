@@ -2,10 +2,10 @@ package com.tsdproject.pokerplanning.participants
 
 import android.graphics.Typeface
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.widget.TextView
 import com.tsdproject.pokerplanning.R
 import junit.framework.Assert.*
+import kotlinx.android.synthetic.main.activity_participants.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -29,19 +29,19 @@ class ParticipantsActivityTest {
 
     @Test
     fun recyclerViewShouldNotBeNull() {
-        val participantsRecyclerView = participantsActivity.findViewById<RecyclerView>(R.id.participantsRecyclerView)
+        val participantsRecyclerView = participantsActivity.participantsRecyclerView
         assertNotNull(participantsRecyclerView.adapter)
     }
 
     @Test
     fun recyclerViewShouldHaveLinearLayoutManager() {
-        val participantsRecyclerView = participantsActivity.findViewById<RecyclerView>(R.id.participantsRecyclerView)
+        val participantsRecyclerView = participantsActivity.participantsRecyclerView
         assertTrue(participantsRecyclerView.layoutManager is LinearLayoutManager)
     }
 
     @Test
     fun shouldHaveRobotoLightFont() {
-        val readyTextView = participantsActivity.findViewById<TextView>(R.id.readyTextView)
+        val readyTextView = participantsActivity.readyTextView
         val typeface = Typeface.createFromAsset(participantsActivity.assets, "fonts/Roboto-Light.ttf")
         assertEquals(readyTextView.typeface, typeface)
     }

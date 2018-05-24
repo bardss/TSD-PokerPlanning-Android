@@ -5,6 +5,7 @@ import com.rey.material.widget.EditText
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.createroom.CreateRoomActivity
 import junit.framework.Assert
+import kotlinx.android.synthetic.main.activity_create_room.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -29,28 +30,28 @@ class CreateRoomActivityTest {
 
     @Test
     fun shouldEditTextsBeEmpty() {
-        val tableIdEditText = createRoomActivity.findViewById<EditText>(R.id.tableIdEditText)
-        val tableNameEditText = createRoomActivity.findViewById<EditText>(R.id.tableNameEditText)
+        val tableIdEditText = createRoomActivity.tableIdEditText
+        val tableNameEditText = createRoomActivity.tableNameEditText
         Assert.assertTrue(tableNameEditText.text.isEmpty())
         Assert.assertTrue(tableIdEditText.text.isEmpty())
     }
 
     @Test
     fun shouldTableNameEditTextErrorBeEmpty() {
-        val tableNameEditText = createRoomActivity.findViewById<EditText>(R.id.tableNameEditText)
+        val tableNameEditText = createRoomActivity.tableNameEditText
         Assert.assertNull(tableNameEditText.error)
     }
 
     @Test
     fun shouldTableIdEditTextErrorBeEmpty() {
-        val tableIdEditText = createRoomActivity.findViewById<EditText>(R.id.tableIdEditText)
+        val tableIdEditText = createRoomActivity.tableIdEditText
         Assert.assertNull(tableIdEditText.error)
     }
 
     @Test
     fun shouldTableNameEditTextShowEmptyError() {
-        val tableNameEditText = createRoomActivity.findViewById<EditText>(R.id.tableNameEditText)
-        val createRoomButton = createRoomActivity.findViewById<TextView>(R.id.createRoomButton)
+        val tableNameEditText = createRoomActivity.tableNameEditText
+        val createRoomButton = createRoomActivity.createRoomButton
         createRoomButton.performClick()
         Assert.assertEquals(
             tableNameEditText.error,
@@ -60,8 +61,8 @@ class CreateRoomActivityTest {
 
     @Test
     fun shouldTableIdEditTextShowEmptyError() {
-        val tableIdEditText = createRoomActivity.findViewById<EditText>(R.id.tableIdEditText)
-        val joinRoomButton = createRoomActivity.findViewById<TextView>(R.id.joinRoomButton)
+        val tableIdEditText = createRoomActivity.tableIdEditText
+        val joinRoomButton = createRoomActivity.joinRoomButton
         joinRoomButton.performClick()
         Assert.assertEquals(
             tableIdEditText.error,
