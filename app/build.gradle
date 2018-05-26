@@ -34,6 +34,15 @@ dependencies {
     implementation 'io.paperdb:paperdb:2.6'
     implementation 'com.github.rey5137:material:1.2.4'
     implementation 'com.azoft.carousellayoutmanager:carousel:1.2.2'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.8.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
+    implementation 'com.jakewharton.timber:timber:4.7.0'
+
+    //retrofit
+    implementation "com.squareup.retrofit2:retrofit:2.3.0"
+    implementation "com.squareup.retrofit2:converter-gson:2.3.0"
+    implementation "com.squareup.retrofit2:adapter-rxjava:2.3.0"
 
     //testing
     testImplementation 'junit:junit:4.12'
