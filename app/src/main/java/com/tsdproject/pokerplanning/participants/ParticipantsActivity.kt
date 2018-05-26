@@ -1,11 +1,13 @@
 package com.tsdproject.pokerplanning.participants
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
+import com.tsdproject.pokerplanning.cards.CardsActivity
 import kotlinx.android.synthetic.main.activity_participants.*
 
 class ParticipantsActivity : BaseActivity(), ParticipantsView {
@@ -27,6 +29,11 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         super.onStart()
         setupTextFonts()
         setupParticipantsList()
+        readySwitch.setOnCheckedChangeListener { view, checked ->
+            if (checked) {
+                startActivity(Intent(this, CardsActivity::class.java))
+            }
+        }
     }
 
     private fun setupTextFonts() {

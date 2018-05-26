@@ -12,5 +12,6 @@
     <string name="join">join</string>
     <string name="ready">ready</string>
     <string name="room">Room</string>
+    <string name="choose_card">Choose card</string>
 
 </resources>
