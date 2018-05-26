@@ -13,5 +13,8 @@
     <string name="ready">ready</string>
     <string name="room">Room</string>
     <string name="choose_card">Choose card</string>
+    <string name="registration">Registration</string>
+    <string name="register">register</string>
+    <string name="confirm_password">confirm password</string>
 
 </resources>

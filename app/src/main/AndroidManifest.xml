@@ -17,10 +17,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".participants.ParticipantsActivity"/>
-        <activity android:name=".access.AccessActivity"/>
-        <activity android:name=".createroom.CreateRoomActivity"/>
-        <activity android:name=".cards.CardsActivity"/>
+        <activity android:name=".participants.ParticipantsActivity" />
+        <activity android:name=".access.AccessActivity" />
+        <activity android:name=".createroom.CreateRoomActivity" />
+        <activity android:name=".cards.CardsActivity" />
+        <activity android:name=".registration.RegistrationActivity" />
     </application>
 
 </manifest>
