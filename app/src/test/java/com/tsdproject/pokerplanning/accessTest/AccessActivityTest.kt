@@ -1,7 +1,5 @@
 package com.tsdproject.pokerplanning.accessTest
 
-import android.widget.TextView
-import com.rey.material.widget.EditText
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.access.AccessActivity
 import junit.framework.Assert.*
@@ -60,6 +58,6 @@ class AccessActivityTest {
         val passwordEditText = accessActivity.passwordEditText
         val loginButton = accessActivity.loginButton
         loginButton.performClick()
-        assertEquals(passwordEditText.error, accessActivity.resources.getString(R.string.blank_edit_text_error))
+        assertEquals(1, accessActivity.resources.getString(R.string.blank_edit_text_error))
     }
 }
