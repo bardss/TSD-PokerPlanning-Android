@@ -58,6 +58,6 @@ class AccessActivityTest {
         val passwordEditText = accessActivity.passwordEditText
         val loginButton = accessActivity.loginButton
         loginButton.performClick()
-        assertEquals(1, accessActivity.resources.getString(R.string.blank_edit_text_error))
+        assertEquals(passwordEditText.error, accessActivity.resources.getString(R.string.blank_edit_text_error))
     }
 }
