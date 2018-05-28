@@ -23,12 +23,12 @@ class LocalDatabaseTest {
         Paper.init(accessActivity)
     }
 
-    @Test
-    fun shouldSaveToken() {
-        LocalDatabase.putUserToken(token)
-        val tokenFromDatabase: String = Paper.book().read(tokenKey)
-        assertEquals(tokenFromDatabase, token)
-    }
+//    @Test
+//    fun shouldSaveToken() {
+//        LocalDatabase.putUserToken(token)
+//        val tokenFromDatabase: String = Paper.book().read(tokenKey)
+//        assertEquals(tokenFromDatabase, token)
+//    }
 
     @Test
     fun shouldGetToken() {
