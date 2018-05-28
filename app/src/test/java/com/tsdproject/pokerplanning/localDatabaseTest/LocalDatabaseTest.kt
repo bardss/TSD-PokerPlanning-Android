@@ -1,4 +1,4 @@
-package com.tsdproject.pokerplanning.accessTest
+package com.tsdproject.pokerplanning.localDatabaseTest
 
 import com.tsdproject.pokerplanning.access.AccessActivity
 import com.tsdproject.pokerplanning.database.LocalDatabase
