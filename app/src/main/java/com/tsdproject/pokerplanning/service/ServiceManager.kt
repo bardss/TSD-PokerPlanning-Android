@@ -3,10 +3,12 @@ package com.tsdproject.pokerplanning.service
 import android.widget.Toast
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.ApplicationContext
+import com.tsdproject.pokerplanning.model.transportobjects.AddUserTO
 import com.tsdproject.pokerplanning.model.transportobjects.UserLoginTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.model.utils.ToastUtil
 import com.tsdproject.pokerplanning.service.receivers.LoginReceiver
+import com.tsdproject.pokerplanning.service.receivers.RegisterReceiver
 import rx.Observable
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
@@ -30,6 +32,22 @@ object ServiceManager {
                 },
                 Action0 {
                     Timber.e("login completed")
+                })
+    }
+
+    fun register(addUser: AddUserTO, receiver: RegisterReceiver) {
+        setupRequest(ServiceProvider
+                .usersService
+                .register(addUser),
+                Action1 {
+                    receiver.onRegisterSuccess(it as String)
+                },
+                Action1 { e ->
+                    handleError()
+                    receiver.onRegisterError()
+                },
+                Action0 {
+                    Timber.e("register completed")
                 })
     }
 
