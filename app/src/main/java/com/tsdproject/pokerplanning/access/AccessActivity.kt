@@ -7,6 +7,7 @@ import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
 import com.tsdproject.pokerplanning.createroom.CreateRoomActivity
 import com.tsdproject.pokerplanning.model.utils.EditTextUtil
+import com.tsdproject.pokerplanning.model.utils.ResUtil
 import kotlinx.android.synthetic.main.activity_access.*
 
 class AccessActivity : BaseActivity(), AccessView {
@@ -28,7 +29,7 @@ class AccessActivity : BaseActivity(), AccessView {
         EditTextUtil.checkIfEditTextEmpty(loginEditText)
         EditTextUtil.checkIfEditTextEmpty(passwordEditText)
         if (!isCredentialsError()) {
-            startActivity(Intent(this, CreateRoomActivity::class.java))
+            presenter.login(loginEditText.text.toString(), passwordEditText.text.toString())
         }
     }
 
@@ -37,4 +38,21 @@ class AccessActivity : BaseActivity(), AccessView {
         val isPasswordError = !passwordEditText.error.isNullOrEmpty()
         return isLoginError || isPasswordError
     }
+
+    override fun navigateToCreateRoom(){
+        startActivity(Intent(this, CreateRoomActivity::class.java))
+    }
+
+    override fun setInputErrors() {
+        loginEditText.error = ResUtil.getString(R.string.wrong_login_password)
+        passwordEditText.error = ResUtil.getString(R.string.wrong_login_password)
+    }
+
+    override fun clearEditTexts() {
+        loginEditText.clearError()
+        passwordEditText.clearError()
+        loginEditText.setText("")
+        passwordEditText.setText("")
+    }
+
 }

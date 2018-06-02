@@ -16,5 +16,6 @@
     <string name="registration">Registration</string>
     <string name="register">register</string>
     <string name="confirm_password">confirm password</string>
-
+    <string name="sth_went_wrong">Something went wrong.</string>
+    <string name="wrong_login_password">Wrong login or password</string>
 </resources>
