@@ -12,7 +12,6 @@ import timber.log.Timber
 object ServiceFactory {
 
     private var httpClient: OkHttpClient? = null
-    private var noAuthHttpClient: OkHttpClient? = null
 
     private val gson: Gson
         get() = GsonBuilder()
@@ -20,18 +19,13 @@ object ServiceFactory {
                 .serializeNulls()
                 .create()
 
-    public fun <T> createRetrofitService(clazz: Class<T>, endPoint: String): T {
-        return createRetrofitService(clazz, endPoint, false)
-    }
-
-    public fun <T> createRetrofitService(
+    fun <T> createRetrofitService(
             clazz: Class<T>,
-            endPoint: String,
-            authorizationHeader: Boolean
+            endPoint: String
     ): T {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
-        val client = if (authorizationHeader) createHttpClient() else createNoAuthHttpClient()
+        val client = createHttpClient()
 
         val retrofit = Retrofit.Builder()
                 .baseUrl(endPoint)
@@ -45,12 +39,6 @@ object ServiceFactory {
 
     private fun createHttpClient(): OkHttpClient {
         return httpClient ?: OkHttpClient.Builder()
-                .addInterceptor(createHttpLoggingInterceptor())
-                .build()
-    }
-
-    private fun createNoAuthHttpClient(): OkHttpClient {
-        return noAuthHttpClient ?: OkHttpClient.Builder()
                 .addInterceptor(createHttpLoggingInterceptor())
                 .build()
     }
