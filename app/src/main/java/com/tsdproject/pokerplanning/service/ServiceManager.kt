@@ -40,7 +40,7 @@ object ServiceManager {
                 .usersService
                 .register(addUser),
                 Action1 {
-                    receiver.onRegisterSuccess(it as String)
+                    receiver.onRegisterSuccess()
                 },
                 Action1 { e ->
                     handleError()

@@ -12,6 +12,6 @@ interface UsersApi {
     fun login(@Body userLogin: UserLoginTO): Observable<String>
 
     @POST("users/add")
-    fun register(@Body addUser: AddUserTO): Observable<String>
+    fun register(@Body addUser: AddUserTO): Observable<Void>
 
 }
