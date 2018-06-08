@@ -21,4 +21,7 @@
     <string name="final_table">final table</string>
     <string name="average">average:</string>
     <string name="ready_for_next_estimation">ready for next estimation</string>
+    <string name="choose">choose</string>
+    <string name="check">check</string>
+    <string name="uncheck">uncheck</string>
 </resources>
