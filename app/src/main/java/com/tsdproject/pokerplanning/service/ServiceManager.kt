@@ -67,7 +67,7 @@ object ServiceManager {
         val context = ApplicationContext.appContext
         ToastUtil.show(
                 context,
-                ResUtil.getString(R.string.sth_went_wrong),
+                ResUtil.getString(R.string.something_went_wrong),
                 Toast.LENGTH_LONG
         )
     }
