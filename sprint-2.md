@@ -3,6 +3,7 @@
 
 Application visual tasks:
 - View "Register Account"
+- Connection between "Choose card" and "Final table" views
 
 Application:
 - Init model unit testing
