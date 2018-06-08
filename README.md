@@ -6,6 +6,10 @@ Software Engineering
 
 Technologies of Software Project
 
+### Application prototype
+
+https://marvelapp.com/8dj8964/screen/41947651
+
 ### Project Backend
 
 Application Backend is written in C# ASP.NET Core.
