@@ -8,6 +8,7 @@ import com.tsdproject.pokerplanning.base.BasePresenter
 import com.tsdproject.pokerplanning.createroom.CreateRoomActivity
 import com.tsdproject.pokerplanning.model.utils.EditTextUtil
 import com.tsdproject.pokerplanning.model.utils.ResUtil
+import com.tsdproject.pokerplanning.registration.RegistrationActivity
 import kotlinx.android.synthetic.main.activity_access.*
 
 class AccessActivity : BaseActivity(), AccessView {
@@ -22,7 +23,16 @@ class AccessActivity : BaseActivity(), AccessView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_access)
         presenter = AccessPresenterImpl(this)
+        setupOnClicks()
+    }
+
+    private fun setupOnClicks() {
         loginButton.setOnClickListener { onLoginButtonClick() }
+        registerButton.setOnClickListener { onRegisterButtonClick() }
+    }
+
+    private fun onRegisterButtonClick() {
+        startActivity(Intent(this, RegistrationActivity::class.java))
     }
 
     private fun onLoginButtonClick() {
