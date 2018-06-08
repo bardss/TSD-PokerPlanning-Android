@@ -6,6 +6,8 @@ Application visual tasks:
 
 Application:
 - Init model unit testing
+- Tests for Register Account view
+- Tests for Register Account presenter
 
 Backend connection tasks:
 - Connect register endpoint
