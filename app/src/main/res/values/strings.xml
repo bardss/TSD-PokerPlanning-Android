@@ -13,11 +13,14 @@
     <string name="ready">ready</string>
     <string name="room">Room</string>
     <string name="choose_card">Choose card</string>
-    <string name="something_went_wrong">Something went wrong.</string>
-    <string name="wrong_login_password">Wrong login or password</string>
     <string name="registration">Registration</string>
     <string name="register">register</string>
     <string name="confirm_password">confirm password</string>
+    <string name="something_went_wrong">Something went wrong.</string>
+    <string name="wrong_login_password">Wrong login or password</string>
+    <string name="final_table">final table</string>
+    <string name="average">average:</string>
+    <string name="ready_for_next_estimation">ready for next estimation</string>
     <string name="first_name">first name</string>
     <string name="last_name">last name</string>
     <string name="register_new_account">Register new account</string>

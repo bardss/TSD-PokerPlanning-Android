@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorGrayLight"
+    android:background="@android:color/white"
     android:orientation="vertical">
 
     <RelativeLayout
@@ -17,25 +17,56 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/choose_card"
+            android:text="@string/final_table"
+            android:textAllCaps="true"
             android:textColor="@android:color/black"
             android:textSize="32sp" />
 
         <ImageView
             android:layout_width="80dp"
             android:layout_height="match_parent"
-            android:src="@drawable/cards"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"/>
+            android:layout_margin="6dp"
+            android:src="@drawable/cards" />
 
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/cardsRecyclerView"
+        android:id="@+id/resultsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="21"
-        android:background="@android:color/white" />
+        android:layout_weight="20"
+        android:scrollbars="none" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@color/colorAlternativeBlue">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="5dp"
+                android:text="@string/average"
+                android:textAllCaps="true"
+                android:textColor="@android:color/black"
+                android:textSize="21sp" />
+
+            <TextView
+                android:id="@+id/averageTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8"
+                android:textColor="@android:color/black"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </FrameLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -62,7 +93,7 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="16dp"
             android:layout_toStartOf="@id/readySwitch"
-            android:text="@string/ready"
+            android:text="@string/ready_for_next_estimation"
             android:textColor="@android:color/black"
             android:textSize="26sp" />
 
