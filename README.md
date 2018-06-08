@@ -10,6 +10,10 @@ Technologies of Software Project
 
 https://marvelapp.com/8dj8964/screen/41947651
 
+### Application stable version to check in browser
+
+https://appetize.io/app/m0063xebg1jzjpy2kkrafe32gm?device=nexus5&scale=75&orientation=portrait&osVersion=7.1
+
 ### Project Backend
 
 Application Backend is written in C# ASP.NET Core.
