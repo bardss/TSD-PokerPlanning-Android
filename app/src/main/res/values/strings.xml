@@ -18,4 +18,7 @@
     <string name="confirm_password">confirm password</string>
     <string name="sth_went_wrong">Something went wrong.</string>
     <string name="wrong_login_password">Wrong login or password</string>
+    <string name="final_table">final table</string>
+    <string name="average">average:</string>
+    <string name="ready_for_next_estimation">ready for next estimation</string>
 </resources>
