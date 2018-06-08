@@ -12,6 +12,10 @@ Application:
 Backend connection tasks:
 - Connect register endpoint
 
+Project:
+- Update the Maintenance section in repository
+- Provide working application for non-developers
+
 ### Authors:
 
 * Jakub Anioła
