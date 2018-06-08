@@ -37,10 +37,35 @@
         android:layout_weight="21"
         android:background="@android:color/white" />
 
-    <View
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:background="@color/colorLightBlue"/>
+        android:background="@color/colorLightBlue">
+
+        <com.rey.material.widget.Switch
+            android:id="@+id/readySwitch"
+            style="@style/Material.Widget.Switch"
+            android:layout_width="56dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:checked="false"
+            app:sw_thumbColor="@color/colorGreenReady"
+            app:sw_trackColor="@android:color/white" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/readyTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:layout_toStartOf="@id/readySwitch"
+            android:text="@string/ready"
+            android:textColor="@android:color/black"
+            android:textSize="26sp" />
+
+    </RelativeLayout>
 
 </LinearLayout>

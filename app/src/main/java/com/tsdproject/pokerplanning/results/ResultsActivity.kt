@@ -18,6 +18,7 @@ class ResultsActivity : BaseActivity(), ResultsView {
         setContentView(R.layout.activity_results)
         presenter = ResultsPresenterImpl(this)
         setupRecyclerView()
+        updateAdapterValues()
     }
 
     override fun providePresenter(): BasePresenter? {
@@ -28,6 +29,11 @@ class ResultsActivity : BaseActivity(), ResultsView {
         resultsRecyclerView.layoutManager = GridLayoutManager(this, 3)
         adapter = ResultsListAdapter()
         resultsRecyclerView.adapter = adapter
-        adapter.updateCardValues(listOf(2,3,4,5,6))
+    }
+
+    private fun updateAdapterValues() {
+        val temporaryList = listOf(1, 3, 5, 5, 8, 8)
+        adapter.updateCardValues(temporaryList)
+        averageTextView.text = temporaryList.average().toFloat().toString()
     }
 }

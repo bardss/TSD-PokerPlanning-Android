@@ -1,10 +1,12 @@
 package com.tsdproject.pokerplanning.cards
 
+import android.content.Intent
 import android.os.Bundle
 import com.azoft.carousellayoutmanager.CenterScrollListener
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
+import com.tsdproject.pokerplanning.results.ResultsActivity
 import kotlinx.android.synthetic.main.activity_cards.*
 
 class CardsActivity : BaseActivity(), CardsView {
@@ -20,6 +22,7 @@ class CardsActivity : BaseActivity(), CardsView {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cards)
         presenter = CardsPresenterImpl(this)
+        setupSwitch()
     }
 
     override fun onStart() {
@@ -27,7 +30,7 @@ class CardsActivity : BaseActivity(), CardsView {
         setupCarouselView()
     }
 
-    private fun setupCarouselView(){
+    private fun setupCarouselView() {
         cardsRecyclerView.layoutManager = presenter.getCarouselLayoutManager()
         cardsRecyclerView.setHasFixedSize(true)
         cardsAdapter = CardsAdapter()
@@ -35,4 +38,11 @@ class CardsActivity : BaseActivity(), CardsView {
         cardsRecyclerView.addOnScrollListener(CenterScrollListener())
     }
 
+    private fun setupSwitch() {
+        readySwitch.setOnCheckedChangeListener { view, checked ->
+            if (checked) {
+                startActivity(Intent(this, ResultsActivity::class.java))
+            }
+        }
+    }
 }
