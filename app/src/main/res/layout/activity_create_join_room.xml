@@ -33,34 +33,11 @@
             android:textColor="@android:color/black"
             android:textSize="26sp" />
 
-        <FrameLayout
+        <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"/>
 
-            <com.rey.material.widget.EditText
-                android:id="@+id/tableNameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@android:color/transparent"
-                android:hint="@string/table_name"
-                android:imeOptions="actionSearch"
-                android:inputType="textPersonName"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:touchscreenBlocksFocus="true"
-                app:et_dividerColor="@color/colorGray"
-                app:et_dividerErrorColor="@color/colorError"
-                app:et_dividerHeight="2dp"
-                app:et_labelEnable="true"
-                app:et_labelTextColor="@color/colorGray"
-                app:et_supportMode="helper"
-                app:et_supportTextColor="@android:color/black"
-                app:et_supportTextErrorColor="@color/colorError" />
-        </FrameLayout>
 
         <Button
             android:id="@+id/createRoomButton"

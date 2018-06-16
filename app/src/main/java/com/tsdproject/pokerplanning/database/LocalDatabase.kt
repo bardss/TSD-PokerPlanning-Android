@@ -8,7 +8,7 @@ object LocalDatabase {
         Paper.book().write(DatabaseKeys.TOKEN, token)
     }
 
-    fun getUserToken(): String? {
+    fun getUserToken(): String {
         return Paper.book().read(DatabaseKeys.TOKEN)
     }
 

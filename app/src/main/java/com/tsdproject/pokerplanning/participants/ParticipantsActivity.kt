@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
@@ -29,7 +30,20 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         super.onStart()
         setupTextFonts()
         setupParticipantsList()
-        readySwitch.setOnCheckedChangeListener { view, checked ->
+        setReadySwitchListener()
+        presenter.setupTableIdView()
+    }
+
+    override fun setupTableIdView(tableId: String?) {
+        if (tableId == null) {
+            roomIdLayout.visibility = View.GONE
+        } else {
+            roomIdTextView.text = tableId
+        }
+    }
+
+    private fun setReadySwitchListener() {
+        readySwitch.setOnCheckedChangeListener { _, checked ->
             if (checked) {
                 startActivity(Intent(this, CardsActivity::class.java))
             }
@@ -38,6 +52,8 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
 
     private fun setupTextFonts() {
         readyTextView.typeface = Typeface.createFromAsset(this.assets, "fonts/Roboto-Light.ttf")
+        roomIdLabelTextView.typeface = Typeface.createFromAsset(this.assets, "fonts/Roboto-Light.ttf")
+        roomIdTextView.typeface = Typeface.createFromAsset(this.assets, "fonts/Roboto-Medium.ttf")
     }
 
     private fun setupParticipantsList() {

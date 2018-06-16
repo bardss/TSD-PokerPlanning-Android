@@ -3,10 +3,13 @@ package com.tsdproject.pokerplanning.service
 import android.widget.Toast
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.ApplicationContext
+import com.tsdproject.pokerplanning.database.LocalDatabase
 import com.tsdproject.pokerplanning.model.transportobjects.AddUserTO
+import com.tsdproject.pokerplanning.model.transportobjects.TokenTO
 import com.tsdproject.pokerplanning.model.transportobjects.UserLoginTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.model.utils.ToastUtil
+import com.tsdproject.pokerplanning.service.receivers.CreateTableReceiver
 import com.tsdproject.pokerplanning.service.receivers.DynamicAddressReceiver
 import com.tsdproject.pokerplanning.service.receivers.LoginReceiver
 import com.tsdproject.pokerplanning.service.receivers.RegisterReceiver
@@ -62,6 +65,22 @@ object ServiceManager {
             Action1 { e ->
                 handleError()
                 receiver.onGetDynamicAddressError()
+            },
+            Action0 {
+                Timber.e("get dynamic address completed")
+            })
+    }
+
+    fun createTable(receiver: CreateTableReceiver) {
+        setupRequest(ServiceProvider
+            .playTablesService
+            .createTable(TokenTO(LocalDatabase.getUserToken())),
+            Action1 {
+                receiver.onCreateTableSuccess(it as String)
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onCreateTableError()
             },
             Action0 {
                 Timber.e("get dynamic address completed")
