@@ -1,12 +1,17 @@
 package com.tsdproject.pokerplanning.service
 
+import com.tsdproject.pokerplanning.service.api.DynamicAddressService
 import com.tsdproject.pokerplanning.service.api.UsersApi
 
 object ServiceProvider {
 
-    const val SERVICE_ENDPOINT = "http://18.188.194.220/api/"
+    var SERVICE_ENDPOINT: String = ""
+    const val DYNAMIC_ADDRESS_ENPOINT = "https://sandbox27.neocities.org/"
 
-    var usersService: UsersApi =
-            ServiceFactory.createRetrofitService(UsersApi::class.java, SERVICE_ENDPOINT)
+    var dynamicAddressService: DynamicAddressService =
+        ServiceFactory.createRetrofitService(DynamicAddressService::class.java, DYNAMIC_ADDRESS_ENPOINT)
 
+    val usersService: UsersApi by lazy {
+        ServiceFactory.createRetrofitService(UsersApi::class.java, SERVICE_ENDPOINT)
+    }
 }
