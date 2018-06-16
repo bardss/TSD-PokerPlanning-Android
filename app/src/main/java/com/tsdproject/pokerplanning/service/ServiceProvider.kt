@@ -6,7 +6,7 @@ import com.tsdproject.pokerplanning.service.api.UsersApi
 object ServiceProvider {
 
     var SERVICE_ENDPOINT: String = ""
-    const val DYNAMIC_ADDRESS_ENPOINT = "https://sandbox27.neocities.org/"
+    private const val DYNAMIC_ADDRESS_ENPOINT = "https://sandbox27.neocities.org/"
 
     var dynamicAddressService: DynamicAddressService =
         ServiceFactory.createRetrofitService(DynamicAddressService::class.java, DYNAMIC_ADDRESS_ENPOINT)
