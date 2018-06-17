@@ -3,7 +3,7 @@ package com.tsdproject.pokerplanning.service.api
 import retrofit2.http.GET
 import rx.Observable
 
-interface DynamicAddressService {
+interface DynamicAddressApi {
 
     @GET("tsd-ip.txt")
     fun getDynamicAddress(): Observable<String>

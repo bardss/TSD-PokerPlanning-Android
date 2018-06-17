@@ -18,5 +18,5 @@ interface PlayTablesApi {
     fun joinTable(@Body userTableToken: UserTableToken) : Observable<Void>
 
     @GET("playtables/getParticipants")
-    fun getParticipants(@Query("token") Token: String) : Observable<List<UserTO>>
+    fun getParticipants(@Query("token") Token: String?) : Observable<List<UserTO>>
 }

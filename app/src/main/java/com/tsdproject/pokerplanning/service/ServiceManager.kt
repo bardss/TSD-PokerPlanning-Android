@@ -21,7 +21,7 @@ object ServiceManager {
     fun login(userLogin: UserLoginTO, receiver: LoginReceiver) {
         setupRequest(ServiceProvider
                 .usersService
-                .login(userLogin),
+                ?.login(userLogin),
                 Action1 {
                     receiver.onLoginSuccess(it as String)
                 },
@@ -37,7 +37,7 @@ object ServiceManager {
     fun register(addUser: AddUserTO, receiver: RegisterReceiver) {
         setupRequest(ServiceProvider
                 .usersService
-                .register(addUser),
+                ?.register(addUser),
                 Action1 {
                     receiver.onRegisterSuccess()
                 },
@@ -53,7 +53,7 @@ object ServiceManager {
     fun getDynamicAddress(receiver: DynamicAddressReceiver) {
         setupRequest(ServiceProvider
             .dynamicAddressService
-            .getDynamicAddress(),
+            ?.getDynamicAddress(),
             Action1 {
                 receiver.onGetDynamicAddressSuccess(it as String)
             },
@@ -69,7 +69,7 @@ object ServiceManager {
     fun createTable(receiver: CreateTableReceiver) {
         setupRequest(ServiceProvider
             .playTablesService
-            .createTable(TokenTO(LocalDatabase.getUserToken())),
+            ?.createTable(TokenTO(LocalDatabase.getUserToken())),
             Action1 {
                 receiver.onCreateTableSuccess(it as String)
             },
@@ -86,7 +86,7 @@ object ServiceManager {
     fun joinTable(receiver: JoinTableReceiver, userTableToken: UserTableToken) {
         setupRequest(ServiceProvider
             .playTablesService
-            .joinTable(userTableToken),
+            ?.joinTable(userTableToken),
             Action1 {
                 receiver.onJoinTableSuccess()
             },
@@ -102,7 +102,7 @@ object ServiceManager {
     fun getParticipants(receiver: GetParticipantsReceiver) {
         setupRequest(ServiceProvider
             .playTablesService
-            .getParticipants(LocalDatabase.getUserToken()),
+            ?.getParticipants(LocalDatabase.getUserToken()),
             Action1 {
                 receiver.onGetParticipantsSuccess(it as List<UserTO>)
             },
@@ -116,15 +116,15 @@ object ServiceManager {
     }
 
     private fun setupRequest(
-            observable: Observable<*>,
+            observable: Observable<*>?,
             onNext: Action1<Any>,
             onError: Action1<Throwable>,
             onCompleted: Action0
-    ): Subscription {
+    ): Subscription? {
         return observable
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(onNext, onError, onCompleted)
+                ?.subscribeOn(Schedulers.newThread())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(onNext, onError, onCompleted)
     }
 
     private fun handleError() {

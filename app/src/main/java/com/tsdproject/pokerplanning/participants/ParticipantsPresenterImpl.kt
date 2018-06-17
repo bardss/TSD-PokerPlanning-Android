@@ -13,6 +13,7 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     private var tableId: String? = null
     private var timerGetParticipant = Timer()
     private var shouldRefreshParticipants = true
+    private var refreshParticipantsPeriod: Long = 3000
 
     override fun initExtras(intent: Intent) {
         tableId = intent.getSerializableExtra(IntentKeys.TABLE_ID) as? String
@@ -38,7 +39,7 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
 
     private fun getParticipantsAfterDelay() {
         timerGetParticipant.schedule(
-            3000,
+            refreshParticipantsPeriod,
             {
                 if (shouldRefreshParticipants) {
                     getParticipants()
