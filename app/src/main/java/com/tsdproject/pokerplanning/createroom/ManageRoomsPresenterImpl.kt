@@ -31,10 +31,10 @@ class ManageRoomsPresenterImpl(var view: ManageRoomsView) : ManageRoomsPresenter
         view.openRoomActivity(tableId)
     }
 
-    override fun joinTable(tableId: String) {
+    override fun joinTable(roomId: String) {
         view.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
-        joinTableId = tableId
-        val userTableToken = UserTableToken(LocalDatabase.getUserToken(), tableId)
+        joinTableId = roomId
+        val userTableToken = UserTableToken(LocalDatabase.getUserToken(), roomId)
         ServiceManager.joinTable(this, userTableToken)
     }
 

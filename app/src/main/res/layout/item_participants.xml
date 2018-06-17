@@ -19,18 +19,17 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/participantImageView"
-        android:text="Participant Smith"
         android:textColor="@android:color/black"
         android:textSize="22sp" />
 
     <TextView
+        android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/nameTextView"
         android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
-        android:layout_toEndOf="@+id/participantImageView"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit" />
+        android:layout_toEndOf="@+id/participantImageView" />
 
     <View
         android:layout_width="match_parent"

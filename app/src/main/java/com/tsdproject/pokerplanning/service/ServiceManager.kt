@@ -4,10 +4,7 @@ import android.widget.Toast
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.ApplicationContext
 import com.tsdproject.pokerplanning.database.LocalDatabase
-import com.tsdproject.pokerplanning.model.transportobjects.AddUserTO
-import com.tsdproject.pokerplanning.model.transportobjects.TokenTO
-import com.tsdproject.pokerplanning.model.transportobjects.UserLoginTO
-import com.tsdproject.pokerplanning.model.transportobjects.UserTableToken
+import com.tsdproject.pokerplanning.model.transportobjects.*
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.model.utils.ToastUtil
 import com.tsdproject.pokerplanning.service.receivers.*
@@ -98,7 +95,23 @@ object ServiceManager {
                 receiver.onJoinTableError()
             },
             Action0 {
-                Timber.e("get dynamic address completed")
+                Timber.e("join table completed")
+            })
+    }
+
+    fun getParticipants(receiver: GetParticipantsReceiver) {
+        setupRequest(ServiceProvider
+            .playTablesService
+            .getParticipants(LocalDatabase.getUserToken()),
+            Action1 {
+                receiver.onGetParticipantsSuccess(it as List<UserTO>)
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onGetParticipantsError()
+            },
+            Action0 {
+                Timber.e("get participants completed")
             })
     }
 

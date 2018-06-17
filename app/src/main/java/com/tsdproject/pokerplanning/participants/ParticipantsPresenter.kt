@@ -4,4 +4,6 @@ import com.tsdproject.pokerplanning.base.BasePresenter
 
 interface ParticipantsPresenter: BasePresenter {
     fun setupTableIdView()
+    fun getParticipants()
+    fun stopGetParticipants()
 }
