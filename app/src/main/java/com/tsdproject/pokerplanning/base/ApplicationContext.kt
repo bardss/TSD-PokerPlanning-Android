@@ -4,6 +4,7 @@ import android.content.Context
 import android.support.multidex.MultiDex
 import android.support.multidex.MultiDexApplication
 import io.paperdb.Paper
+import timber.log.Timber
 
 class ApplicationContext : MultiDexApplication() {
 
@@ -12,6 +13,7 @@ class ApplicationContext : MultiDexApplication() {
         appContext = applicationContext
         MultiDex.install(this)
         Paper.init(this)
+        Timber.plant(Timber.DebugTree())
     }
 
     companion object {

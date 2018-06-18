@@ -33,12 +33,14 @@ class ManageRoomsActivity : BaseActivity(), ManageRoomsView {
     private fun onJoinButtonClick() {
         EditTextUtil.checkIfEditTextEmpty(tableIdEditText)
         if (tableIdEditText.error.isNullOrEmpty()) {
-            startActivity(Intent(this, ParticipantsActivity::class.java))
+            presenter.joinTable(tableIdEditText.text.toString())
         }
     }
 
     override fun openRoomActivity(tableId: String) {
-        startActivity(Intent(this, ParticipantsActivity::class.java)
-            .putExtra(IntentKeys.TABLE_ID, tableId))
+        startActivity(
+            Intent(this, ParticipantsActivity::class.java)
+                .putExtra(IntentKeys.TABLE_ID, tableId)
+        )
     }
 }
