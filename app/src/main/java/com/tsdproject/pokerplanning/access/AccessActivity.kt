@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
-import com.tsdproject.pokerplanning.createroom.CreateRoomActivity
+import com.tsdproject.pokerplanning.createroom.ManageRoomsActivity
 import com.tsdproject.pokerplanning.model.utils.EditTextUtil
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.registration.RegistrationActivity
@@ -50,7 +50,7 @@ class AccessActivity : BaseActivity(), AccessView {
     }
 
     override fun navigateToCreateRoom(){
-        startActivity(Intent(this, CreateRoomActivity::class.java))
+        startActivity(Intent(this, ManageRoomsActivity::class.java))
     }
 
     override fun setInputErrors() {

@@ -4,4 +4,5 @@ import com.tsdproject.pokerplanning.base.BaseView
 
 interface ParticipantsView: BaseView {
 
+    fun setupTableIdView(tableId: String?)
 }

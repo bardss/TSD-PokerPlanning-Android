@@ -9,8 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
-        android:background="@color/colorLightBlue"
-        android:orientation="vertical">
+        android:background="@color/colorLightBlue">
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,6 +27,33 @@
             android:layout_marginBottom="6dp"/>
 
     </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/roomIdLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@color/colorLightBlue"
+        android:gravity="center"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/roomIdLabelTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/room_id"
+            android:textColor="@android:color/black"
+            android:textSize="26sp" />
+
+        <TextView
+            android:id="@+id/roomIdTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="26sp"
+            android:layout_marginStart="12dp"/>
+
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/participantsRecyclerView"

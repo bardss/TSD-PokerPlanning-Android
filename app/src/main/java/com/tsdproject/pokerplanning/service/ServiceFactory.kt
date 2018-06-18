@@ -44,7 +44,7 @@ object ServiceFactory {
     }
 
     private fun createHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        val interceptor = HttpLoggingInterceptor { message -> Timber.tag("OkHttp").d(message) }
+        val interceptor = HttpLoggingInterceptor { message -> Timber.e("OkHttp: %s", message) }
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         return interceptor
     }
