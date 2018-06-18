@@ -7,6 +7,7 @@ import com.tsdproject.pokerplanning.model.transportobjects.AddUserTO
 import com.tsdproject.pokerplanning.model.transportobjects.UserLoginTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.model.utils.ToastUtil
+import com.tsdproject.pokerplanning.service.receivers.DynamicAddressReceiver
 import com.tsdproject.pokerplanning.service.receivers.LoginReceiver
 import com.tsdproject.pokerplanning.service.receivers.RegisterReceiver
 import rx.Observable
@@ -49,6 +50,22 @@ object ServiceManager {
                 Action0 {
                     Timber.e("register completed")
                 })
+    }
+
+    fun getDynamicAddress(receiver: DynamicAddressReceiver) {
+        setupRequest(ServiceProvider
+            .dynamicAddressService
+            .getDynamicAddress(),
+            Action1 {
+                receiver.onGetDynamicAddressSuccess(it as String)
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onGetDynamicAddressError()
+            },
+            Action0 {
+                Timber.e("get dynamic address completed")
+            })
     }
 
     private fun setupRequest(

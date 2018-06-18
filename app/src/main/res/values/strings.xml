@@ -31,5 +31,6 @@
     <string name="account_created">Account created!</string>
     <string name="email">email</string>
     <string name="email_is_not_correct">Email is not correct</string>
+    <string name="cannot_download_server_address">Cannot download server address</string>
 
 </resources>
