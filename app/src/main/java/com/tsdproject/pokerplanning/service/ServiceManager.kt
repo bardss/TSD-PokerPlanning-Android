@@ -4,10 +4,7 @@ import android.widget.Toast
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.ApplicationContext
 import com.tsdproject.pokerplanning.database.LocalDatabase
-import com.tsdproject.pokerplanning.model.transportobjects.AddUserTO
-import com.tsdproject.pokerplanning.model.transportobjects.TokenTO
-import com.tsdproject.pokerplanning.model.transportobjects.UserLoginTO
-import com.tsdproject.pokerplanning.model.transportobjects.UserTableToken
+import com.tsdproject.pokerplanning.model.transportobjects.*
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.model.utils.ToastUtil
 import com.tsdproject.pokerplanning.service.receivers.*
@@ -24,7 +21,7 @@ object ServiceManager {
     fun login(userLogin: UserLoginTO, receiver: LoginReceiver) {
         setupRequest(ServiceProvider
                 .usersService
-                .login(userLogin),
+                ?.login(userLogin),
                 Action1 {
                     receiver.onLoginSuccess(it as String)
                 },
@@ -40,7 +37,7 @@ object ServiceManager {
     fun register(addUser: AddUserTO, receiver: RegisterReceiver) {
         setupRequest(ServiceProvider
                 .usersService
-                .register(addUser),
+                ?.register(addUser),
                 Action1 {
                     receiver.onRegisterSuccess()
                 },
@@ -56,7 +53,7 @@ object ServiceManager {
     fun getDynamicAddress(receiver: DynamicAddressReceiver) {
         setupRequest(ServiceProvider
             .dynamicAddressService
-            .getDynamicAddress(),
+            ?.getDynamicAddress(),
             Action1 {
                 receiver.onGetDynamicAddressSuccess(it as String)
             },
@@ -72,7 +69,7 @@ object ServiceManager {
     fun createTable(receiver: CreateTableReceiver) {
         setupRequest(ServiceProvider
             .playTablesService
-            .createTable(TokenTO(LocalDatabase.getUserToken())),
+            ?.createTable(TokenTO(LocalDatabase.getUserToken())),
             Action1 {
                 receiver.onCreateTableSuccess(it as String)
             },
@@ -89,7 +86,7 @@ object ServiceManager {
     fun joinTable(receiver: JoinTableReceiver, userTableToken: UserTableToken) {
         setupRequest(ServiceProvider
             .playTablesService
-            .joinTable(userTableToken),
+            ?.joinTable(userTableToken),
             Action1 {
                 receiver.onJoinTableSuccess()
             },
@@ -98,20 +95,36 @@ object ServiceManager {
                 receiver.onJoinTableError()
             },
             Action0 {
-                Timber.e("get dynamic address completed")
+                Timber.e("join table completed")
+            })
+    }
+
+    fun getParticipants(receiver: GetParticipantsReceiver) {
+        setupRequest(ServiceProvider
+            .playTablesService
+            ?.getParticipants(LocalDatabase.getUserToken()),
+            Action1 {
+                receiver.onGetParticipantsSuccess(it as List<UserTO>)
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onGetParticipantsError()
+            },
+            Action0 {
+                Timber.e("get participants completed")
             })
     }
 
     private fun setupRequest(
-            observable: Observable<*>,
+            observable: Observable<*>?,
             onNext: Action1<Any>,
             onError: Action1<Throwable>,
             onCompleted: Action0
-    ): Subscription {
+    ): Subscription? {
         return observable
-                .subscribeOn(Schedulers.newThread())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(onNext, onError, onCompleted)
+                ?.subscribeOn(Schedulers.newThread())
+                ?.observeOn(AndroidSchedulers.mainThread())
+                ?.subscribe(onNext, onError, onCompleted)
     }
 
     private fun handleError() {

@@ -5,10 +5,14 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.widget.Toast
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
 import com.tsdproject.pokerplanning.cards.CardsActivity
+import com.tsdproject.pokerplanning.model.transportobjects.UserTO
+import com.tsdproject.pokerplanning.model.utils.ResUtil
+import com.tsdproject.pokerplanning.model.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_participants.*
 
 class ParticipantsActivity : BaseActivity(), ParticipantsView {
@@ -32,6 +36,12 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         setupParticipantsList()
         setReadySwitchListener()
         presenter.setupTableIdView()
+        presenter.getParticipants()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        presenter.stopGetParticipants()
     }
 
     override fun setupTableIdView(tableId: String?) {
@@ -62,5 +72,12 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         participantsRecyclerView.adapter = participantsAdapter
     }
 
+    override fun showGetParticipantsErrorToast() {
+        ToastUtil.show(this, ResUtil.getString(R.string.cannot_download_participants_list), Toast.LENGTH_LONG)
+    }
+
+    override fun updateParticipantsList(users: List<UserTO>) {
+        participantsAdapter.setUsersList(users)
+    }
 
 }
