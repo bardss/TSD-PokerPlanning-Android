@@ -29,7 +29,7 @@ class ParticipantsActivityTest {
     @Before
     fun initData() {
         whenever(playTablesApi.getParticipants(anyOrNull())).thenReturn(
-            Observable.just(listOf(UserTO(0,"","","")))
+            Observable.just(listOf(UserTO(0,"","","", true)))
         )
 
         ServiceProvider.playTablesService = playTablesApi
