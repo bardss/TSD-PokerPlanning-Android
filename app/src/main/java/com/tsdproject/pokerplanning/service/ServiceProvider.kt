@@ -1,6 +1,7 @@
 package com.tsdproject.pokerplanning.service
 
 import com.tsdproject.pokerplanning.service.api.DynamicAddressApi
+import com.tsdproject.pokerplanning.service.api.GamesApi
 import com.tsdproject.pokerplanning.service.api.PlayTablesApi
 import com.tsdproject.pokerplanning.service.api.UsersApi
 
@@ -17,6 +18,9 @@ object ServiceProvider {
 
     var playTablesService: PlayTablesApi? = null
         get() = if (field == null) ServiceFactory.createRetrofitService(PlayTablesApi::class.java, SERVICE_ENDPOINT) else field
+
+    var gamesService: GamesApi? = null
+        get() = if (field == null) ServiceFactory.createRetrofitService(GamesApi::class.java, SERVICE_ENDPOINT) else field
 
 }
 

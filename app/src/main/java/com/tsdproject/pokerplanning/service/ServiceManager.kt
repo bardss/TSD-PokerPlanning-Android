@@ -20,34 +20,34 @@ object ServiceManager {
 
     fun login(userLogin: UserLoginTO, receiver: LoginReceiver) {
         setupRequest(ServiceProvider
-                .usersService
-                ?.login(userLogin),
-                Action1 {
-                    receiver.onLoginSuccess(it as String)
-                },
-                Action1 { e ->
-                    handleError()
-                    receiver.onLoginError()
-                },
-                Action0 {
-                    Timber.e("login completed")
-                })
+            .usersService
+            ?.login(userLogin),
+            Action1 {
+                receiver.onLoginSuccess(it as String)
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onLoginError()
+            },
+            Action0 {
+                Timber.e("login completed")
+            })
     }
 
     fun register(addUser: AddUserTO, receiver: RegisterReceiver) {
         setupRequest(ServiceProvider
-                .usersService
-                ?.register(addUser),
-                Action1 {
-                    receiver.onRegisterSuccess()
-                },
-                Action1 { e ->
-                    handleError()
-                    receiver.onRegisterError()
-                },
-                Action0 {
-                    Timber.e("register completed")
-                })
+            .usersService
+            ?.register(addUser),
+            Action1 {
+                receiver.onRegisterSuccess()
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onRegisterError()
+            },
+            Action0 {
+                Timber.e("register completed")
+            })
     }
 
     fun getDynamicAddress(receiver: DynamicAddressReceiver) {
@@ -81,7 +81,6 @@ object ServiceManager {
                 Timber.e("get dynamic address completed")
             })
     }
-
 
     fun joinTable(receiver: JoinTableReceiver, userTableToken: UserTableTokenTO) {
         setupRequest(ServiceProvider
@@ -131,26 +130,40 @@ object ServiceManager {
             })
     }
 
+    fun startGame(receiver: StartGameReceiver) {
+        setupRequest(ServiceProvider.gamesService?.startGame(
+            TokenTO(LocalDatabase.getUserToken())
+        ),
+            Action1 {
+                receiver.onStartGameSuccess()
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onStartGameError()
+            },
+            Action0 {
+                Timber.e("set ready status")
+            })
+    }
 
     private fun setupRequest(
-            observable: Observable<*>?,
-            onNext: Action1<Any>,
-            onError: Action1<Throwable>,
-            onCompleted: Action0
+        observable: Observable<*>?,
+        onNext: Action1<Any>,
+        onError: Action1<Throwable>,
+        onCompleted: Action0
     ): Subscription? {
         return observable
-                ?.subscribeOn(Schedulers.newThread())
-                ?.observeOn(AndroidSchedulers.mainThread())
-                ?.subscribe(onNext, onError, onCompleted)
+            ?.subscribeOn(Schedulers.newThread())
+            ?.observeOn(AndroidSchedulers.mainThread())
+            ?.subscribe(onNext, onError, onCompleted)
     }
 
     private fun handleError() {
         val context = ApplicationContext.appContext
         ToastUtil.show(
-                context,
-                ResUtil.getString(R.string.something_went_wrong),
-                Toast.LENGTH_LONG
+            context,
+            ResUtil.getString(R.string.something_went_wrong),
+            Toast.LENGTH_LONG
         )
     }
-
 }
