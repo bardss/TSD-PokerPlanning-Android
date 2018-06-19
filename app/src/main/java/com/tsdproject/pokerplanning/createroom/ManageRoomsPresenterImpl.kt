@@ -12,8 +12,6 @@ import com.tsdproject.pokerplanning.service.receivers.JoinTableReceiver
 class ManageRoomsPresenterImpl(var view: ManageRoomsView) : ManageRoomsPresenter, CreateTableReceiver,
     JoinTableReceiver {
 
-    lateinit var joinTableId: String
-
     override fun initExtras(intent: Intent) {
     }
 
@@ -33,7 +31,6 @@ class ManageRoomsPresenterImpl(var view: ManageRoomsView) : ManageRoomsPresenter
 
     override fun joinTable(roomId: String) {
         view.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
-        joinTableId = roomId
         val userTableToken = UserTableTokenTO(LocalDatabase.getUserToken(), roomId)
         ServiceManager.joinTable(this, userTableToken)
     }
@@ -44,6 +41,6 @@ class ManageRoomsPresenterImpl(var view: ManageRoomsView) : ManageRoomsPresenter
 
     override fun onJoinTableSuccess() {
         view.stopProgressDialog()
-        view.openRoomActivity(joinTableId)
+        view.openRoomActivity(null)
     }
 }

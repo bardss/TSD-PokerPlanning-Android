@@ -9,4 +9,5 @@ interface ParticipantsView: BaseView {
     fun showGetParticipantsErrorToast()
     fun updateParticipantsList(users: List<UserTO>)
     fun showSetReadyErrorToast()
+    fun showButtonForTableOwner()
 }

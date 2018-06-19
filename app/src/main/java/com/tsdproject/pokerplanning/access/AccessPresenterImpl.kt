@@ -3,6 +3,7 @@ package com.tsdproject.pokerplanning.access
 import android.content.Intent
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.database.LocalDatabase
+import com.tsdproject.pokerplanning.model.transportobjects.TokenTO
 import com.tsdproject.pokerplanning.model.transportobjects.UserLoginTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
@@ -30,5 +31,4 @@ class AccessPresenterImpl(var view: AccessView): AccessPresenter, LoginReceiver 
         view.setInputErrors()
         view.stopProgressDialog()
     }
-
 }

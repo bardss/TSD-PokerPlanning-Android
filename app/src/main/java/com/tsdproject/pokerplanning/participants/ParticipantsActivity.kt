@@ -35,6 +35,7 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         setReadySwitchListener()
         presenter.setupTableIdView()
         presenter.getParticipants()
+        presenter.setupStartGameButton()
     }
 
     override fun onPause() {
@@ -80,4 +81,9 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         participantsAdapter.setUsersList(users)
     }
 
+    override fun showButtonForTableOwner(){
+        startGameButton.visibility = View.VISIBLE
+        readySwitch.visibility = View.GONE
+        readyTextView.visibility = View.GONE
+    }
 }

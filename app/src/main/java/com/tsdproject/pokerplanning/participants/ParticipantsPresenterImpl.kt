@@ -21,6 +21,12 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         tableId = intent.getSerializableExtra(IntentKeys.TABLE_ID) as? String
     }
 
+    override fun setupStartGameButton() {
+        if (tableId != null) {
+            view.showButtonForTableOwner()
+        }
+    }
+
     override fun setupTableIdView() {
         view.setupTableIdView(tableId)
     }
