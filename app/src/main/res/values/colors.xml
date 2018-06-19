@@ -10,5 +10,6 @@
     <color name="colorLightBlue">#8AADF3</color>
     <color name="colorDarkGray">#646668</color>
     <color name="colorGreenReady">#77D352</color>
+    <color name="colorGreenReadyLight">#c8efb8</color>
     <color name="colorAlternativeBlue">#A6C0F6</color>
 </resources>

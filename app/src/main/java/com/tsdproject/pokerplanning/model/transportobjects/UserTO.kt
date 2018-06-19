@@ -6,5 +6,6 @@ data class UserTO (
     val id: Int,
     val email: String,
     val firstName: String,
-    val lastName: String
+    val lastName: String,
+    val isReady: Boolean
 ): Serializable
