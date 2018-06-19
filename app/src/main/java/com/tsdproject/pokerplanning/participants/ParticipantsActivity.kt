@@ -94,7 +94,7 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         startActivity(Intent(this, CardsActivity::class.java))
     }
 
-    override fun showNotAllUsersReadyToast(){
+    override fun showNotAllUsersReadyToast() {
         ToastUtil.show(this, ResUtil.getString(R.string.not_all_users_are_ready), Toast.LENGTH_LONG)
     }
 }

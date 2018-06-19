@@ -74,11 +74,11 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         shouldRefreshParticipants = false
     }
 
-    override fun startGame(){
+    override fun startGame() {
         view.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
         ServiceManager.startGame(this)
-
     }
+
     override fun onStartGameSuccess() {
         view.stopProgressDialog()
         view.navigateToCardsActivity()

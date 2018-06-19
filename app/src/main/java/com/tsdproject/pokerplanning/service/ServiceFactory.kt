@@ -16,33 +16,33 @@ object ServiceFactory {
 
     private val gson: Gson
         get() = GsonBuilder()
-                .setLenient()
-                .serializeNulls()
-                .create()
+            .setLenient()
+            .serializeNulls()
+            .create()
 
     fun <T> createRetrofitService(
-            clazz: Class<T>,
-            endPoint: String
+        clazz: Class<T>,
+        endPoint: String
     ): T {
         val interceptor = HttpLoggingInterceptor()
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         val client = createHttpClient()
 
         val retrofit = Retrofit.Builder()
-                .baseUrl(endPoint)
-                .client(client)
+            .baseUrl(endPoint)
+            .client(client)
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(gson))
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build()
+            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+            .build()
 
         return retrofit.create(clazz)
     }
 
     private fun createHttpClient(): OkHttpClient {
         return httpClient ?: OkHttpClient.Builder()
-                .addInterceptor(createHttpLoggingInterceptor())
-                .build()
+            .addInterceptor(createHttpLoggingInterceptor())
+            .build()
     }
 
     private fun createHttpLoggingInterceptor(): HttpLoggingInterceptor {
@@ -50,5 +50,4 @@ object ServiceFactory {
         interceptor.level = HttpLoggingInterceptor.Level.BODY
         return interceptor
     }
-
 }

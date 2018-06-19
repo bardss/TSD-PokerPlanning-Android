@@ -13,7 +13,6 @@ import com.tsdproject.pokerplanning.model.utils.ToastUtil
 import com.tsdproject.pokerplanning.model.utils.ValidationUtil
 import kotlinx.android.synthetic.main.activity_registration.*
 
-
 class RegistrationActivity : BaseActivity(), RegistrationView {
 
     override fun showSuccessToast() {
@@ -35,8 +34,8 @@ class RegistrationActivity : BaseActivity(), RegistrationView {
 
     private fun onRegisterButtonClick() {
         if (checkIfEditTextsEmpty() &&
-                checkIfCorrectEmail() &&
-                checkIfSamePasswords()){
+            checkIfCorrectEmail() &&
+            checkIfSamePasswords()) {
             presenter.registerUser(createAddUser())
         }
     }
@@ -53,10 +52,10 @@ class RegistrationActivity : BaseActivity(), RegistrationView {
 
     private fun createAddUser(): AddUserTO {
         return AddUserTO(
-                firstNameEditText.text.toString(),
-                lastNameEditText.text.toString(),
-                loginEditText.text.toString(),
-                passwordEditText.text.toString()
+            firstNameEditText.text.toString(),
+            lastNameEditText.text.toString(),
+            loginEditText.text.toString(),
+            passwordEditText.text.toString()
         )
     }
 

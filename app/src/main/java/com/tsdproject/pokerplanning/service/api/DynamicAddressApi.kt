@@ -7,5 +7,4 @@ interface DynamicAddressApi {
 
     @GET("tsd-ip.txt")
     fun getDynamicAddress(): Observable<String>
-
 }

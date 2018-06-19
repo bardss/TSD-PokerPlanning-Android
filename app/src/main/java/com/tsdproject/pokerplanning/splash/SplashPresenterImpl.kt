@@ -6,7 +6,7 @@ import com.tsdproject.pokerplanning.service.ServiceManager
 import com.tsdproject.pokerplanning.service.ServiceProvider
 import com.tsdproject.pokerplanning.service.receivers.DynamicAddressReceiver
 
-class SplashPresenterImpl(var view: SplashView): SplashPresenter, DynamicAddressReceiver {
+class SplashPresenterImpl(var view: SplashView) : SplashPresenter, DynamicAddressReceiver {
 
     override fun initExtras(intent: Intent) {
     }
