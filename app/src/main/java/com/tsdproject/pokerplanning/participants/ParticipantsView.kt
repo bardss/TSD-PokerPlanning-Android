@@ -8,4 +8,5 @@ interface ParticipantsView: BaseView {
     fun setupTableIdView(tableId: String?)
     fun showGetParticipantsErrorToast()
     fun updateParticipantsList(users: List<UserTO>)
+    fun showSetReadyErrorToast()
 }

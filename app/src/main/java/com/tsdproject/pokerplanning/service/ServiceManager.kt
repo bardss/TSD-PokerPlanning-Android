@@ -83,7 +83,7 @@ object ServiceManager {
     }
 
 
-    fun joinTable(receiver: JoinTableReceiver, userTableToken: UserTableToken) {
+    fun joinTable(receiver: JoinTableReceiver, userTableToken: UserTableTokenTO) {
         setupRequest(ServiceProvider
             .playTablesService
             ?.joinTable(userTableToken),
@@ -114,6 +114,23 @@ object ServiceManager {
                 Timber.e("get participants completed")
             })
     }
+
+    fun setReadyStatus(isReady: Boolean, receiver: SetReadyStatusReceiver) {
+        setupRequest(ServiceProvider
+            .usersService
+            ?.setReadyStatus(ReadyTokenTO(LocalDatabase.getUserToken(), isReady)),
+            Action1 {
+                receiver.onSetReadyStatusSuccess()
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onSetReadyStatusError()
+            },
+            Action0 {
+                Timber.e("set ready status")
+            })
+    }
+
 
     private fun setupRequest(
             observable: Observable<*>?,

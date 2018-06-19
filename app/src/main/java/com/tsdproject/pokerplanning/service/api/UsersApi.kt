@@ -1,6 +1,7 @@
 package com.tsdproject.pokerplanning.service.api
 
 import com.tsdproject.pokerplanning.model.transportobjects.AddUserTO
+import com.tsdproject.pokerplanning.model.transportobjects.ReadyTokenTO
 import com.tsdproject.pokerplanning.model.transportobjects.UserLoginTO
 import retrofit2.http.Body
 import retrofit2.http.POST
@@ -13,5 +14,8 @@ interface UsersApi {
 
     @POST("users/add")
     fun register(@Body addUser: AddUserTO): Observable<Void>
+
+    @POST("users/setreadystatus")
+    fun setReadyStatus(@Body readyToken: ReadyTokenTO): Observable<Void>
 
 }

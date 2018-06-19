@@ -34,5 +34,6 @@
     <string name="cannot_download_server_address">Cannot download server address</string>
     <string name="room_id">Room ID:</string>
     <string name="cannot_download_participants_list">Cannot download participants list</string>
+    <string name="cannot_change_ready_status">Cannot change ready status</string>
 
 </resources>
