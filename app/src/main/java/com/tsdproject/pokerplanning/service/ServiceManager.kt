@@ -138,7 +138,6 @@ object ServiceManager {
                 receiver.onStartGameSuccess()
             },
             Action1 { e ->
-                handleError()
                 receiver.onStartGameError()
             },
             Action0 {

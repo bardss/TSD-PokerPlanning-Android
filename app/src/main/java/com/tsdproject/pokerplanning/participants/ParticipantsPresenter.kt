@@ -8,4 +8,5 @@ interface ParticipantsPresenter : BasePresenter {
     fun stopGetParticipants()
     fun setupStartGameButton()
     fun setUserReadyStatus(checked: Boolean)
+    fun startGame()
 }

@@ -36,5 +36,6 @@
     <string name="cannot_download_participants_list">Cannot download participants list</string>
     <string name="cannot_change_ready_status">Cannot change ready status</string>
     <string name="start_game">start game</string>
+    <string name="not_all_users_are_ready">Not all users are ready to play!</string>
 
 </resources>
