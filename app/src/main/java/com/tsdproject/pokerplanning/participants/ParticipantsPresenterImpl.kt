@@ -104,9 +104,11 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         view.showToast(ResUtil.getString(R.string.cannot_check_game_status))
     }
 
-    override fun onIsGameStartedSuccess() {
-        view.switchBackReadyStatus()
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onIsGameStartedSuccess(isStarted: Boolean?) {
+        if (isStarted == true) {
+            view.switchBackReadyStatus()
+            view.navigateToCardsActivity()
+        }
     }
 
 }

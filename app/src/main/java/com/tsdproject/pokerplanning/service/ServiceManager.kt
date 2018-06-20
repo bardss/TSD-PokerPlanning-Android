@@ -148,10 +148,9 @@ object ServiceManager {
     fun isGameStarted(receiver: IsGameStartedReceiver) {
         setupRequest(ServiceProvider
             .gamesService
-            ?.isGameStarted(TokenTO(LocalDatabase.getUserToken())
-        ),
+            ?.isGameStarted(LocalDatabase.getUserToken()),
             Action1 {
-                receiver.onIsGameStartedSuccess()
+                receiver.onIsGameStartedSuccess(it as Boolean?)
             },
             Action1 { e ->
                 receiver.onIsGameStartedError()
