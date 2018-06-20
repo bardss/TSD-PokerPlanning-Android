@@ -6,7 +6,9 @@ import android.content.Context
 import android.os.Handler
 import android.view.View
 import android.widget.ImageView
+import android.widget.Toast
 import com.tsdproject.pokerplanning.R
+import com.tsdproject.pokerplanning.model.utils.ToastUtil
 
 abstract class BaseActivity : Activity(), BaseView {
     private var progress: ProgressDialog? = null
@@ -57,5 +59,9 @@ abstract class BaseActivity : Activity(), BaseView {
         } else {
             super.onBackPressed()
         }
+    }
+
+    override fun showToast(information: String) {
+        ToastUtil.show(this, information, Toast.LENGTH_LONG)
     }
 }

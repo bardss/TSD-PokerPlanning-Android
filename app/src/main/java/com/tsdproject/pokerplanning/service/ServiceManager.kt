@@ -126,14 +126,14 @@ object ServiceManager {
                 receiver.onSetReadyStatusError()
             },
             Action0 {
-                Timber.e("set ready status")
+                Timber.e("set ready status completed")
             })
     }
 
     fun startGame(receiver: StartGameReceiver) {
-        setupRequest(ServiceProvider.gamesService?.startGame(
-            TokenTO(LocalDatabase.getUserToken())
-        ),
+        setupRequest(ServiceProvider
+            .gamesService
+            ?.startGame(TokenTO(LocalDatabase.getUserToken())),
             Action1 {
                 receiver.onStartGameSuccess()
             },
@@ -141,7 +141,23 @@ object ServiceManager {
                 receiver.onStartGameError()
             },
             Action0 {
-                Timber.e("set ready status")
+                Timber.e("on start game completed")
+            })
+    }
+
+    fun isGameStarted(receiver: IsGameStartedReceiver) {
+        setupRequest(ServiceProvider
+            .gamesService
+            ?.isGameStarted(TokenTO(LocalDatabase.getUserToken())
+        ),
+            Action1 {
+                receiver.onIsGameStartedSuccess()
+            },
+            Action1 { e ->
+                receiver.onIsGameStartedError()
+            },
+            Action0 {
+                Timber.e("is game started completed")
             })
     }
 

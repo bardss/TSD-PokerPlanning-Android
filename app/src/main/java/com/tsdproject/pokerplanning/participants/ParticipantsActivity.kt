@@ -11,7 +11,6 @@ import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
 import com.tsdproject.pokerplanning.cards.CardsActivity
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
-import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.model.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_participants.*
 
@@ -54,6 +53,7 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
     }
 
     private fun setReadySwitchListener() {
+        readySwitch.setCheckedImmediately(presenter.isRoomCreator)
         readySwitch.setOnCheckedChangeListener { _, checked ->
             presenter.setUserReadyStatus(checked)
         }
@@ -71,14 +71,6 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         participantsRecyclerView.adapter = participantsAdapter
     }
 
-    override fun showGetParticipantsErrorToast() {
-        ToastUtil.show(this, ResUtil.getString(R.string.cannot_download_participants_list), Toast.LENGTH_LONG)
-    }
-
-    override fun showSetReadyErrorToast() {
-        ToastUtil.show(this, ResUtil.getString(R.string.cannot_change_ready_status), Toast.LENGTH_LONG)
-    }
-
     override fun updateParticipantsList(users: List<UserTO>) {
         participantsAdapter.setUsersList(users)
     }
@@ -94,7 +86,11 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         startActivity(Intent(this, CardsActivity::class.java))
     }
 
-    override fun showNotAllUsersReadyToast() {
-        ToastUtil.show(this, ResUtil.getString(R.string.not_all_users_are_ready), Toast.LENGTH_LONG)
+    override fun switchBackReadyStatus() {
+        readySwitch.setCheckedImmediately(!readySwitch.isChecked)
+    }
+
+    override fun isReady(): Boolean {
+        return readySwitch.isChecked
     }
 }

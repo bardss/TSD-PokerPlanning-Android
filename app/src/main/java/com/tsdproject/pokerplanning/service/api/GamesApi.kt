@@ -9,4 +9,7 @@ interface GamesApi {
 
     @POST("games/start")
     fun startGame(@Body Token: TokenTO): Observable<Void>
+
+    @POST("games/isStarted")
+    fun isGameStarted(@Body Token: TokenTO): Observable<Void>
 }
