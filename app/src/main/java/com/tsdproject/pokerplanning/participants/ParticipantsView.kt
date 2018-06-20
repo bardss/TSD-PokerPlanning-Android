@@ -10,5 +10,4 @@ interface ParticipantsView : BaseView {
     fun showButtonForTableOwner()
     fun navigateToCardsActivity()
     fun switchBackReadyStatus()
-    fun showToast(information: String)
 }

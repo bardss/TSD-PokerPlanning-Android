@@ -28,7 +28,7 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     }
 
     override fun setupStartGameButton() {
-        if (tableId != null) {
+        if (isRoomCreator) {
             view.showButtonForTableOwner()
         }
     }
