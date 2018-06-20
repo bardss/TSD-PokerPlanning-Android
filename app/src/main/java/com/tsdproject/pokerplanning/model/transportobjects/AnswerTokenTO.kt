@@ -4,5 +4,5 @@ import java.io.Serializable
 
 data class AnswerTokenTO(
     val Answer: Int,
-    val Token: String
+    val Token: String?
 ) : Serializable
