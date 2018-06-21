@@ -98,7 +98,7 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="20dp"
-            android:background="@color/colorDarkGray"
+            android:background="@drawable/rounded_frame_dark_gray"
             android:text="@string/login"
             android:textAlignment="center"
             android:textAllCaps="true"
