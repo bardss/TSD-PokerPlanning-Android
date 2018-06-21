@@ -11,4 +11,6 @@ interface BaseView {
     fun stopProgressDialog()
 
     fun performOnBackPressed()
+
+    fun showToast(information: String)
 }

@@ -4,12 +4,10 @@ import com.tsdproject.pokerplanning.base.BaseView
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 
 interface ParticipantsView : BaseView {
-
+    fun isReady(): Boolean
     fun setupTableIdView(tableId: String?)
-    fun showGetParticipantsErrorToast()
     fun updateParticipantsList(users: List<UserTO>)
-    fun showSetReadyErrorToast()
     fun showButtonForTableOwner()
     fun navigateToCardsActivity()
-    fun showNotAllUsersReadyToast()
+    fun switchBackReadyStatus()
 }

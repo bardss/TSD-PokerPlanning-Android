@@ -26,7 +26,7 @@ class ManageRoomsPresenterImpl(var view: ManageRoomsView) : ManageRoomsPresenter
 
     override fun onCreateTableSuccess(tableId: String) {
         view.stopProgressDialog()
-        view.openRoomActivity(tableId)
+        view.openRoomActivity(tableId, true)
     }
 
     override fun joinTable(roomId: String) {
@@ -41,6 +41,6 @@ class ManageRoomsPresenterImpl(var view: ManageRoomsView) : ManageRoomsPresenter
 
     override fun onJoinTableSuccess() {
         view.stopProgressDialog()
-        view.openRoomActivity(null)
+        view.openRoomActivity(null, false)
     }
 }

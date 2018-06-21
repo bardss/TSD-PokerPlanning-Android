@@ -37,10 +37,11 @@ class ManageRoomsActivity : BaseActivity(), ManageRoomsView {
         }
     }
 
-    override fun openRoomActivity(tableId: String?) {
+    override fun openRoomActivity(tableId: String?, isRoomCreator: Boolean) {
         startActivity(
             Intent(this, ParticipantsActivity::class.java)
                 .putExtra(IntentKeys.TABLE_ID, tableId)
+                .putExtra(IntentKeys.IS_ROOM_CREATOR, isRoomCreator)
         )
     }
 }

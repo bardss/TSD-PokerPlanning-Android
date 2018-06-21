@@ -7,25 +7,28 @@ import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
 import com.tsdproject.pokerplanning.service.receivers.GetParticipantsReceiver
+import com.tsdproject.pokerplanning.service.receivers.IsGameStartedReceiver
 import com.tsdproject.pokerplanning.service.receivers.SetReadyStatusReceiver
 import com.tsdproject.pokerplanning.service.receivers.StartGameReceiver
 import java.util.*
 import kotlin.concurrent.schedule
 
 class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresenter,
-    GetParticipantsReceiver, SetReadyStatusReceiver, StartGameReceiver {
+    GetParticipantsReceiver, SetReadyStatusReceiver, StartGameReceiver, IsGameStartedReceiver {
 
     private var tableId: String? = null
+    override var isRoomCreator: Boolean = false
     private var timerGetParticipant = Timer()
     private var shouldRefreshParticipants = true
     private var refreshParticipantsPeriod: Long = 3000
 
     override fun initExtras(intent: Intent) {
         tableId = intent.getSerializableExtra(IntentKeys.TABLE_ID) as? String
+        isRoomCreator = intent.getBooleanExtra(IntentKeys.IS_ROOM_CREATOR, false)
     }
 
     override fun setupStartGameButton() {
-        if (tableId != null) {
+        if (isRoomCreator) {
             view.showButtonForTableOwner()
         }
     }
@@ -43,7 +46,7 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     }
 
     override fun onGetParticipantsError() {
-        view.showGetParticipantsErrorToast()
+        view.showToast(ResUtil.getString(R.string.cannot_download_participants_list))
         getParticipantsAfterDelay()
     }
 
@@ -53,7 +56,8 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     }
 
     override fun onSetReadyStatusError() {
-        view.showSetReadyErrorToast()
+        view.switchBackReadyStatus()
+        view.showToast(ResUtil.getString(R.string.cannot_change_ready_status))
     }
 
     override fun onSetReadyStatusSuccess() {
@@ -67,7 +71,14 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
                 if (shouldRefreshParticipants) {
                     getParticipants()
                 }
+                if (view.isReady() && !isRoomCreator) {
+                    checkIfGameStarted()
+                }
             })
+    }
+
+    private fun checkIfGameStarted() {
+        ServiceManager.isGameStarted(this)
     }
 
     override fun stopGetParticipants() {
@@ -85,7 +96,19 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     }
 
     override fun onStartGameError() {
-        view.showNotAllUsersReadyToast()
+        view.showToast(ResUtil.getString(R.string.not_all_users_are_ready))
         view.stopProgressDialog()
     }
+
+    override fun onIsGameStartedError() {
+        view.showToast(ResUtil.getString(R.string.cannot_check_game_status))
+    }
+
+    override fun onIsGameStartedSuccess(isStarted: Boolean?) {
+        if (isStarted == true) {
+            view.switchBackReadyStatus()
+            view.navigateToCardsActivity()
+        }
+    }
+
 }
