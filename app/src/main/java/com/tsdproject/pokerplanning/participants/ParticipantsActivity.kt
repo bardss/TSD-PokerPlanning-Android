@@ -1,6 +1,5 @@
 package com.tsdproject.pokerplanning.participants
 
-import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -9,7 +8,6 @@ import android.widget.Toast
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
-import com.tsdproject.pokerplanning.cards.CardsActivity
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.model.utils.ToastUtil
@@ -54,9 +52,7 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
 
     private fun setReadySwitchListener() {
         readySwitch.setOnCheckedChangeListener { _, checked ->
-            if (checked) {
-                startActivity(Intent(this, CardsActivity::class.java))
-            }
+            presenter.setUserReadyStatus(checked)
         }
     }
 
@@ -74,6 +70,10 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
 
     override fun showGetParticipantsErrorToast() {
         ToastUtil.show(this, ResUtil.getString(R.string.cannot_download_participants_list), Toast.LENGTH_LONG)
+    }
+
+    override fun showSetReadyErrorToast() {
+        ToastUtil.show(this, ResUtil.getString(R.string.cannot_change_ready_status), Toast.LENGTH_LONG)
     }
 
     override fun updateParticipantsList(users: List<UserTO>) {

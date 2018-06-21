@@ -3,7 +3,7 @@ package com.tsdproject.pokerplanning.createroom
 import android.content.Intent
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.database.LocalDatabase
-import com.tsdproject.pokerplanning.model.transportobjects.UserTableToken
+import com.tsdproject.pokerplanning.model.transportobjects.UserTableTokenTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
 import com.tsdproject.pokerplanning.service.receivers.CreateTableReceiver
@@ -34,7 +34,7 @@ class ManageRoomsPresenterImpl(var view: ManageRoomsView) : ManageRoomsPresenter
     override fun joinTable(roomId: String) {
         view.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
         joinTableId = roomId
-        val userTableToken = UserTableToken(LocalDatabase.getUserToken(), roomId)
+        val userTableToken = UserTableTokenTO(LocalDatabase.getUserToken(), roomId)
         ServiceManager.joinTable(this, userTableToken)
     }
 

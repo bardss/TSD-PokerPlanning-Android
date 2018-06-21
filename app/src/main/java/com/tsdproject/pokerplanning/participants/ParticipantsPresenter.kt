@@ -6,4 +6,5 @@ interface ParticipantsPresenter: BasePresenter {
     fun setupTableIdView()
     fun getParticipants()
     fun stopGetParticipants()
+    fun setUserReadyStatus(checked: Boolean)
 }
