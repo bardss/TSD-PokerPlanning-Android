@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.model.utils.ResUtil
-import com.tsdproject.pokerplanning.results.ResultsView
 import kotlinx.android.synthetic.main.item_card.view.*
 
 class CardsAdapter : RecyclerView.Adapter<CardsAdapter.ViewHolder>() {

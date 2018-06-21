@@ -46,7 +46,7 @@ class CardsActivity : BaseActivity(), CardsView {
         }
     }
 
-    override fun setCarousleScrollable(isScrollable : Boolean){
+    override fun setCarousleScrollable(isScrollable: Boolean) {
         presenter.canScrollHorizontally = isScrollable
     }
 }

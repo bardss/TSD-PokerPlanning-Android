@@ -49,7 +49,7 @@ class AccessActivity : BaseActivity(), AccessView {
         return isLoginError || isPasswordError
     }
 
-    override fun navigateToCreateRoom(){
+    override fun navigateToCreateRoom() {
         startActivity(Intent(this, ManageRoomsActivity::class.java))
     }
 
@@ -64,5 +64,4 @@ class AccessActivity : BaseActivity(), AccessView {
         loginEditText.setText("")
         passwordEditText.setText("")
     }
-
 }

@@ -43,5 +43,4 @@ class ParticipantsAdapter : RecyclerView.Adapter<ParticipantsAdapter.ViewHolder>
         usersList = users
         notifyDataSetChanged()
     }
-
 }

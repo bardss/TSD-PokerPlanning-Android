@@ -23,8 +23,10 @@ abstract class BaseActivity : Activity(), BaseView {
 
     override fun startProgressDialog(message: String?) {
         if ((progress == null || progress?.isShowing!!) && !isFinishing) {
-            progress = ProgressDialog.show(this, getString(R.string.progress_loading_text),
-                message, true)
+            progress = ProgressDialog.show(
+                this, getString(R.string.progress_loading_text),
+                message, true
+            )
             Handler().postDelayed({
                 if (progress != null && !isFinishing && progress?.isShowing!!) {
                     progress?.cancel()

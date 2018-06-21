@@ -17,5 +17,4 @@ interface UsersApi {
 
     @POST("users/setreadystatus")
     fun setReadyStatus(@Body readyToken: ReadyTokenTO): Observable<Void>
-
 }

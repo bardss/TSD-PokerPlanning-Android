@@ -8,7 +8,7 @@ import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
 import com.tsdproject.pokerplanning.service.receivers.LoginReceiver
 
-class AccessPresenterImpl(var view: AccessView): AccessPresenter, LoginReceiver {
+class AccessPresenterImpl(var view: AccessView) : AccessPresenter, LoginReceiver {
 
     override fun initExtras(intent: Intent) {
     }
@@ -30,5 +30,4 @@ class AccessPresenterImpl(var view: AccessView): AccessPresenter, LoginReceiver 
         view.setInputErrors()
         view.stopProgressDialog()
     }
-
 }

@@ -33,5 +33,4 @@ class ResultsActivity : BaseActivity(), ResultsView {
         adapter.updateCardValues(values)
         averageTextView.text = values.average().toFloat().toString()
     }
-
 }

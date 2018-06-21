@@ -24,7 +24,7 @@
             android:layout_height="match_parent"
             android:src="@drawable/team"
             android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"/>
+            android:layout_marginBottom="6dp" />
 
     </RelativeLayout>
 
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:textSize="26sp"
-            android:layout_marginStart="12dp"/>
+            android:layout_marginStart="12dp" />
 
     </LinearLayout>
 
@@ -68,6 +68,18 @@
         android:layout_weight="3"
         android:background="@color/colorLightBlue">
 
+        <Button
+            android:textAllCaps="true"
+            android:layout_marginEnd="30dp"
+            android:id="@+id/startGameButton"
+            android:background="@drawable/rounded_card_white"
+            android:layout_width="120dp"
+            android:textSize="16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_height="40dp"
+            android:text="@string/start_game" />
+
         <com.rey.material.widget.Switch
             android:id="@+id/readySwitch"
             style="@style/Material.Widget.Switch"
@@ -78,7 +90,7 @@
             android:layout_marginEnd="16dp"
             android:checked="false"
             app:sw_thumbColor="@color/colorGreenReady"
-            app:sw_trackColor="@android:color/white"/>
+            app:sw_trackColor="@android:color/white" />
 
         <com.rey.material.widget.TextView
             android:id="@+id/readyTextView"

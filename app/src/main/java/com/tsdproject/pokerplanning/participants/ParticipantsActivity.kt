@@ -1,5 +1,6 @@
 package com.tsdproject.pokerplanning.participants
 
+import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -8,6 +9,7 @@ import android.widget.Toast
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
+import com.tsdproject.pokerplanning.cards.CardsActivity
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.model.utils.ToastUtil
@@ -35,6 +37,7 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         setReadySwitchListener()
         presenter.setupTableIdView()
         presenter.getParticipants()
+        presenter.setupStartGameButton()
     }
 
     override fun onPause() {
@@ -80,4 +83,18 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         participantsAdapter.setUsersList(users)
     }
 
+    override fun showButtonForTableOwner() {
+        startGameButton.visibility = View.VISIBLE
+        readySwitch.visibility = View.GONE
+        readyTextView.visibility = View.GONE
+        startGameButton.setOnClickListener { presenter.startGame() }
+    }
+
+    override fun navigateToCardsActivity() {
+        startActivity(Intent(this, CardsActivity::class.java))
+    }
+
+    override fun showNotAllUsersReadyToast() {
+        ToastUtil.show(this, ResUtil.getString(R.string.not_all_users_are_ready), Toast.LENGTH_LONG)
+    }
 }

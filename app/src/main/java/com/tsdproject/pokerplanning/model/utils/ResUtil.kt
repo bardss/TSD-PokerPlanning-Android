@@ -1,6 +1,5 @@
 package com.tsdproject.pokerplanning.model.utils
 
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import com.tsdproject.pokerplanning.base.ApplicationContext
 

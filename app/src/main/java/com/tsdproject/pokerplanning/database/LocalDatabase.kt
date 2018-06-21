@@ -11,5 +11,4 @@ object LocalDatabase {
     fun getUserToken(): String? {
         return Paper.book().read(DatabaseKeys.TOKEN)
     }
-
 }

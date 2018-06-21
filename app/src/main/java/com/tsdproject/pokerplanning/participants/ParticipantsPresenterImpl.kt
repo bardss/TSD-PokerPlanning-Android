@@ -1,16 +1,19 @@
 package com.tsdproject.pokerplanning.participants
 
 import android.content.Intent
+import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.model.IntentKeys
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
+import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
 import com.tsdproject.pokerplanning.service.receivers.GetParticipantsReceiver
 import com.tsdproject.pokerplanning.service.receivers.SetReadyStatusReceiver
+import com.tsdproject.pokerplanning.service.receivers.StartGameReceiver
 import java.util.*
 import kotlin.concurrent.schedule
 
 class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresenter,
-    GetParticipantsReceiver, SetReadyStatusReceiver {
+    GetParticipantsReceiver, SetReadyStatusReceiver, StartGameReceiver {
 
     private var tableId: String? = null
     private var timerGetParticipant = Timer()
@@ -19,6 +22,12 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
 
     override fun initExtras(intent: Intent) {
         tableId = intent.getSerializableExtra(IntentKeys.TABLE_ID) as? String
+    }
+
+    override fun setupStartGameButton() {
+        if (tableId != null) {
+            view.showButtonForTableOwner()
+        }
     }
 
     override fun setupTableIdView() {
@@ -63,5 +72,20 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
 
     override fun stopGetParticipants() {
         shouldRefreshParticipants = false
+    }
+
+    override fun startGame() {
+        view.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
+        ServiceManager.startGame(this)
+    }
+
+    override fun onStartGameSuccess() {
+        view.stopProgressDialog()
+        view.navigateToCardsActivity()
+    }
+
+    override fun onStartGameError() {
+        view.showNotAllUsersReadyToast()
+        view.stopProgressDialog()
     }
 }

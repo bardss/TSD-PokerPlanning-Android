@@ -7,7 +7,6 @@ import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
 import com.tsdproject.pokerplanning.service.receivers.RegisterReceiver
 
-
 class RegistrationPresenterImpl(var view: RegistrationView) : RegistrationPresenter, RegisterReceiver {
 
     override fun initExtras(intent: Intent) {
