@@ -6,15 +6,12 @@ import com.tsdproject.pokerplanning.model.IntentKeys
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
-import com.tsdproject.pokerplanning.service.receivers.GetParticipantsReceiver
-import com.tsdproject.pokerplanning.service.receivers.IsGameStartedReceiver
-import com.tsdproject.pokerplanning.service.receivers.SetReadyStatusReceiver
-import com.tsdproject.pokerplanning.service.receivers.StartGameReceiver
+import com.tsdproject.pokerplanning.service.receivers.*
 import java.util.*
 import kotlin.concurrent.schedule
 
 class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresenter,
-    GetParticipantsReceiver, SetReadyStatusReceiver, StartGameReceiver, IsGameStartedReceiver {
+    GetParticipantsReceiver, SetReadyStatusReceiver, StartGameReceiver, IsGameStartedReceiver, KickParticipantReceiver {
 
     private var tableId: String? = null
     override var isRoomCreator: Boolean = false
@@ -46,7 +43,8 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     }
 
     override fun kickParticipant(email: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        view.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
+        ServiceManager.kickParticipant(this, email)
     }
 
     override fun onGetParticipantsError() {
@@ -65,7 +63,7 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     }
 
     override fun onSetReadyStatusSuccess() {
-        // TODO: Check if game is started
+
     }
 
     private fun getParticipantsAfterDelay() {
@@ -113,6 +111,15 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
             view.switchBackReadyStatus()
             view.navigateToCardsActivity()
         }
+    }
+
+    override fun onKickParticipantError() {
+        view.stopProgressDialog()
+        view.showToast(ResUtil.getString(R.string.cannot_kick_participant))
+    }
+
+    override fun onKickParticipantSuccess() {
+        view.stopProgressDialog()
     }
 
 }

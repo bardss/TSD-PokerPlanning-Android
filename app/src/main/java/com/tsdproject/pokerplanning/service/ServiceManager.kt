@@ -176,6 +176,23 @@ object ServiceManager {
             })
     }
 
+    fun kickParticipant(receiver: KickParticipantReceiver, email: String) {
+        setupRequest(ServiceProvider
+            .playTablesService
+            ?.kickParticipants(TokenAndEmailTO(LocalDatabase.getUserToken(), email)),
+            Action1 {
+                receiver.onKickParticipantSuccess()
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onKickParticipantError()
+            },
+            Action0 {
+                Timber.e("on kick participant completed")
+            })
+    }
+
+
     private fun setupRequest(
         observable: Observable<*>?,
         onNext: Action1<Any>,
