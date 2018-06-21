@@ -176,6 +176,22 @@ object ServiceManager {
             })
     }
 
+    fun getResults(receiver: GetResultsReceiver) {
+        setupRequest(ServiceProvider
+            .gamesService
+            ?.getResults(LocalDatabase.getUserToken()),
+            Action1 {
+                receiver.onGetResultsSuccess(it as List<ResultTO>)
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onGetResultsError()
+            },
+            Action0 {
+                Timber.e("on get results completed")
+            })
+    }
+
     private fun setupRequest(
         observable: Observable<*>?,
         onNext: Action1<Any>,

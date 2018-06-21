@@ -2,7 +2,7 @@ package com.tsdproject.pokerplanning.model.transportobjects
 
 import java.io.Serializable
 
-data class AnswerTokenTO(
-    val Answer: String,
-    val Token: String?
+data class ResultTO(
+    val Value: String,
+    val User: UserResultsTO
 ) : Serializable

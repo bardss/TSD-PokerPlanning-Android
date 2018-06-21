@@ -5,6 +5,7 @@ import android.support.v7.widget.GridLayoutManager
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
+import com.tsdproject.pokerplanning.model.transportobjects.ResultTO
 import kotlinx.android.synthetic.main.activity_results.*
 
 class ResultsActivity : BaseActivity(), ResultsView {
@@ -17,6 +18,7 @@ class ResultsActivity : BaseActivity(), ResultsView {
         setContentView(R.layout.activity_results)
         presenter = ResultsPresenterImpl(this)
         setupRecyclerView()
+        presenter.getResults()
     }
 
     override fun providePresenter(): BasePresenter? {
@@ -29,8 +31,8 @@ class ResultsActivity : BaseActivity(), ResultsView {
         resultsRecyclerView.adapter = adapter
     }
 
-    override fun updateAdapterValues(values: List<Int>) {
+    override fun updateAdapterValues(values: List<ResultTO>) {
         adapter.updateCardValues(values)
-        averageTextView.text = values.average().toFloat().toString()
+//        averageTextView.text = values.average().toFloat().toString()
     }
 }

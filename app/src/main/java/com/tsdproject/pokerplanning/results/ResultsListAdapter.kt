@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import com.tsdproject.pokerplanning.R
+import com.tsdproject.pokerplanning.model.transportobjects.ResultTO
 import kotlinx.android.synthetic.main.item_result.view.*
 
 class ResultsListAdapter : RecyclerView.Adapter<ResultsListAdapter.ViewHolder>() {
 
-    var cardValues: List<Int> = listOf()
+    var results: List<ResultTO> = listOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_result, parent, false)
@@ -18,19 +19,22 @@ class ResultsListAdapter : RecyclerView.Adapter<ResultsListAdapter.ViewHolder>()
     }
 
     override fun getItemCount(): Int {
-        return cardValues.size
+        return results.size
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.valueTextView.text = cardValues[position].toString()
+        val result = results[position]
+        holder.valueTextView.text = result.Value
+        holder.fullNameTextView.text = result.User.firstName + " " + result.User.lastName
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val valueTextView: TextView = view.valueTextView
+        val fullNameTextView: TextView = view.fullNameTextView
     }
 
-    fun updateCardValues(values: List<Int>) {
-        cardValues = values
+    fun updateCardValues(values: List<ResultTO>) {
+        results = values
         notifyDataSetChanged()
     }
 }

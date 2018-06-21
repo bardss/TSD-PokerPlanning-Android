@@ -33,15 +33,15 @@ class CardsAdapter : RecyclerView.Adapter<CardsAdapter.ViewHolder>() {
         holder.chooseCardButton.setOnClickListener { onCardItemClick(position, holder) }
     }
 
-    fun onCardItemClick(position: Int, holder: ViewHolder) {
+    private fun onCardItemClick(position: Int, holder: ViewHolder) {
         if (cardValues[position] == choosenCard) {
             unhighlightCard(holder)
-            (context as CardsView).setCarousleScrollable(true)
+            (context as CardsView).setCarouselScrollable(true)
             choosenCard = null
         } else {
             highlightCard(holder)
             choosenCard = cardValues[position]
-            (context as CardsView).onChooseCardClick(cardValues[position])
+            (context as CardsView).onChooseCardClick(cardValues[position].toString())
         }
     }
 
