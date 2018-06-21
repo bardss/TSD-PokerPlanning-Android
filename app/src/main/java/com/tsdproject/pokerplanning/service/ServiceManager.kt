@@ -160,6 +160,22 @@ object ServiceManager {
             })
     }
 
+    fun sendAnswer(receiver: SendAnswerReceiver, answer: AnswerTokenTO) {
+        setupRequest(ServiceProvider
+            .gamesService
+            ?.sendAnswer(answer),
+            Action1 {
+                receiver.onSendAnswerSuccess()
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onSendAnswerError()
+            },
+            Action0 {
+                Timber.e("on send answer completed")
+            })
+    }
+
     private fun setupRequest(
         observable: Observable<*>?,
         onNext: Action1<Any>,

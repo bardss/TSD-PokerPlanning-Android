@@ -46,6 +46,11 @@ class CardsActivity : BaseActivity(), CardsView {
         }
     }
 
+    override fun onChooseCardClick(cardValue: Int){
+        setCarousleScrollable(false)
+        presenter.sendAnswer(cardValue)
+    }
+
     override fun setCarousleScrollable(isScrollable: Boolean) {
         presenter.canScrollHorizontally = isScrollable
     }

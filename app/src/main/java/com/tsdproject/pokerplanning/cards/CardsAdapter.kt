@@ -40,8 +40,8 @@ class CardsAdapter : RecyclerView.Adapter<CardsAdapter.ViewHolder>() {
             choosenCard = null
         } else {
             highlightCard(holder)
-            (context as CardsView).setCarousleScrollable(false)
             choosenCard = cardValues[position]
+            (context as CardsView).onChooseCardClick(cardValues[position])
         }
     }
 
