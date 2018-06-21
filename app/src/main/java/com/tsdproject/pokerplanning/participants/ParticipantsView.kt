@@ -10,4 +10,5 @@ interface ParticipantsView : BaseView {
     fun showButtonForTableOwner()
     fun navigateToCardsActivity()
     fun switchBackReadyStatus()
+    fun kickParticipant(email: String)
 }

@@ -45,6 +45,10 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         ServiceManager.setReadyStatus(checked, this)
     }
 
+    override fun kickParticipant(email: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     override fun onGetParticipantsError() {
         view.showToast(ResUtil.getString(R.string.cannot_download_participants_list))
         getParticipantsAfterDelay()
