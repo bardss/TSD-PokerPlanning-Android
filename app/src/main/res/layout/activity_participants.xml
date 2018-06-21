@@ -1,108 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <RelativeLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:background="@color/colorLightBlue">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/room"
-            android:textColor="@android:color/black"
-            android:textSize="32sp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="@color/colorLightBlue">
 
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/team"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/room"
+                android:textColor="@android:color/black"
+                android:textSize="32sp" />
 
-    </RelativeLayout>
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/team"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="6dp" />
 
-    <LinearLayout
-        android:id="@+id/roomIdLayout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="2"
-        android:background="@color/colorLightBlue"
-        android:gravity="center"
-        android:visibility="visible">
+        </RelativeLayout>
 
-        <TextView
-            android:id="@+id/roomIdLabelTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/room_id"
-            android:textColor="@android:color/black"
-            android:textSize="26sp" />
+        <LinearLayout
+            android:id="@+id/roomIdLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="@color/colorLightBlue"
+            android:gravity="center"
+            android:visibility="visible">
 
-        <TextView
-            android:id="@+id/roomIdTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textSize="26sp"
-            android:layout_marginStart="12dp" />
+            <TextView
+                android:id="@+id/roomIdLabelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/room_id"
+                android:textColor="@android:color/black"
+                android:textSize="26sp" />
+
+            <TextView
+                android:id="@+id/roomIdTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="26sp"
+                android:layout_marginStart="12dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/nextTaskNameLayout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2.5"
+            android:background="@color/colorLightBlue"
+            android:gravity="center"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/nextTaskNameLabelTextView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/next_estimation_topic"
+                android:layout_marginStart="10dp"
+                android:textColor="@android:color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:id="@+id/nextTashNameTextView"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="Carousel endpoint connect to server"
+                android:layout_marginStart="12dp" />
+
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/participantsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="21"
+            android:background="@android:color/white" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:background="@color/colorLightBlue">
+
+            <LinearLayout
+                android:id="@+id/tableCreatorManagmentLayout"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:textAllCaps="true"
+                    android:id="@+id/setTaskNameButton"
+                    android:background="@drawable/rounded_card_white"
+                    android:layout_width="140dp"
+                    android:layout_marginEnd="10dp"
+                    android:textSize="16dp"
+                    android:layout_height="40dp"
+                    android:text="@string/set_task_name" />
+
+                <Button
+                    android:textAllCaps="true"
+                    android:id="@+id/startGameButton"
+                    android:background="@drawable/rounded_frame_green"
+                    android:layout_width="140dp"
+                    android:layout_marginStart="10dp"
+                    android:textSize="16dp"
+                    android:layout_height="40dp"
+                    android:text="@string/start_game" />
+            </LinearLayout>
+
+            <com.rey.material.widget.Switch
+                android:id="@+id/readySwitch"
+                style="@style/Material.Widget.Switch"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:checked="false"
+                app:sw_thumbColor="@color/colorGreenReady"
+                app:sw_trackColor="@android:color/white" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/readyTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="16dp"
+                android:layout_toStartOf="@id/readySwitch"
+                android:text="@string/ready"
+                android:textColor="@android:color/black"
+                android:textSize="26sp" />
+
+        </RelativeLayout>
 
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/participantsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="21"
-        android:background="@android:color/white" />
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:background="@color/colorLightBlue">
-
-        <Button
-            android:textAllCaps="true"
-            android:layout_marginEnd="30dp"
-            android:id="@+id/startGameButton"
-            android:background="@drawable/rounded_card_white"
-            android:layout_width="120dp"
-            android:textSize="16dp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:layout_height="40dp"
-            android:text="@string/start_game" />
-
-        <com.rey.material.widget.Switch
-            android:id="@+id/readySwitch"
-            style="@style/Material.Widget.Switch"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:checked="false"
-            app:sw_thumbColor="@color/colorGreenReady"
-            app:sw_trackColor="@android:color/white" />
-
-        <com.rey.material.widget.TextView
-            android:id="@+id/readyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:layout_toStartOf="@id/readySwitch"
-            android:text="@string/ready"
-            android:textColor="@android:color/black"
-            android:textSize="26sp" />
-
-    </RelativeLayout>
-
-</LinearLayout>
+    <include layout="@layout/dialog_set_task_name"/>
+</FrameLayout>

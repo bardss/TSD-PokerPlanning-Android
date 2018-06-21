@@ -75,12 +75,12 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
 
     private fun setupStartGameButton() {
         if (presenter.isRoomCreator) {
-            startGameButton.visibility = View.VISIBLE
+            tableCreatorManagmentLayout.visibility = View.VISIBLE
             readySwitch.visibility = View.GONE
             readyTextView.visibility = View.GONE
             startGameButton.setOnClickListener { presenter.startGame() }
         } else {
-            startGameButton.visibility = View.GONE
+            tableCreatorManagmentLayout.visibility = View.GONE
             readySwitch.visibility = View.VISIBLE
             readyTextView.visibility = View.VISIBLE
         }
