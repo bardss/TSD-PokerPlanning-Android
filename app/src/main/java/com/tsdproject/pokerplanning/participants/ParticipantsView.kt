@@ -7,7 +7,7 @@ interface ParticipantsView : BaseView {
     fun isReady(): Boolean
     fun setupTableIdView(tableId: String?)
     fun updateParticipantsList(users: List<UserTO>)
-    fun showButtonForTableOwner()
     fun navigateToCardsActivity()
     fun switchBackReadyStatus()
+    fun kickParticipant(email: String)
 }

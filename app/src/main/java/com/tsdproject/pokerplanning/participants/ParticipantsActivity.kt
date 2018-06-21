@@ -5,13 +5,11 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
-import android.widget.Toast
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
 import com.tsdproject.pokerplanning.cards.CardsActivity
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
-import com.tsdproject.pokerplanning.model.utils.ToastUtil
 import kotlinx.android.synthetic.main.activity_participants.*
 
 class ParticipantsActivity : BaseActivity(), ParticipantsView {
@@ -34,9 +32,9 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         setupTextFonts()
         setupParticipantsList()
         setReadySwitchListener()
+        setupStartGameButton()
         presenter.setupTableIdView()
         presenter.getParticipants()
-        presenter.setupStartGameButton()
     }
 
     override fun onPause() {
@@ -66,7 +64,7 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
     }
 
     private fun setupParticipantsList() {
-        participantsAdapter = ParticipantsAdapter()
+        participantsAdapter = ParticipantsAdapter(presenter.isRoomCreator)
         participantsRecyclerView.layoutManager = LinearLayoutManager(this)
         participantsRecyclerView.adapter = participantsAdapter
     }
@@ -75,11 +73,17 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         participantsAdapter.setUsersList(users)
     }
 
-    override fun showButtonForTableOwner() {
-        startGameButton.visibility = View.VISIBLE
-        readySwitch.visibility = View.GONE
-        readyTextView.visibility = View.GONE
-        startGameButton.setOnClickListener { presenter.startGame() }
+    private fun setupStartGameButton() {
+        if (presenter.isRoomCreator) {
+            startGameButton.visibility = View.VISIBLE
+            readySwitch.visibility = View.GONE
+            readyTextView.visibility = View.GONE
+            startGameButton.setOnClickListener { presenter.startGame() }
+        } else {
+            startGameButton.visibility = View.GONE
+            readySwitch.visibility = View.VISIBLE
+            readyTextView.visibility = View.VISIBLE
+        }
     }
 
     override fun navigateToCardsActivity() {
@@ -93,4 +97,9 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
     override fun isReady(): Boolean {
         return readySwitch.isChecked
     }
+
+    override fun kickParticipant(email: String) {
+        presenter.kickParticipant(email)
+    }
+
 }

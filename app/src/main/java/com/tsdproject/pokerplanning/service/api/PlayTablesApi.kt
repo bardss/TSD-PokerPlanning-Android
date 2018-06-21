@@ -1,5 +1,6 @@
 package com.tsdproject.pokerplanning.service.api
 
+import com.tsdproject.pokerplanning.model.transportobjects.TokenAndEmailTO
 import com.tsdproject.pokerplanning.model.transportobjects.TokenTO
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import com.tsdproject.pokerplanning.model.transportobjects.UserTableTokenTO
@@ -19,4 +20,7 @@ interface PlayTablesApi {
 
     @GET("playtables/getParticipants")
     fun getParticipants(@Query("token") Token: String?): Observable<List<UserTO>>
+
+    @POST("playtables/kickParticipant")
+    fun kickParticipants(@Body tokenAndEmail: TokenAndEmailTO): Observable<Void>
 }
