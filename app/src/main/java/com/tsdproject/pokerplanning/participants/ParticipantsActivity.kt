@@ -11,6 +11,7 @@ import com.tsdproject.pokerplanning.base.BasePresenter
 import com.tsdproject.pokerplanning.cards.CardsActivity
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import kotlinx.android.synthetic.main.activity_participants.*
+import kotlinx.android.synthetic.main.dialog_set_task_name.*
 
 class ParticipantsActivity : BaseActivity(), ParticipantsView {
 
@@ -32,7 +33,7 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         setupTextFonts()
         setupParticipantsList()
         setReadySwitchListener()
-        setupStartGameButton()
+        setupButtons()
         presenter.setupTableIdView()
         presenter.getParticipants()
     }
@@ -73,6 +74,12 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         participantsAdapter.setUsersList(users)
     }
 
+    private fun setupButtons() {
+        setupStartGameButton()
+        setupSetTaskButton()
+        setupSetTaskDialogButtons()
+    }
+
     private fun setupStartGameButton() {
         if (presenter.isRoomCreator) {
             tableCreatorManagmentLayout.visibility = View.VISIBLE
@@ -83,6 +90,17 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
             tableCreatorManagmentLayout.visibility = View.GONE
             readySwitch.visibility = View.VISIBLE
             readyTextView.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setupSetTaskDialogButtons() {
+        saveButton.setOnClickListener { }
+        cancelButton.setOnClickListener { setTaskNameDialog.visibility = View.GONE }
+    }
+
+    private fun setupSetTaskButton() {
+        setTaskNameButton.setOnClickListener {
+            setTaskNameDialog.visibility = View.VISIBLE
         }
     }
 
@@ -101,5 +119,4 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
     override fun kickParticipant(email: String) {
         presenter.kickParticipant(email)
     }
-
 }

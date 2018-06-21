@@ -40,7 +40,8 @@
     <string name="cannot_check_game_status">Cannot check game status</string>
     <string name="cannot_kick_participant">Cannot kick participant</string>
     <string name="set_task_name">set task name</string>
-    <string name="next_estimation_topic">Next estimation topic:</string>
+    <string name="next_estimation_topic_colon">Next estimation topic:</string>
+    <string name="next_estimation_topic">Next estimation topic</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
     <string name="set_next_estimation_topic">Set next estimation topic</string>

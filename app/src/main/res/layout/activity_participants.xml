@@ -73,7 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/next_estimation_topic"
+                android:text="@string/next_estimation_topic_colon"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -160,5 +160,8 @@
 
     </LinearLayout>
 
-    <include layout="@layout/dialog_set_task_name"/>
+    <include
+        android:id="@+id/setTaskNameDialog"
+        android:visibility="gone"
+        layout="@layout/dialog_set_task_name" />
 </FrameLayout>
