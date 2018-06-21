@@ -7,7 +7,7 @@ interface ParticipantsPresenter : BasePresenter {
     fun setupTableIdView()
     fun getParticipants()
     fun stopGetParticipants()
-    fun setupStartGameButton()
     fun setUserReadyStatus(checked: Boolean)
     fun startGame()
+    fun kickParticipant(email: String)
 }

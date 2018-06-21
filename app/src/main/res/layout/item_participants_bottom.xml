@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomWrapperLayout"
+    android:layout_width="80dp"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:id="@+id/deleteBottomView"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/colorRedLight">
+
+        <ImageView
+            android:id="@+id/bottomImageView"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:padding="16dp"
+            android:src="@drawable/x_black" />
+
+    </FrameLayout>
+
+</FrameLayout>
