@@ -9,8 +9,4 @@ interface AccessView : BaseView {
     fun setInputErrors()
 
     fun clearEditTexts()
-
-    fun getUserLogin(): String
-
-    fun setSavedEmail(email: String)
 }

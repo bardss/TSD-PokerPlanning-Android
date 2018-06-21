@@ -21,22 +21,9 @@ class AccessPresenterImpl(var view: AccessView) : AccessPresenter, LoginReceiver
 
     override fun onLoginSuccess(token: String) {
         LocalDatabase.putUserToken(token)
-        saveLoginToDatabase()
         view.clearEditTexts()
         view.stopProgressDialog()
         view.navigateToCreateRoom()
-    }
-
-    private fun saveLoginToDatabase() {
-        val email = view.getUserLogin()
-        LocalDatabase.putUserLogin(email)
-    }
-
-    override fun setSavedEmail() {
-        val email = LocalDatabase.getUserLogin()
-        email?.let {
-            view.setSavedEmail(email)
-        }
     }
 
     override fun onLoginError() {
