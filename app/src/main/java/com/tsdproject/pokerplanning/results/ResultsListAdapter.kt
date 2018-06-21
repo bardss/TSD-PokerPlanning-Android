@@ -24,8 +24,8 @@ class ResultsListAdapter : RecyclerView.Adapter<ResultsListAdapter.ViewHolder>()
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val result = results[position]
-        holder.valueTextView.text = result.Value
-        holder.fullNameTextView.text = result.User.firstName + " " + result.User.lastName
+        holder.valueTextView.text = result.value
+        holder.fullNameTextView.text = result.user?.firstName + " " + result.user?.lastName
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

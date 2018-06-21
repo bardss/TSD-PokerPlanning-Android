@@ -26,4 +26,14 @@ class ResultsPresenterImpl(var view: ResultsView) : ResultsPresenter,
         view.updateAdapterValues(results)
         view.stopProgressDialog()
     }
+
+    override fun convertValuesToInt(values: List<ResultTO>): List<Int> {
+        val listOfIntValues = mutableListOf<Int>()
+        values.forEach {
+            it.value?.let {
+                listOfIntValues.add(it.toInt())
+            }
+        }
+        return listOfIntValues
+    }
 }

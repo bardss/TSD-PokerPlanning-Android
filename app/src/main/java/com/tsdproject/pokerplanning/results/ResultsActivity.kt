@@ -33,6 +33,7 @@ class ResultsActivity : BaseActivity(), ResultsView {
 
     override fun updateAdapterValues(values: List<ResultTO>) {
         adapter.updateCardValues(values)
-//        averageTextView.text = values.average().toFloat().toString()
+        val listOfIntValues: List<Int> = presenter.convertValuesToInt(values)
+        averageTextView.text = listOfIntValues.average().toFloat().toString()
     }
 }
