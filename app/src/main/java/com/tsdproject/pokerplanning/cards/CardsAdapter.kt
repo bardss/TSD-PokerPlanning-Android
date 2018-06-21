@@ -15,6 +15,7 @@ class CardsAdapter : RecyclerView.Adapter<CardsAdapter.ViewHolder>() {
     private val cardValues: List<Int>
         get() = listOf(1, 2, 3, 5, 8, 13, 21, 34, 55)
     private var choosenCard: Int? = null
+    private var previousCardPosition: Int? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
@@ -29,8 +30,11 @@ class CardsAdapter : RecyclerView.Adapter<CardsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.valueTextView.text = cardValues[position].toString()
-        holder.cardLayout.setOnClickListener { onCardItemClick(position, holder) }
         holder.chooseCardButton.setOnClickListener { onCardItemClick(position, holder) }
+        if (position == 0) {
+            holder.chooseCardButton.isEnabled = true
+            holder.chooseCardButton.isClickable = true
+        }
     }
 
     fun onCardItemClick(position: Int, holder: ViewHolder) {
@@ -62,6 +66,17 @@ class CardsAdapter : RecyclerView.Adapter<CardsAdapter.ViewHolder>() {
     override fun getItemCount(): Int {
         return cardValues.size
     }
+
+    fun setupCardClickability(card: View?, enabled: Boolean) {
+        card?.chooseCardButton?.isEnabled = enabled
+        card?.chooseCardButton?.isClickable = enabled
+    }
+
+    fun changePreviousCardPosition(position: Int) {
+        previousCardPosition = position
+    }
+
+    fun getPreviousSelectedPosition() = previousCardPosition
 
     inner class ViewHolder(view: View) :
         RecyclerView.ViewHolder(view) {
