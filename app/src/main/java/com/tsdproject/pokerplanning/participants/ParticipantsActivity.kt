@@ -32,9 +32,9 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         setupTextFonts()
         setupParticipantsList()
         setReadySwitchListener()
+        setupStartGameButton()
         presenter.setupTableIdView()
         presenter.getParticipants()
-        presenter.setupStartGameButton()
     }
 
     override fun onPause() {
@@ -64,7 +64,7 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
     }
 
     private fun setupParticipantsList() {
-        participantsAdapter = ParticipantsAdapter()
+        participantsAdapter = ParticipantsAdapter(presenter.isRoomCreator)
         participantsRecyclerView.layoutManager = LinearLayoutManager(this)
         participantsRecyclerView.adapter = participantsAdapter
     }
@@ -73,11 +73,17 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         participantsAdapter.setUsersList(users)
     }
 
-    override fun showButtonForTableOwner() {
-        startGameButton.visibility = View.VISIBLE
-        readySwitch.visibility = View.GONE
-        readyTextView.visibility = View.GONE
-        startGameButton.setOnClickListener { presenter.startGame() }
+    private fun setupStartGameButton() {
+        if (presenter.isRoomCreator) {
+            startGameButton.visibility = View.VISIBLE
+            readySwitch.visibility = View.GONE
+            readyTextView.visibility = View.GONE
+            startGameButton.setOnClickListener { presenter.startGame() }
+        } else {
+            startGameButton.visibility = View.GONE
+            readySwitch.visibility = View.VISIBLE
+            readyTextView.visibility = View.VISIBLE
+        }
     }
 
     override fun navigateToCardsActivity() {

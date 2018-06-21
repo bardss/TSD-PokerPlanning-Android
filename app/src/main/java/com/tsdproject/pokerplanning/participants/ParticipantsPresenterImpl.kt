@@ -24,12 +24,6 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         isRoomCreator = intent.getBooleanExtra(IntentKeys.IS_ROOM_CREATOR, false)
     }
 
-    override fun setupStartGameButton() {
-        if (isRoomCreator) {
-            view.showButtonForTableOwner()
-        }
-    }
-
     override fun setupTableIdView() {
         view.setupTableIdView(tableId)
     }

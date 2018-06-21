@@ -14,7 +14,7 @@ import kotlinx.android.synthetic.main.item_participants.view.*
 import kotlinx.android.synthetic.main.item_participants_bottom.view.*
 import kotlinx.android.synthetic.main.item_participants_top.view.*
 
-class ParticipantsAdapter : RecyclerView.Adapter<ParticipantsAdapter.ViewHolder>() {
+class ParticipantsAdapter(private val isRoomCreator: Boolean) : RecyclerView.Adapter<ParticipantsAdapter.ViewHolder>() {
 
     private var usersList: List<UserTO> = listOf()
     private var context: Context? = null
@@ -38,8 +38,10 @@ class ParticipantsAdapter : RecyclerView.Adapter<ParticipantsAdapter.ViewHolder>
         } else {
             holder.participantLayout.setBackgroundColor(ResUtil.getColor(android.R.color.white))
         }
-        setupSwipe(holder.itemSwipeLayout)
-        setupDeleteClick(holder.deleteBottomView, user.email)
+        if (isRoomCreator) {
+            setupSwipe(holder.itemSwipeLayout)
+            setupDeleteClick(holder.deleteBottomView, user.email)
+        }
     }
 
     private fun setupDeleteClick(deleteBottomView: FrameLayout, email: String) {
