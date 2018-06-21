@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
+import com.tsdproject.pokerplanning.model.utils.ResUtil
 import kotlinx.android.synthetic.main.item_participants.view.*
 
 class ParticipantsAdapter : RecyclerView.Adapter<ParticipantsAdapter.ViewHolder>() {
@@ -25,11 +26,17 @@ class ParticipantsAdapter : RecyclerView.Adapter<ParticipantsAdapter.ViewHolder>
         val user = usersList[position]
         holder.userNameTextView.text = user.firstName + " " + user.lastName
         holder.emailTextView.text = user.email
+        if (user.isReady) {
+            holder.participantLayout.setBackgroundColor(ResUtil.getColor(R.color.colorGreenReadyLight))
+        } else {
+            holder.participantLayout.setBackgroundColor(ResUtil.getColor(android.R.color.white))
+        }
     }
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var userNameTextView = view.nameTextView
         var emailTextView = view.emailTextView
+        var participantLayout = view.participantLayout
     }
 
     fun setUsersList(users: List<UserTO>) {
