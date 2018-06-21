@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import com.daimajia.swipe.SwipeLayout
 import com.tsdproject.pokerplanning.R
+import com.tsdproject.pokerplanning.database.LocalDatabase
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import kotlinx.android.synthetic.main.item_participants.view.*
@@ -38,10 +39,16 @@ class ParticipantsAdapter(private val isRoomCreator: Boolean) : RecyclerView.Ada
         } else {
             holder.participantLayout.setBackgroundColor(ResUtil.getColor(android.R.color.white))
         }
-        if (isRoomCreator) {
+        if (!isRoomCreator || user.email == LocalDatabase.getUserLogin()) {
+            blockSwipeLayout(holder.itemSwipeLayout)
+        } else {
             setupSwipe(holder.itemSwipeLayout)
             setupDeleteClick(holder.deleteBottomView, user.email)
         }
+    }
+
+    private fun blockSwipeLayout(itemSwipeLayout: SwipeLayout) {
+        itemSwipeLayout.isSwipeEnabled = false
     }
 
     private fun setupDeleteClick(deleteBottomView: FrameLayout, email: String) {
