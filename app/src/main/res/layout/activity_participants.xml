@@ -112,25 +112,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
-                <Button
+                <com.rey.material.widget.Button
                     android:textAllCaps="true"
                     android:id="@+id/setTaskNameButton"
                     android:background="@drawable/rounded_card_white"
                     android:layout_width="140dp"
                     android:layout_marginEnd="10dp"
+                    android:gravity="center"
+                    android:textColor="@android:color/black"
                     android:textSize="16dp"
                     android:layout_height="40dp"
-                    android:text="@string/set_task_name" />
+                    android:text="@string/set_task_name"
+                    app:rd_cornerRadius="15dp"
+                    app:rd_enable="true"
+                    app:rd_rippleColor="@color/colorPrimaryLight"
+                    app:rd_rippleType="wave"/>
 
-                <Button
+                <com.rey.material.widget.Button
                     android:textAllCaps="true"
                     android:id="@+id/startGameButton"
                     android:background="@drawable/rounded_frame_green"
                     android:layout_width="140dp"
+                    android:gravity="center"
                     android:layout_marginStart="10dp"
                     android:textSize="16dp"
+                    android:textColor="@android:color/black"
                     android:layout_height="40dp"
-                    android:text="@string/start_game" />
+                    android:text="@string/start_game"
+                    app:rd_cornerRadius="15dp"
+                    app:rd_enable="true"
+                    app:rd_rippleColor="@color/colorGreenReadyLight"
+                    app:rd_rippleType="wave"/>
             </LinearLayout>
 
             <com.rey.material.widget.Switch

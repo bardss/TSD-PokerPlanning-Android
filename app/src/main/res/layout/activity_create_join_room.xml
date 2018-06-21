@@ -36,10 +36,10 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
 
-        <Button
+        <com.rey.material.widget.Button
             android:id="@+id/createRoomButton"
             android:layout_width="100dp"
             android:layout_height="40dp"
@@ -47,8 +47,13 @@
             android:layout_marginBottom="20dp"
             android:background="@drawable/rounded_frame_dark_gray"
             android:text="@string/create"
+            android:gravity="center"
             android:textAllCaps="true"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_rippleColor="@color/colorGray"
+            app:rd_rippleType="wave" />
 
     </LinearLayout>
 
@@ -99,16 +104,21 @@
                 app:et_supportTextErrorColor="@color/colorError" />
         </FrameLayout>
 
-        <Button
+        <com.rey.material.widget.Button
             android:id="@+id/joinRoomButton"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
+            android:gravity="center"
             android:background="@drawable/rounded_frame_dark_gray"
             android:text="@string/join"
             android:textAllCaps="true"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_rippleColor="@color/colorGray"
+            app:rd_rippleType="wave" />
 
     </LinearLayout>
 
