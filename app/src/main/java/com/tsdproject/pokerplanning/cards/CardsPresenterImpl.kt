@@ -4,12 +4,14 @@ import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import com.azoft.carousellayoutmanager.CarouselLayoutManager
 import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener
-import com.tsdproject.pokerplanning.database.LocalDatabase
-import com.tsdproject.pokerplanning.model.transportobjects.AnswerTokenTO
+import com.tsdproject.pokerplanning.R
+import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
 import com.tsdproject.pokerplanning.service.receivers.SendAnswerReceiver
+import com.tsdproject.pokerplanning.service.receivers.SetGameReadyStatusReceiver
 
-class CardsPresenterImpl(var view: CardsView) : CardsPresenter, SendAnswerReceiver {
+class CardsPresenterImpl(var view: CardsView) : CardsPresenter,
+    SendAnswerReceiver, SetGameReadyStatusReceiver {
 
     override var canScrollHorizontally: Boolean = true
 
@@ -28,13 +30,26 @@ class CardsPresenterImpl(var view: CardsView) : CardsPresenter, SendAnswerReceiv
         return layoutManager
     }
 
+    override fun setGameReadyStatus(isReady: Boolean){
+        ServiceManager.setGameReadyStatus(this, isReady)
+    }
+
     override fun sendAnswer(cardValue: String){
-        ServiceManager.sendAnswer(this, AnswerTokenTO(cardValue, LocalDatabase.getUserToken()))
+        ServiceManager.sendAnswer(this, cardValue)
+    }
+
+    override fun onSetGameReadyStatusError() {
+        view.showToast(ResUtil.getString(R.string.cannot_change_ready_status))
+    }
+
+    override fun onSetGameReadyStatusSuccess() {
+        // TODO: implement isFinished flow
     }
 
     override fun onSendAnswerSuccess() {
     }
 
     override fun onSendAnswerError() {
+        view.showToast(ResUtil.getString(R.string.cannot_send_answer))
     }
 }

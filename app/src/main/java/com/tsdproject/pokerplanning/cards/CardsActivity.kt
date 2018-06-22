@@ -1,12 +1,10 @@
 package com.tsdproject.pokerplanning.cards
 
-import android.content.Intent
 import android.os.Bundle
 import com.azoft.carousellayoutmanager.CenterScrollListener
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
-import com.tsdproject.pokerplanning.results.ResultsActivity
 import kotlinx.android.synthetic.main.activity_cards.*
 
 class CardsActivity : BaseActivity(), CardsView {
@@ -39,14 +37,12 @@ class CardsActivity : BaseActivity(), CardsView {
     }
 
     private fun setupSwitch() {
-        readySwitch.setOnCheckedChangeListener { view, checked ->
-            if (checked) {
-                startActivity(Intent(this, ResultsActivity::class.java))
-            }
+        readySwitch.setOnCheckedChangeListener { _, checked ->
+            presenter.setGameReadyStatus(checked)
         }
     }
 
-    override fun onChooseCardClick(cardValue: String){
+    override fun onChooseCardClick(cardValue: String) {
         setCarouselScrollable(false)
         presenter.sendAnswer(cardValue)
     }
