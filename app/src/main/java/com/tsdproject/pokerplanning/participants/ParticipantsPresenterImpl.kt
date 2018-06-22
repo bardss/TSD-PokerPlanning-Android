@@ -11,7 +11,8 @@ import java.util.*
 import kotlin.concurrent.schedule
 
 class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresenter,
-    GetParticipantsReceiver, SetReadyStatusReceiver, StartGameReceiver, IsGameStartedReceiver, KickParticipantReceiver {
+    GetParticipantsReceiver, SetReadyStatusReceiver, StartGameReceiver, IsGameStartedReceiver, KickParticipantReceiver,
+    SetTaskNameReceiver {
 
     private var tableId: String? = null
     override var isRoomCreator: Boolean = false
@@ -57,7 +58,6 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     }
 
     override fun onSetReadyStatusSuccess() {
-
     }
 
     private fun getParticipantsAfterDelay() {
@@ -116,4 +116,13 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         view.stopProgressDialog()
     }
 
+    override fun setTaskName(taskName: String) {
+        ServiceManager.setEstimationTaskName(this, taskName)
+    }
+
+    override fun onSetTaskNameSuccess() {
+    }
+
+    override fun onSetTaskNameError() {
+    }
 }

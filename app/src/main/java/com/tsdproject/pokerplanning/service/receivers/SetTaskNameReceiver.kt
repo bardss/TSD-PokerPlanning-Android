@@ -2,7 +2,7 @@ package com.tsdproject.pokerplanning.service.receivers
 
 
 interface SetTaskNameReceiver {
-    fun onSetReadyStatusSuccess()
+    fun onSetTaskNameSuccess()
 
-    fun onSetReadyStatusError()
+    fun onSetTaskNameError()
 }

@@ -1,3 +1,3 @@
 package com.tsdproject.pokerplanning.model.transportobjects
 
-data class TaskNameTokenTO(val Token: String, val TaskName: String?)
+data class TaskNameTokenTO(val Token: String?, val TaskName: String?)
