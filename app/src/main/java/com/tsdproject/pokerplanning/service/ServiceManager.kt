@@ -103,7 +103,7 @@ object ServiceManager {
             .playTablesService
             ?.getParticipants(LocalDatabase.getUserToken()),
             Action1 {
-                receiver.onGetParticipantsSuccess(it as List<UserTO>)
+                receiver.onGetParticipantsSuccess(it as ParticipantsTO)
             },
             Action1 { e ->
                 handleError()

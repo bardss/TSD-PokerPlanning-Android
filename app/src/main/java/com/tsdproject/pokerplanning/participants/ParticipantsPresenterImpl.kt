@@ -3,6 +3,7 @@ package com.tsdproject.pokerplanning.participants
 import android.content.Intent
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.model.IntentKeys
+import com.tsdproject.pokerplanning.model.transportobjects.ParticipantsTO
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
@@ -47,8 +48,8 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         getParticipantsAfterDelay()
     }
 
-    override fun onGetParticipantsSuccess(users: List<UserTO>) {
-        view.updateParticipantsList(users)
+    override fun onGetParticipantsSuccess(participantsTO: ParticipantsTO) {
+        view.updateParticipantsList(participantsTO.participants)
         getParticipantsAfterDelay()
     }
 
