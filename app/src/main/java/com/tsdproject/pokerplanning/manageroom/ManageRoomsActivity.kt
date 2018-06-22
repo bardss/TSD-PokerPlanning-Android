@@ -1,4 +1,4 @@
-package com.tsdproject.pokerplanning.createroom
+package com.tsdproject.pokerplanning.manageroom
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,7 +8,7 @@ import com.tsdproject.pokerplanning.base.BasePresenter
 import com.tsdproject.pokerplanning.model.IntentKeys
 import com.tsdproject.pokerplanning.model.utils.EditTextUtil
 import com.tsdproject.pokerplanning.participants.ParticipantsActivity
-import kotlinx.android.synthetic.main.activity_create_join_room.*
+import kotlinx.android.synthetic.main.activity_manage_rooms.*
 
 class ManageRoomsActivity : BaseActivity(), ManageRoomsView {
 
@@ -20,7 +20,7 @@ class ManageRoomsActivity : BaseActivity(), ManageRoomsView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_join_room)
+        setContentView(R.layout.activity_manage_rooms)
         presenter = ManageRoomsPresenterImpl(this)
         setupButtons()
     }

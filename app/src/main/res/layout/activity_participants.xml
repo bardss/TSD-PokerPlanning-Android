@@ -74,22 +74,25 @@
           android:layout_height="wrap_content"
           android:layout_marginStart="10dp"
           android:layout_weight="1"
+          android:layout_gravity="center"
+          android:gravity="center"
           android:text="@string/topic"
           android:textColor="@android:color/black"
           android:textSize="16sp"/>
 
       <TextView
-          android:id="@+id/nextTashNameTextView"
+          android:id="@+id/nextTaskNameTextView"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
           android:layout_marginStart="12dp"
-          android:layout_weight="2"
+          android:layout_weight="3"
           android:ellipsize="end"
           android:maxLines="2"
-          android:text="Carousel endpoint connect to server"
+          android:layout_gravity="center"
+          android:gravity="center"
           android:textColor="@android:color/black"
-          android:textSize="14sp"
-          android:textStyle="bold"/>
+          android:textSize="20sp"
+          android:textStyle="bold" />
 
     </LinearLayout>
 

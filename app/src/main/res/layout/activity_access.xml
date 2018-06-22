@@ -121,15 +121,22 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1">
 
-        <TextView
+        <com.rey.material.widget.Button
             android:id="@+id/registerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="40dp"
             android:gravity="center"
-            android:text="@string/register_new_account"
+            android:layout_gravity="center"
+            android:background="@drawable/rounded_frame_gray"
+            android:text="@string/register"
+            android:textAlignment="center"
+            android:textAllCaps="true"
             android:textColor="@android:color/white"
-            android:textSize="18sp" />
+            android:textSize="16sp"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_rippleColor="@color/colorGray"
+            app:rd_rippleType="wave"/>
 
     </FrameLayout>
 

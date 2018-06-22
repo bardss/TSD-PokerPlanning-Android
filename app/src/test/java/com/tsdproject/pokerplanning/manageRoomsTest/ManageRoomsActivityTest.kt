@@ -1,9 +1,9 @@
 package com.tsdproject.pokerplanning.manageRoomsTest
 
 import com.tsdproject.pokerplanning.R
-import com.tsdproject.pokerplanning.createroom.ManageRoomsActivity
+import com.tsdproject.pokerplanning.manageroom.ManageRoomsActivity
 import junit.framework.Assert
-import kotlinx.android.synthetic.main.activity_create_join_room.*
+import kotlinx.android.synthetic.main.activity_manage_rooms.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
