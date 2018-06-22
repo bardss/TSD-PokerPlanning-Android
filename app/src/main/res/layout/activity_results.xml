@@ -13,7 +13,7 @@
         android:background="@color/colorLightBlue"
         android:orientation="vertical">
 
-        <TextView
+        <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-            <TextView
+            <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
@@ -57,7 +57,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="21sp" />
 
-            <TextView
+            <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
                 android:id="@+id/averageTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -74,12 +74,11 @@
         android:layout_weight="3"
         android:background="@color/colorLightBlue">
 
-        <com.rey.material.widget.Button
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
             android:id="@+id/backToRoomButton"
             android:textAllCaps="true"
             android:background="@drawable/rounded_card_white"
             android:layout_width="140dp"
-            android:layout_marginEnd="10dp"
             android:gravity="center"
             android:layout_gravity="center"
             android:textColor="@android:color/black"

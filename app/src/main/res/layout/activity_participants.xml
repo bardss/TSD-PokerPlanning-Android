@@ -15,7 +15,7 @@
         android:layout_weight="3"
         android:background="@color/colorLightBlue">
 
-      <TextView
+      <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_centerInParent="true"
@@ -41,7 +41,7 @@
         android:gravity="center"
         android:visibility="visible">
 
-      <TextView
+      <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
           android:id="@+id/roomIdLabelTextView"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -49,7 +49,7 @@
           android:textColor="@android:color/black"
           android:textSize="26sp"/>
 
-      <TextView
+      <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
           android:id="@+id/roomIdTextView"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
         android:gravity="center"
         android:visibility="visible">
 
-      <TextView
+      <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
           android:id="@+id/nextTaskNameLabelTextView"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
           android:textColor="@android:color/black"
           android:textSize="16sp"/>
 
-      <TextView
+      <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
           android:id="@+id/nextTaskNameTextView"
           android:layout_width="0dp"
           android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
           android:layout_centerHorizontal="true"
           android:layout_centerVertical="true">
 
-        <com.rey.material.widget.Button
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
             android:id="@+id/setTaskNameButton"
             android:layout_width="140dp"
             android:layout_height="40dp"
@@ -132,7 +132,7 @@
             app:rd_rippleColor="@color/colorPrimaryLight"
             app:rd_rippleType="wave"/>
 
-        <com.rey.material.widget.Button
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
             android:id="@+id/startGameButton"
             android:layout_width="140dp"
             android:layout_height="40dp"
@@ -161,7 +161,7 @@
           app:sw_trackColor="@android:color/white"
           style="@style/Material.Widget.Switch"/>
 
-      <com.rey.material.widget.TextView
+      <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
           android:id="@+id/readyTextView"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"

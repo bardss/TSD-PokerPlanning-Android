@@ -14,7 +14,7 @@
         android:layout_marginStart="6dp"
         android:src="@drawable/user" />
 
-    <TextView
+    <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,9 +22,11 @@
         android:layout_marginTop="10dp"
         android:layout_toEndOf="@+id/participantImageView"
         android:textColor="@android:color/black"
+        android:lines="1"
+        android:ellipsize="end"
         android:textSize="22sp" />
 
-    <TextView
+    <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
         android:id="@+id/emailTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

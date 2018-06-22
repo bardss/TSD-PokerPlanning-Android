@@ -6,7 +6,7 @@
     android:background="@color/colorLightBlue"
     android:orientation="vertical">
 
-    <TextView
+    <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -31,7 +31,7 @@
             android:paddingBottom="60dp"
             android:paddingTop="20dp">
 
-            <com.rey.material.widget.EditText
+            <com.tsdproject.pokerplanning.model.customviews.RobotoLightEditText
                 android:id="@+id/firstNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                 app:et_supportTextColor="@android:color/black"
                 app:et_supportTextErrorColor="@color/colorError" />
 
-            <com.rey.material.widget.EditText
+            <com.tsdproject.pokerplanning.model.customviews.RobotoLightEditText
                 android:id="@+id/lastNameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
                 app:et_supportTextColor="@android:color/black"
                 app:et_supportTextErrorColor="@color/colorError" />
 
-            <com.rey.material.widget.EditText
+            <com.tsdproject.pokerplanning.model.customviews.RobotoLightEditText
                 android:id="@+id/loginEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                 app:et_supportTextColor="@android:color/black"
                 app:et_supportTextErrorColor="@color/colorError" />
 
-            <com.rey.material.widget.EditText
+            <com.tsdproject.pokerplanning.model.customviews.RobotoLightEditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -119,7 +119,7 @@
                 app:et_supportMode="helper"
                 app:et_supportTextErrorColor="@color/colorError" />
 
-            <com.rey.material.widget.EditText
+            <com.tsdproject.pokerplanning.model.customviews.RobotoLightEditText
                 android:id="@+id/confirmPasswordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
 
         </LinearLayout>
 
-        <com.rey.material.widget.Button
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
             android:id="@+id/registerButton"
             android:layout_width="100dp"
             android:layout_height="40dp"

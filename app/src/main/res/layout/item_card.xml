@@ -6,21 +6,22 @@
     android:background="@drawable/rounded_card_white"
     android:elevation="5dp">
 
-    <TextView
+    <com.tsdproject.pokerplanning.model.customviews.SourceProRegularTextView
         android:id="@+id/valueTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textColor="@color/colorAccent"
-        android:textSize="82sp" />
+        android:textSize="102sp" />
 
-    <Button
+    <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
         android:id="@+id/chooseCardButton"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
+        android:gravity="center"
         android:background="@drawable/rounded_frame_blue"
         android:text="@string/check" />
 

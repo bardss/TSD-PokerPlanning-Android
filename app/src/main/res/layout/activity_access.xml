@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <TextView
+        <com.tsdproject.pokerplanning.model.customviews.SourceProRegularTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -68,7 +68,7 @@
                 app:et_supportTextColor="@android:color/black"
                 app:et_supportTextErrorColor="@color/colorError" />
 
-            <com.rey.material.widget.EditText
+            <com.tsdproject.pokerplanning.model.customviews.RobotoLightEditText
                 android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
 
         </LinearLayout>
 
-        <com.rey.material.widget.Button
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
             android:id="@+id/loginButton"
             android:layout_width="100dp"
             android:layout_height="40dp"
@@ -121,7 +121,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1">
 
-        <com.rey.material.widget.Button
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
             android:id="@+id/registerButton"
             android:layout_width="100dp"
             android:layout_height="40dp"
