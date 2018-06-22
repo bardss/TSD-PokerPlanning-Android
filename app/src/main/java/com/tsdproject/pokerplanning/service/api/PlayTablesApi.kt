@@ -1,9 +1,6 @@
 package com.tsdproject.pokerplanning.service.api
 
-import com.tsdproject.pokerplanning.model.transportobjects.TokenAndEmailTO
-import com.tsdproject.pokerplanning.model.transportobjects.TokenTO
-import com.tsdproject.pokerplanning.model.transportobjects.UserTO
-import com.tsdproject.pokerplanning.model.transportobjects.UserTableTokenTO
+import com.tsdproject.pokerplanning.model.transportobjects.*
 import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
@@ -23,4 +20,7 @@ interface PlayTablesApi {
 
     @POST("playtables/kickParticipant")
     fun kickParticipants(@Body tokenAndEmail: TokenAndEmailTO): Observable<Void>
+
+    @POST("playtables/setTaskName")
+    fun setTaskName(@Body taskNameToken: TaskNameTokenTO): Observable<Void>
 }
