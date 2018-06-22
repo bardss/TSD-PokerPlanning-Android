@@ -4,6 +4,7 @@ import android.graphics.Typeface
 import android.support.v7.widget.LinearLayoutManager
 import com.nhaarman.mockito_kotlin.anyOrNull
 import com.nhaarman.mockito_kotlin.whenever
+import com.tsdproject.pokerplanning.model.transportobjects.ParticipantsTO
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import com.tsdproject.pokerplanning.service.ServiceProvider
 import com.tsdproject.pokerplanning.service.api.PlayTablesApi
@@ -29,7 +30,7 @@ class ParticipantsActivityTest {
     @Before
     fun initData() {
         whenever(playTablesApi.getParticipants(anyOrNull())).thenReturn(
-            Observable.just(listOf(UserTO(0,"","","", true)))
+            Observable.just(ParticipantsTO("My name", listOf(UserTO(0, "", "", "", true))))
         )
 
         ServiceProvider.playTablesService = playTablesApi
@@ -60,5 +61,4 @@ class ParticipantsActivityTest {
         val typeface = Typeface.createFromAsset(participantsActivity.assets, "fonts/Roboto-Light.ttf")
         assertEquals(readyTextView.typeface, typeface)
     }
-
 }
