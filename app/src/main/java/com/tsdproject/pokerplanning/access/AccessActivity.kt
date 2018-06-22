@@ -26,6 +26,11 @@ class AccessActivity : BaseActivity(), AccessView {
         setupOnClicks()
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.setSavedEmail()
+    }
+
     private fun setupOnClicks() {
         loginButton.setOnClickListener { onLoginButtonClick() }
         registerButton.setOnClickListener { onRegisterButtonClick() }
@@ -63,5 +68,13 @@ class AccessActivity : BaseActivity(), AccessView {
         passwordEditText.clearError()
         loginEditText.setText("")
         passwordEditText.setText("")
+    }
+
+    override fun getUserLogin(): String {
+        return loginEditText.text.toString()
+    }
+
+    override fun setSavedEmail(email: String) {
+        loginEditText.setText(email)
     }
 }

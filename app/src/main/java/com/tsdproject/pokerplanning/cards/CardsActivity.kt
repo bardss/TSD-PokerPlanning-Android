@@ -39,19 +39,26 @@ class CardsActivity : BaseActivity(), CardsView {
     }
 
     private fun setupSwitch() {
-        readySwitch.setOnCheckedChangeListener { view, checked ->
-            if (checked) {
-                startActivity(Intent(this, ResultsActivity::class.java))
-            }
+        readySwitch.setOnCheckedChangeListener { _, checked ->
+            presenter.setGameReadyStatus(checked)
         }
     }
 
-    override fun onChooseCardClick(cardValue: Int){
-        setCarousleScrollable(false)
+    override fun onChooseCardClick(cardValue: String) {
+        setCarouselScrollable(false)
         presenter.sendAnswer(cardValue)
     }
 
-    override fun setCarousleScrollable(isScrollable: Boolean) {
+    override fun setCarouselScrollable(isScrollable: Boolean) {
         presenter.canScrollHorizontally = isScrollable
     }
+
+    override fun navigateToResults() {
+        startActivity(Intent(this, ResultsActivity::class.java))
+    }
+
+    override fun isReady(): Boolean {
+        return readySwitch.isChecked
+    }
+
 }

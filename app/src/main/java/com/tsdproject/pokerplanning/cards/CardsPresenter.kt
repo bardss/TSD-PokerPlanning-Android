@@ -6,5 +6,6 @@ import com.tsdproject.pokerplanning.base.BasePresenter
 interface CardsPresenter : BasePresenter {
     var canScrollHorizontally: Boolean
     fun getCarouselLayoutManager(): RecyclerView.LayoutManager
-    fun sendAnswer(cardValue: Int)
+    fun sendAnswer(cardValue: String)
+    fun setGameReadyStatus(isReady: Boolean)
 }

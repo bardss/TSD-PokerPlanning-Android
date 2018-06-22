@@ -1,6 +1,8 @@
 package com.tsdproject.pokerplanning.service.api
 
 import com.tsdproject.pokerplanning.model.transportobjects.AnswerTokenTO
+import com.tsdproject.pokerplanning.model.transportobjects.ReadyTokenTO
+import com.tsdproject.pokerplanning.model.transportobjects.ResultTO
 import com.tsdproject.pokerplanning.model.transportobjects.TokenTO
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -18,4 +20,13 @@ interface GamesApi {
 
     @POST("games/sendAnswer")
     fun sendAnswer(@Body Token: AnswerTokenTO): Observable<Void>
+
+    @GET("games/getResults")
+    fun getResults(@Query("token") Token: String?): Observable<List<ResultTO>>
+
+    @POST("games/setReadyStatus")
+    fun setGameReadyStatus(@Body readyToken: ReadyTokenTO): Observable<Void>
+
+    @GET("games/isFinished")
+    fun isGameFinished(@Query("token") token: String?): Observable<Boolean>
 }

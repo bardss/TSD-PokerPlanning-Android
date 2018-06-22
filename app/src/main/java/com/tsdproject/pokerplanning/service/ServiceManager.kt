@@ -114,16 +114,16 @@ object ServiceManager {
             })
     }
 
-    fun setReadyStatus(isReady: Boolean, receiver: SetReadyStatusReceiver) {
+    fun setTableReadyStatus(isReady: Boolean, receiver: SetTableReadyStatusReceiver) {
         setupRequest(ServiceProvider
             .usersService
-            ?.setReadyStatus(ReadyTokenTO(LocalDatabase.getUserToken(), isReady)),
+            ?.setTableReadyStatus(ReadyTokenTO(LocalDatabase.getUserToken(), isReady)),
             Action1 {
-                receiver.onSetReadyStatusSuccess()
+                receiver.onSetTableReadyStatusSuccess()
             },
             Action1 { e ->
                 handleError()
-                receiver.onSetReadyStatusError()
+                receiver.onSetTableReadyStatusError()
             },
             Action0 {
                 Timber.e("set ready status completed")
@@ -160,10 +160,10 @@ object ServiceManager {
             })
     }
 
-    fun sendAnswer(receiver: SendAnswerReceiver, answer: AnswerTokenTO) {
+    fun sendAnswer(receiver: SendAnswerReceiver, answer: String) {
         setupRequest(ServiceProvider
             .gamesService
-            ?.sendAnswer(answer),
+            ?.sendAnswer(AnswerTokenTO(answer, LocalDatabase.getUserToken())),
             Action1 {
                 receiver.onSendAnswerSuccess()
             },
@@ -205,6 +205,53 @@ object ServiceManager {
             },
             Action0 {
                 Timber.e("on set estimation task name completed")
+            })
+    }
+    fun getResults(receiver: GetResultsReceiver) {
+        setupRequest(ServiceProvider
+            .gamesService
+            ?.getResults(LocalDatabase.getUserToken()),
+            Action1 {
+                receiver.onGetResultsSuccess(it as List<ResultTO>)
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onGetResultsError()
+            },
+            Action0 {
+                Timber.e("on get results completed")
+            })
+    }
+
+    fun setGameReadyStatus(receiver: SetGameReadyStatusReceiver, isReady: Boolean) {
+        setupRequest(ServiceProvider
+            .gamesService
+            ?.setGameReadyStatus(ReadyTokenTO(LocalDatabase.getUserToken(), isReady)),
+            Action1 {
+                receiver.onSetGameReadyStatusSuccess()
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onSetGameReadyStatusError()
+            },
+            Action0 {
+                Timber.e("set game ready status completed")
+            })
+    }
+
+    fun isGameFinished(receiver: IsGameFinishedReceiver) {
+        setupRequest(ServiceProvider
+            .gamesService
+            ?.isGameFinished(LocalDatabase.getUserToken()),
+            Action1 {
+                receiver.onIsGameFinishedSuccess(it as Boolean?)
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onIsGameFinishedError()
+            },
+            Action0 {
+                Timber.e("is game finished completed")
             })
     }
 

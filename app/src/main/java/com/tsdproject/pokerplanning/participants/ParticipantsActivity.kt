@@ -113,7 +113,8 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
     }
 
     override fun navigateToCardsActivity() {
-        startActivity(Intent(this, CardsActivity::class.java))
+        startActivity(Intent(this, CardsActivity::class.java)
+            .setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY))
     }
 
     override fun switchBackReadyStatus() {
