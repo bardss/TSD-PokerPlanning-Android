@@ -50,6 +50,7 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
 
     override fun onGetParticipantsSuccess(participantsTO: ParticipantsTO) {
         view.updateParticipantsList(participantsTO.participants)
+        view.updateTaskName(participantsTO.taskName)
         getParticipantsAfterDelay()
     }
 

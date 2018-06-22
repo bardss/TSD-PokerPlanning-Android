@@ -1,10 +1,12 @@
 package com.tsdproject.pokerplanning.participants
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
@@ -99,6 +101,8 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
     }
 
     override fun hideTaskNameDialog() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(nextEstimationTopicEditText.getWindowToken(), 0)
         setTaskNameDialog.visibility = View.GONE
     }
 
@@ -122,5 +126,9 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
 
     override fun kickParticipant(email: String) {
         presenter.kickParticipant(email)
+    }
+
+    override fun updateTaskName(taskName: String) {
+        nextTashNameTextView.text = taskName
     }
 }
