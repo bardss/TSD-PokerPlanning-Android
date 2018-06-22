@@ -13,4 +13,5 @@
     <color name="colorGreenReady">#77D352</color>
     <color name="colorGreenReadyLight">#c8efb8</color>
     <color name="colorAlternativeBlue">#A6C0F6</color>
+    <color name="colorTransparentBackground">#E6F4F4F4</color>
 </resources>
