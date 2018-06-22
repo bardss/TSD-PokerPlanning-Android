@@ -7,7 +7,6 @@ import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener
 import com.tsdproject.pokerplanning.database.LocalDatabase
 import com.tsdproject.pokerplanning.model.transportobjects.AnswerTokenTO
 import com.tsdproject.pokerplanning.service.ServiceManager
-import com.tsdproject.pokerplanning.service.ServiceProvider
 import com.tsdproject.pokerplanning.service.receivers.SendAnswerReceiver
 
 class CardsPresenterImpl(var view: CardsView) : CardsPresenter, SendAnswerReceiver {
@@ -29,7 +28,7 @@ class CardsPresenterImpl(var view: CardsView) : CardsPresenter, SendAnswerReceiv
         return layoutManager
     }
 
-    override fun sendAnswer(cardValue: Int){
+    override fun sendAnswer(cardValue: String){
         ServiceManager.sendAnswer(this, AnswerTokenTO(cardValue, LocalDatabase.getUserToken()))
     }
 
