@@ -68,23 +68,11 @@
         </LinearLayout>
     </FrameLayout>
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
         android:background="@color/colorLightBlue">
-
-        <com.rey.material.widget.Switch
-            android:id="@+id/readySwitch"
-            style="@style/Material.Widget.Switch"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:checked="false"
-            app:sw_thumbColor="@color/colorGreenReady"
-            app:sw_trackColor="@android:color/white" />
 
         <com.rey.material.widget.TextView
             android:id="@+id/readyTextView"
@@ -97,6 +85,6 @@
             android:textColor="@android:color/black"
             android:textSize="26sp" />
 
-    </RelativeLayout>
+    </FrameLayout>
 
 </LinearLayout>
