@@ -94,8 +94,12 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
     }
 
     private fun setupSetTaskDialogButtons() {
-        saveButton.setOnClickListener { }
-        cancelButton.setOnClickListener { setTaskNameDialog.visibility = View.GONE }
+        saveButton.setOnClickListener { presenter.setTaskName(nextEstimationTopicEditText.text.toString()) }
+        cancelButton.setOnClickListener { hideTaskNameDialog() }
+    }
+
+    override fun hideTaskNameDialog() {
+        setTaskNameDialog.visibility = View.GONE
     }
 
     private fun setupSetTaskButton() {

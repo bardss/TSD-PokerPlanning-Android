@@ -117,12 +117,17 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     }
 
     override fun setTaskName(taskName: String) {
+        view.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
         ServiceManager.setEstimationTaskName(this, taskName)
     }
 
     override fun onSetTaskNameSuccess() {
+        view.hideTaskNameDialog()
+        view.stopProgressDialog()
     }
 
     override fun onSetTaskNameError() {
+        view.showToast(ResUtil.getString(R.string.can_not_set_task_name))
+        view.stopProgressDialog()
     }
 }

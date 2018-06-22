@@ -73,7 +73,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:text="@string/next_estimation_topic_colon"
+                android:text="@string/topic"
                 android:layout_marginStart="10dp"
                 android:textColor="@android:color/black"
                 android:textSize="16sp" />
@@ -86,6 +86,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="14sp"
                 android:ellipsize="end"
+                android:textStyle="bold"
                 android:maxLines="2"
                 android:text="Carousel endpoint connect to server"
                 android:layout_marginStart="12dp" />

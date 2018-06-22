@@ -10,4 +10,5 @@ interface ParticipantsView : BaseView {
     fun navigateToCardsActivity()
     fun switchBackReadyStatus()
     fun kickParticipant(email: String)
+    fun hideTaskNameDialog()
 }
