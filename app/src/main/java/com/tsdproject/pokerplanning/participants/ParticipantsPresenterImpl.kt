@@ -70,7 +70,8 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
                 if (view.isReady() && !isRoomCreator) {
                     checkIfGameStarted()
                 }
-            })
+            }
+        )
     }
 
     private fun checkIfGameStarted() {

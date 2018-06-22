@@ -224,6 +224,22 @@ object ServiceManager {
             })
     }
 
+    fun isGameFinished(receiver: IsGameFinishedReceiver) {
+        setupRequest(ServiceProvider
+            .gamesService
+            ?.isGameFinished(LocalDatabase.getUserToken()),
+            Action1 {
+                receiver.onIsGameFinishedSuccess(it as Boolean?)
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onIsGameFinishedError()
+            },
+            Action0 {
+                Timber.e("is game finished completed")
+            })
+    }
+
     private fun setupRequest(
         observable: Observable<*>?,
         onNext: Action1<Any>,
