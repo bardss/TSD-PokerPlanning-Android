@@ -40,9 +40,9 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         presenter.getParticipants()
     }
 
-    override fun onPause() {
-        super.onPause()
-        presenter.stopGetParticipants()
+    override fun onResume() {
+        super.onResume()
+        presenter.setShouldDoRequests(true)
     }
 
     override fun setupTableIdView(tableId: String?) {
