@@ -4,7 +4,6 @@ import android.content.Intent
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.model.IntentKeys
 import com.tsdproject.pokerplanning.model.transportobjects.ParticipantsTO
-import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
 import com.tsdproject.pokerplanning.service.receivers.*
@@ -18,7 +17,7 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     private var tableId: String? = null
     override var isRoomCreator: Boolean = false
     private var timerGetParticipant = Timer()
-    private var shouldRefreshParticipants = true
+    private var shouldDoRequests = true
     private var refreshParticipantsPeriod: Long = 3000
 
     override fun initExtras(intent: Intent) {
@@ -55,7 +54,6 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     }
 
     override fun onSetTableReadyStatusError() {
-        view.switchBackReadyStatus()
         view.showToast(ResUtil.getString(R.string.cannot_change_ready_status))
     }
 
@@ -67,11 +65,11 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         timerGetParticipant.schedule(
             refreshParticipantsPeriod,
             {
-                if (shouldRefreshParticipants) {
+                if (shouldDoRequests) {
                     getParticipants()
-                }
-                if (view.isReady() && !isRoomCreator) {
-                    checkIfGameStarted()
+                    if (view.isReady() && !isRoomCreator) {
+                        checkIfGameStarted()
+                    }
                 }
             }
         )
@@ -81,8 +79,8 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         ServiceManager.isGameStarted(this)
     }
 
-    override fun stopGetParticipants() {
-        shouldRefreshParticipants = false
+    override fun setShouldDoRequests(shouldDoRequests: Boolean) {
+        this.shouldDoRequests = shouldDoRequests
     }
 
     override fun startGame() {
@@ -106,7 +104,7 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
 
     override fun onIsGameStartedSuccess(isStarted: Boolean?) {
         if (isStarted == true) {
-            view.switchBackReadyStatus()
+            shouldDoRequests = false
             view.navigateToCardsActivity()
         }
     }

@@ -6,7 +6,7 @@ interface ParticipantsPresenter : BasePresenter {
     val isRoomCreator: Boolean
     fun setupTableIdView()
     fun getParticipants()
-    fun stopGetParticipants()
+    fun setShouldDoRequests(shouldDoRequests: Boolean)
     fun setUserReadyStatus(checked: Boolean)
     fun startGame()
     fun kickParticipant(email: String)
