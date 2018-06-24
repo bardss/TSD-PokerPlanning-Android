@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_cards.*
 class CardsActivity : BaseActivity(), CardsView {
 
     private lateinit var presenter: CardsPresenter
-    private lateinit var cardsAdapter: CardsAdapter
+    lateinit var cardsAdapter: CardsAdapter
 
     override fun providePresenter(): BasePresenter? {
         return presenter

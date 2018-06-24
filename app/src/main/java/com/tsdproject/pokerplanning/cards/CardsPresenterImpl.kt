@@ -2,6 +2,7 @@ package com.tsdproject.pokerplanning.cards
 
 import android.content.Intent
 import android.support.v7.widget.RecyclerView
+import android.view.View
 import com.azoft.carousellayoutmanager.CarouselLayoutManager
 import com.azoft.carousellayoutmanager.CarouselZoomPostLayoutListener
 import com.tsdproject.pokerplanning.R
@@ -32,6 +33,19 @@ class CardsPresenterImpl(var view: CardsView) : CardsPresenter,
             }
         layoutManager.setPostLayoutListener(CarouselZoomPostLayoutListener())
         layoutManager.maxVisibleItems = 15
+        layoutManager.addOnItemSelectionListener({ adapterPosition ->
+            val cardsAdapter = (view as CardsActivity).cardsAdapter
+            val selectedCard = layoutManager.findViewByPosition(adapterPosition)
+            cardsAdapter.setupCardClickability(selectedCard, true)
+
+            val previousSelectedPosition = cardsAdapter.getPreviousSelectedPosition()
+            if (previousSelectedPosition != null) {
+                val previousCard: View? =
+                    layoutManager.findViewByPosition(previousSelectedPosition)
+                cardsAdapter.setupCardClickability(previousCard, false)
+            }
+            cardsAdapter.changePreviousCardPosition(adapterPosition)
+        })
         return layoutManager
     }
 
