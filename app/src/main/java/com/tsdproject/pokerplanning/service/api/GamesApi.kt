@@ -26,4 +26,7 @@ interface GamesApi {
 
     @POST("games/setReadyStatus")
     fun setGameReadyStatus(@Body readyToken: ReadyTokenTO): Observable<Void>
+
+    @GET("games/isFinished")
+    fun isGameFinished(@Query("token") token: String?): Observable<Boolean>
 }

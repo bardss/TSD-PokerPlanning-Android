@@ -40,5 +40,6 @@
     <string name="cannot_check_game_status">Cannot check game status</string>
     <string name="cannot_kick_participant">Cannot kick participant</string>
     <string name="cannot_send_answer">Cannot send answer</string>
+    <string name="cannot_check_if_game_is_finished">Cannot check if game is finished</string>
 
 </resources>
