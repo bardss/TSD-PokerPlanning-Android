@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/participantLayout"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@android:color/white">
+
+    <ImageView
+        android:id="@+id/participantImageView"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="6dp"
+        android:src="@drawable/user" />
+
+    <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_toEndOf="@+id/participantImageView"
+        android:textColor="@android:color/black"
+        android:lines="1"
+        android:ellipsize="end"
+        android:textSize="22sp" />
+
+    <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
+        android:id="@+id/emailTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameTextView"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="2dp"
+        android:layout_toEndOf="@+id/participantImageView" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGrayLight"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

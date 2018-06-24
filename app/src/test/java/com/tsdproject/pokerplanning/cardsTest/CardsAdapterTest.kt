@@ -1,15 +1,11 @@
 package com.tsdproject.pokerplanning.cardsTest
 
-import com.azoft.carousellayoutmanager.CarouselLayoutManager
-import com.tsdproject.pokerplanning.cards.CardsActivity
 import com.tsdproject.pokerplanning.cards.CardsAdapter
-import com.tsdproject.pokerplanning.cards.CardsPresenterImpl
-import junit.framework.Assert
-import junit.framework.Assert.*
+import junit.framework.Assert.assertEquals
+import junit.framework.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.robolectric.Robolectric
 import org.robolectric.RobolectricTestRunner
 
 

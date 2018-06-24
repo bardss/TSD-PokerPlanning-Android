@@ -13,7 +13,7 @@
         android:background="@color/colorLightBlue"
         android:orientation="vertical">
 
-        <TextView
+        <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center">
 
-            <TextView
+            <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
@@ -57,7 +57,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="21sp" />
 
-            <TextView
+            <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
                 android:id="@+id/averageTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -68,35 +68,28 @@
         </LinearLayout>
     </FrameLayout>
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="3"
         android:background="@color/colorLightBlue">
 
-        <com.rey.material.widget.Switch
-            android:id="@+id/readySwitch"
-            style="@style/Material.Widget.Switch"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:checked="false"
-            app:sw_thumbColor="@color/colorGreenReady"
-            app:sw_trackColor="@android:color/white" />
-
-        <com.rey.material.widget.TextView
-            android:id="@+id/readyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:layout_toStartOf="@id/readySwitch"
-            android:text="@string/ready_for_next_estimation"
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
+            android:id="@+id/backToRoomButton"
+            android:textAllCaps="true"
+            android:background="@drawable/rounded_card_white"
+            android:layout_width="140dp"
+            android:gravity="center"
+            android:layout_gravity="center"
             android:textColor="@android:color/black"
-            android:textSize="26sp" />
+            android:textSize="16dp"
+            android:layout_height="40dp"
+            android:text="@string/back_to_room"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_rippleColor="@color/colorPrimaryLight"
+            app:rd_rippleType="wave"/>
 
-    </RelativeLayout>
+    </FrameLayout>
 
 </LinearLayout>

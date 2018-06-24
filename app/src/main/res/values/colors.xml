@@ -7,8 +7,11 @@
     <color name="colorGray">#95989A</color>
     <color name="colorGrayLight">#E5E9F2</color>
     <color name="colorError">#FF0000</color>
+    <color name="colorRedLight">#ff9999</color>
     <color name="colorLightBlue">#8AADF3</color>
     <color name="colorDarkGray">#646668</color>
     <color name="colorGreenReady">#77D352</color>
+    <color name="colorGreenReadyLight">#c8efb8</color>
     <color name="colorAlternativeBlue">#A6C0F6</color>
+    <color name="colorTransparentBackground">#E6F4F4F4</color>
 </resources>

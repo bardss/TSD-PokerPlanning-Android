@@ -1,41 +1,16 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:background="@android:color/white">
+    android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/participantImageView"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="6dp"
-        android:src="@drawable/user" />
-
-    <TextView
-        android:id="@+id/nameTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_toEndOf="@+id/participantImageView"
-        android:text="Participant Smith"
-        android:textColor="@android:color/black"
-        android:textSize="22sp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/nameTextView"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="2dp"
-        android:layout_toEndOf="@+id/participantImageView"
-        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit" />
-
-    <View
+    <com.daimajia.swipe.SwipeLayout
+        android:id="@+id/itemSwipeLayout"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorGrayLight"
-        android:layout_alignParentBottom="true"/>
+        android:layout_height="wrap_content">
+
+        <include layout="@layout/item_participants_bottom" />
+
+        <include layout="@layout/item_participants_top" />
+
+    </com.daimajia.swipe.SwipeLayout>
 
 </RelativeLayout>

@@ -12,4 +12,11 @@ object LocalDatabase {
         return Paper.book().read(DatabaseKeys.TOKEN)
     }
 
+    fun putUserLogin(login: String) {
+        Paper.book().write(DatabaseKeys.LOGIN, login)
+    }
+
+    fun getUserLogin(): String? {
+        return Paper.book().read(DatabaseKeys.LOGIN)
+    }
 }

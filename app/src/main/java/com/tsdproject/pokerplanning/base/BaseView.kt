@@ -2,7 +2,6 @@ package com.tsdproject.pokerplanning.base
 
 import android.content.Context
 
-
 interface BaseView {
 
     val activityContext: Context?
@@ -12,4 +11,6 @@ interface BaseView {
     fun stopProgressDialog()
 
     fun performOnBackPressed()
+
+    fun showToast(information: String)
 }

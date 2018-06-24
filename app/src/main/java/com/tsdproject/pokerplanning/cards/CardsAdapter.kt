@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.model.utils.ResUtil
-import com.tsdproject.pokerplanning.results.ResultsView
 import kotlinx.android.synthetic.main.item_card.view.*
 
 class CardsAdapter : RecyclerView.Adapter<CardsAdapter.ViewHolder>() {
@@ -16,6 +15,7 @@ class CardsAdapter : RecyclerView.Adapter<CardsAdapter.ViewHolder>() {
     private val cardValues: List<Int>
         get() = listOf(1, 2, 3, 5, 8, 13, 21, 34, 55)
     private var choosenCard: Int? = null
+    private var previousCardPosition: Int? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
@@ -30,19 +30,22 @@ class CardsAdapter : RecyclerView.Adapter<CardsAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.valueTextView.text = cardValues[position].toString()
-        holder.cardLayout.setOnClickListener { onCardItemClick(position, holder) }
         holder.chooseCardButton.setOnClickListener { onCardItemClick(position, holder) }
+        if (position == 0) {
+            holder.chooseCardButton.isEnabled = true
+            holder.chooseCardButton.isClickable = true
+        }
     }
 
-    fun onCardItemClick(position: Int, holder: ViewHolder) {
+    private fun onCardItemClick(position: Int, holder: ViewHolder) {
         if (cardValues[position] == choosenCard) {
             unhighlightCard(holder)
-            (context as CardsView).setCarousleScrollable(true)
+            (context as CardsView).setCarouselScrollable(true)
             choosenCard = null
         } else {
             highlightCard(holder)
-            (context as CardsView).setCarousleScrollable(false)
             choosenCard = cardValues[position]
+            (context as CardsView).onChooseCardClick(cardValues[position].toString())
         }
     }
 
@@ -50,19 +53,32 @@ class CardsAdapter : RecyclerView.Adapter<CardsAdapter.ViewHolder>() {
         holder.cardLayout.background = ResUtil.getDrawable(R.drawable.rounded_frame_blue)
         holder.valueTextView.setTextColor(ResUtil.getColor(android.R.color.white))
         holder.chooseCardButton.background = ResUtil.getDrawable(R.drawable.rounded_card_white)
-        holder.chooseCardButton.text = ResUtil.getString(R.string.uncheck)
+        holder.chooseCardButton.setTextColor(ResUtil.getColor(android.R.color.black))
+        holder.chooseCardButton.text = ResUtil.getString(R.string.uncheck).toUpperCase()
     }
 
     fun unhighlightCard(holder: ViewHolder) {
         holder.cardLayout.background = ResUtil.getDrawable(R.drawable.rounded_card_white)
         holder.valueTextView.setTextColor(ResUtil.getColor(R.color.colorAccent))
         holder.chooseCardButton.background = ResUtil.getDrawable(R.drawable.rounded_frame_blue)
-        holder.chooseCardButton.text = ResUtil.getString(R.string.check)
+        holder.chooseCardButton.setTextColor(ResUtil.getColor(android.R.color.white))
+        holder.chooseCardButton.text = ResUtil.getString(R.string.check).toUpperCase()
     }
 
     override fun getItemCount(): Int {
         return cardValues.size
     }
+
+    fun setupCardClickability(card: View?, enabled: Boolean) {
+        card?.chooseCardButton?.isEnabled = enabled
+        card?.chooseCardButton?.isClickable = enabled
+    }
+
+    fun changePreviousCardPosition(position: Int) {
+        previousCardPosition = position
+    }
+
+    fun getPreviousSelectedPosition() = previousCardPosition
 
     inner class ViewHolder(view: View) :
         RecyclerView.ViewHolder(view) {

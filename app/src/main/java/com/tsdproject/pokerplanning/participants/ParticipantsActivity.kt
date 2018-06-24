@@ -1,14 +1,19 @@
 package com.tsdproject.pokerplanning.participants
 
+import android.content.Context
 import android.content.Intent
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.view.View
+import android.view.inputmethod.InputMethodManager
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
 import com.tsdproject.pokerplanning.cards.CardsActivity
+import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import kotlinx.android.synthetic.main.activity_participants.*
+import kotlinx.android.synthetic.main.dialog_set_task_name.*
 
 class ParticipantsActivity : BaseActivity(), ParticipantsView {
 
@@ -29,22 +34,107 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
         super.onStart()
         setupTextFonts()
         setupParticipantsList()
-        readySwitch.setOnCheckedChangeListener { view, checked ->
-            if (checked) {
-                startActivity(Intent(this, CardsActivity::class.java))
-            }
+        setReadySwitchListener()
+        setupButtons()
+        presenter.setupTableIdView()
+        presenter.getParticipants()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.setShouldDoRequests(true)
+    }
+
+    override fun setupTableIdView(tableId: String?) {
+        if (tableId == null) {
+            roomIdLayout.visibility = View.GONE
+        } else {
+            roomIdTextView.text = tableId
+        }
+    }
+
+    private fun setReadySwitchListener() {
+        readySwitch.setCheckedImmediately(presenter.isRoomCreator)
+        readySwitch.setOnCheckedChangeListener { _, checked ->
+            presenter.setUserReadyStatus(checked)
         }
     }
 
     private fun setupTextFonts() {
         readyTextView.typeface = Typeface.createFromAsset(this.assets, "fonts/Roboto-Light.ttf")
+        roomIdLabelTextView.typeface = Typeface.createFromAsset(this.assets, "fonts/Roboto-Light.ttf")
+        roomIdTextView.typeface = Typeface.createFromAsset(this.assets, "fonts/Roboto-Medium.ttf")
     }
 
     private fun setupParticipantsList() {
-        participantsAdapter = ParticipantsAdapter()
+        participantsAdapter = ParticipantsAdapter(presenter.isRoomCreator)
         participantsRecyclerView.layoutManager = LinearLayoutManager(this)
         participantsRecyclerView.adapter = participantsAdapter
     }
 
+    override fun updateParticipantsList(users: List<UserTO>) {
+        participantsAdapter.setUsersList(users)
+    }
 
+    private fun setupButtons() {
+        setupStartGameButton()
+        setupSetTaskButton()
+        setupSetTaskDialogButtons()
+    }
+
+    private fun setupStartGameButton() {
+        if (presenter.isRoomCreator) {
+            tableCreatorManagmentLayout.visibility = View.VISIBLE
+            readySwitch.visibility = View.GONE
+            readyTextView.visibility = View.GONE
+            startGameButton.setOnClickListener { presenter.startGame() }
+        } else {
+            tableCreatorManagmentLayout.visibility = View.GONE
+            readySwitch.visibility = View.VISIBLE
+            readyTextView.visibility = View.VISIBLE
+        }
+    }
+
+    private fun setupSetTaskDialogButtons() {
+        saveButton.setOnClickListener { presenter.setTaskName(nextEstimationTopicEditText.text.toString()) }
+        cancelButton.setOnClickListener { hideTaskNameDialog() }
+    }
+
+    override fun hideTaskNameDialog() {
+        val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(nextEstimationTopicEditText.getWindowToken(), 0)
+        setTaskNameDialog.visibility = View.GONE
+    }
+
+    private fun setupSetTaskButton() {
+        setTaskNameButton.setOnClickListener {
+            setTaskNameDialog.visibility = View.VISIBLE
+        }
+    }
+
+    override fun navigateToCardsActivity() {
+        startActivity(Intent(this, CardsActivity::class.java)
+            .setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY))
+    }
+
+    override fun switchBackReadyStatus() {
+        readySwitch.setCheckedImmediately(!readySwitch.isChecked)
+    }
+
+    override fun isReady(): Boolean {
+        return readySwitch.isChecked
+    }
+
+    override fun kickParticipant(email: String) {
+        presenter.kickParticipant(email)
+    }
+
+    override fun updateTaskName(taskName: String) {
+        if (taskName.isNotEmpty()) {
+            nextTaskNameLayout.visibility = View.VISIBLE
+            nextTaskNameTextView.text = taskName
+        } else {
+            nextTaskNameLayout.visibility = View.GONE
+        }
+    }
 }

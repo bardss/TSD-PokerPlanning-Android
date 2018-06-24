@@ -55,7 +55,7 @@ class AccessPresenterTest {
     fun shouldCleanEditTextErrorOnLoginError() {
         val loginEditText = accessActivity.loginEditText
         val passwordEditText = accessActivity.passwordEditText
-        (accessPresenter as LoginReceiver).onLoginError()
+        (accessPresenter as LoginReceiver).onLoginError(ResUtil.getString(R.string.wrong_login_password))
         assertEquals(loginEditText.error, ResUtil.getString(R.string.wrong_login_password))
         assertEquals(passwordEditText.error, ResUtil.getString(R.string.wrong_login_password))
     }

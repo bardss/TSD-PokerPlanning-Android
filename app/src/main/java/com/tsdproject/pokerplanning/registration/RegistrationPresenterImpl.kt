@@ -7,7 +7,6 @@ import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
 import com.tsdproject.pokerplanning.service.receivers.RegisterReceiver
 
-
 class RegistrationPresenterImpl(var view: RegistrationView) : RegistrationPresenter, RegisterReceiver {
 
     override fun initExtras(intent: Intent) {
@@ -18,7 +17,10 @@ class RegistrationPresenterImpl(var view: RegistrationView) : RegistrationPresen
         ServiceManager.register(addUser, this)
     }
 
-    override fun onRegisterError() {
+    override fun onRegisterError(error: String?) {
+        error?.let {
+            view.showToast(error)
+        }
         view.stopProgressDialog()
     }
 

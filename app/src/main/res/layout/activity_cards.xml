@@ -13,7 +13,7 @@
         android:background="@color/colorLightBlue"
         android:orientation="vertical">
 
-        <TextView
+        <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -55,7 +55,7 @@
             app:sw_thumbColor="@color/colorGreenReady"
             app:sw_trackColor="@android:color/white" />
 
-        <com.rey.material.widget.TextView
+        <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
             android:id="@+id/readyTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

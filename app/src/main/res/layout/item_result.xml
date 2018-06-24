@@ -12,24 +12,41 @@
         android:layout_gravity="center_horizontal"
         android:src="@drawable/user" />
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
+        android:id="@+id/fullNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:lines="2"
+        android:ellipsize="end"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:layout_margin="6dp"
+        android:textSize="22sp" />
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/rounded_card_white"
         android:elevation="5dp">
 
-        <TextView
+        <com.tsdproject.pokerplanning.model.customviews.SourceProRegularTextView
             android:id="@+id/valueTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textAlignment="center"
             android:textColor="@color/colorAccent"
             android:layout_margin="30dp"
-            android:textSize="82sp" />
+            android:textSize="32sp" />
 
     </RelativeLayout>
 </LinearLayout>

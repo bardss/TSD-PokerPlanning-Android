@@ -1,18 +1,18 @@
-package com.tsdproject.pokerplanning.createroom
+package com.tsdproject.pokerplanning.manageroom
 
 import android.content.Intent
 import android.os.Bundle
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
+import com.tsdproject.pokerplanning.model.IntentKeys
 import com.tsdproject.pokerplanning.model.utils.EditTextUtil
 import com.tsdproject.pokerplanning.participants.ParticipantsActivity
-import kotlinx.android.synthetic.main.activity_create_room.*
+import kotlinx.android.synthetic.main.activity_manage_rooms.*
 
+class ManageRoomsActivity : BaseActivity(), ManageRoomsView {
 
-class CreateRoomActivity : BaseActivity(), CreateRoomView {
-
-    private lateinit var presenter: CreateRoomPresenter
+    private lateinit var presenter: ManageRoomsPresenter
 
     override fun providePresenter(): BasePresenter? {
         return presenter
@@ -20,27 +20,28 @@ class CreateRoomActivity : BaseActivity(), CreateRoomView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_room)
-        presenter = CreateRoomPresenterImpl(this)
+        setContentView(R.layout.activity_manage_rooms)
+        presenter = ManageRoomsPresenterImpl(this)
         setupButtons()
     }
 
     private fun setupButtons() {
-        createRoomButton.setOnClickListener({ onCreateButtonClick() })
+        createRoomButton.setOnClickListener({ presenter.createRoom() })
         joinRoomButton.setOnClickListener({ onJoinButtonClick() })
     }
 
     private fun onJoinButtonClick() {
         EditTextUtil.checkIfEditTextEmpty(tableIdEditText)
         if (tableIdEditText.error.isNullOrEmpty()) {
-            startActivity(Intent(this, ParticipantsActivity::class.java))
+            presenter.joinTable(tableIdEditText.text.toString())
         }
     }
 
-    private fun onCreateButtonClick() {
-        EditTextUtil.checkIfEditTextEmpty(tableNameEditText)
-        if (tableNameEditText.error.isNullOrEmpty()) {
-            startActivity(Intent(this, ParticipantsActivity::class.java))
-        }
+    override fun openRoomActivity(tableId: String?, isRoomCreator: Boolean) {
+        startActivity(
+            Intent(this, ParticipantsActivity::class.java)
+                .putExtra(IntentKeys.TABLE_ID, tableId)
+                .putExtra(IntentKeys.IS_ROOM_CREATOR, isRoomCreator)
+        )
     }
 }

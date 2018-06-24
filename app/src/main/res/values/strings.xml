@@ -31,5 +31,23 @@
     <string name="account_created">Account created!</string>
     <string name="email">email</string>
     <string name="email_is_not_correct">Email is not correct</string>
-
+    <string name="cannot_download_server_address">Cannot download server address</string>
+    <string name="room_id">Room ID:</string>
+    <string name="cannot_download_participants_list">Cannot download participants list</string>
+    <string name="cannot_change_ready_status">Cannot change ready status</string>
+    <string name="start_game">start game</string>
+    <string name="not_all_users_are_ready">Not all users are ready to play!</string>
+    <string name="cannot_check_game_status">Cannot check game status</string>
+    <string name="cannot_kick_participant">Cannot kick participant</string>
+    <string name="cannot_send_answer">Cannot send answer</string>
+    <string name="cannot_check_if_game_is_finished">Cannot check if game is finished</string>
+    <string name="set_task_name">set task name</string>
+    <string name="next_estimation_topic_colon">Next estimation topic:</string>
+    <string name="next_estimation_topic">Next estimation topic</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="set_next_estimation_topic">Set next estimation topic</string>
+    <string name="back_to_room">Back to Room</string>
+    <string name="topic">Topic:</string>
+    <string name="can_not_set_task_name">Can not set task name</string>
 </resources>

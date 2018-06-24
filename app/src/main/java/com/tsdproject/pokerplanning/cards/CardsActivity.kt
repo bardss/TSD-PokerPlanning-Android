@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_cards.*
 class CardsActivity : BaseActivity(), CardsView {
 
     private lateinit var presenter: CardsPresenter
-    private lateinit var cardsAdapter: CardsAdapter
+    lateinit var cardsAdapter: CardsAdapter
 
     override fun providePresenter(): BasePresenter? {
         return presenter
@@ -39,14 +39,26 @@ class CardsActivity : BaseActivity(), CardsView {
     }
 
     private fun setupSwitch() {
-        readySwitch.setOnCheckedChangeListener { view, checked ->
-            if (checked) {
-                startActivity(Intent(this, ResultsActivity::class.java))
-            }
+        readySwitch.setOnCheckedChangeListener { _, checked ->
+            presenter.setGameReadyStatus(checked)
         }
     }
 
-    override fun setCarousleScrollable(isScrollable : Boolean){
+    override fun onChooseCardClick(cardValue: String) {
+        setCarouselScrollable(false)
+        presenter.sendAnswer(cardValue)
+    }
+
+    override fun setCarouselScrollable(isScrollable: Boolean) {
         presenter.canScrollHorizontally = isScrollable
     }
+
+    override fun navigateToResults() {
+        startActivity(Intent(this, ResultsActivity::class.java))
+    }
+
+    override fun isReady(): Boolean {
+        return readySwitch.isChecked
+    }
+
 }

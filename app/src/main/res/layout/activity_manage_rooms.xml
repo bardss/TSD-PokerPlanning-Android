@@ -23,7 +23,7 @@
         android:background="@android:color/white"
         android:orientation="vertical">
 
-        <TextView
+        <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -33,45 +33,26 @@
             android:textColor="@android:color/black"
             android:textSize="26sp" />
 
-        <FrameLayout
+        <View
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1" />
 
-            <com.rey.material.widget.EditText
-                android:id="@+id/tableNameEditText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
-                android:background="@android:color/transparent"
-                android:hint="@string/table_name"
-                android:imeOptions="actionSearch"
-                android:inputType="textPersonName"
-                android:textColor="@android:color/black"
-                android:textSize="16sp"
-                android:touchscreenBlocksFocus="true"
-                app:et_dividerColor="@color/colorGray"
-                app:et_dividerErrorColor="@color/colorError"
-                app:et_dividerHeight="2dp"
-                app:et_labelEnable="true"
-                app:et_labelTextColor="@color/colorGray"
-                app:et_supportMode="helper"
-                app:et_supportTextColor="@android:color/black"
-                app:et_supportTextErrorColor="@color/colorError" />
-        </FrameLayout>
-
-        <Button
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
             android:id="@+id/createRoomButton"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
-            android:background="@color/colorDarkGray"
+            android:background="@drawable/rounded_frame_dark_gray"
             android:text="@string/create"
+            android:gravity="center"
             android:textAllCaps="true"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_rippleColor="@color/colorGray"
+            app:rd_rippleType="wave" />
 
     </LinearLayout>
 
@@ -79,11 +60,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="vertical"
         android:background="@android:color/white">
 
-        <TextView
+        <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -98,13 +79,13 @@
             android:layout_height="0dp"
             android:layout_weight="1">
 
-            <com.rey.material.widget.EditText
+            <com.tsdproject.pokerplanning.model.customviews.RobotoLightEditText
                 android:id="@+id/tableIdEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
                 android:background="@android:color/transparent"
                 android:hint="@string/table_id"
                 android:imeOptions="actionSearch"
@@ -122,16 +103,21 @@
                 app:et_supportTextErrorColor="@color/colorError" />
         </FrameLayout>
 
-        <Button
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
             android:id="@+id/joinRoomButton"
             android:layout_width="100dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="20dp"
-            android:background="@color/colorDarkGray"
+            android:gravity="center"
+            android:background="@drawable/rounded_frame_dark_gray"
             android:text="@string/join"
             android:textAllCaps="true"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_rippleColor="@color/colorGray"
+            app:rd_rippleType="wave" />
 
     </LinearLayout>
 

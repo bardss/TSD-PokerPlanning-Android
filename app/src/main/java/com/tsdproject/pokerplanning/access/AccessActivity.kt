@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.base.BaseActivity
 import com.tsdproject.pokerplanning.base.BasePresenter
-import com.tsdproject.pokerplanning.createroom.CreateRoomActivity
+import com.tsdproject.pokerplanning.manageroom.ManageRoomsActivity
 import com.tsdproject.pokerplanning.model.utils.EditTextUtil
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.registration.RegistrationActivity
@@ -24,6 +24,11 @@ class AccessActivity : BaseActivity(), AccessView {
         setContentView(R.layout.activity_access)
         presenter = AccessPresenterImpl(this)
         setupOnClicks()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        presenter.setSavedEmail()
     }
 
     private fun setupOnClicks() {
@@ -49,8 +54,8 @@ class AccessActivity : BaseActivity(), AccessView {
         return isLoginError || isPasswordError
     }
 
-    override fun navigateToCreateRoom(){
-        startActivity(Intent(this, CreateRoomActivity::class.java))
+    override fun navigateToCreateRoom() {
+        startActivity(Intent(this, ManageRoomsActivity::class.java))
     }
 
     override fun setInputErrors() {
@@ -65,4 +70,11 @@ class AccessActivity : BaseActivity(), AccessView {
         passwordEditText.setText("")
     }
 
+    override fun getUserLogin(): String {
+        return loginEditText.text.toString()
+    }
+
+    override fun setSavedEmail(email: String) {
+        loginEditText.setText(email)
+    }
 }

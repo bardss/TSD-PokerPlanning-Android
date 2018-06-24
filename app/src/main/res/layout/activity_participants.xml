@@ -1,40 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent">
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="3"
-        android:background="@color/colorLightBlue"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/room"
-            android:textColor="@android:color/black"
-            android:textSize="32sp" />
-
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="match_parent"
-            android:src="@drawable/team"
-            android:layout_marginTop="6dp"
-            android:layout_marginBottom="6dp"/>
-
-    </RelativeLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/participantsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="21"
-        android:background="@android:color/white" />
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -42,29 +15,169 @@
         android:layout_weight="3"
         android:background="@color/colorLightBlue">
 
-        <com.rey.material.widget.Switch
-            android:id="@+id/readySwitch"
-            style="@style/Material.Widget.Switch"
-            android:layout_width="56dp"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:checked="false"
-            app:sw_thumbColor="@color/colorGreenReady"
-            app:sw_trackColor="@android:color/white"/>
+      <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:text="@string/room"
+          android:textColor="@android:color/black"
+          android:textSize="32sp"/>
 
-        <com.rey.material.widget.TextView
-            android:id="@+id/readyTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="16dp"
-            android:layout_toStartOf="@id/readySwitch"
-            android:text="@string/ready"
-            android:textColor="@android:color/black"
-            android:textSize="26sp" />
+      <ImageView
+          android:layout_width="80dp"
+          android:layout_height="match_parent"
+          android:layout_marginBottom="6dp"
+          android:layout_marginTop="6dp"
+          android:src="@drawable/team"/>
 
     </RelativeLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/roomIdLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2"
+        android:background="@color/colorLightBlue"
+        android:gravity="center"
+        android:visibility="visible">
+
+      <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
+          android:id="@+id/roomIdLabelTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="@string/room_id"
+          android:textColor="@android:color/black"
+          android:textSize="26sp"/>
+
+      <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
+          android:id="@+id/roomIdTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="12dp"
+          android:textColor="@android:color/black"
+          android:textSize="26sp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/nextTaskNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:background="@color/colorLightBlue"
+        android:gravity="center"
+        android:visibility="visible">
+
+      <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
+          android:id="@+id/nextTaskNameLabelTextView"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="10dp"
+          android:layout_weight="1"
+          android:layout_gravity="center"
+          android:gravity="center"
+          android:text="@string/topic"
+          android:textColor="@android:color/black"
+          android:textSize="16sp"/>
+
+      <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
+          android:id="@+id/nextTaskNameTextView"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginStart="12dp"
+          android:layout_weight="3"
+          android:ellipsize="end"
+          android:maxLines="2"
+          android:layout_gravity="center"
+          android:gravity="center"
+          android:textColor="@android:color/black"
+          android:textSize="20sp"
+          android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/participantsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="21"
+        android:background="@android:color/white"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@color/colorLightBlue">
+
+      <LinearLayout
+          android:id="@+id/tableCreatorManagmentLayout"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+          android:layout_centerVertical="true">
+
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
+            android:id="@+id/setTaskNameButton"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/rounded_card_white"
+            android:gravity="center"
+            android:text="@string/set_task_name"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="16dp"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_rippleColor="@color/colorPrimaryLight"
+            app:rd_rippleType="wave"/>
+
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
+            android:id="@+id/startGameButton"
+            android:layout_width="140dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/rounded_frame_green"
+            android:gravity="center"
+            android:text="@string/start_game"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="16dp"
+            app:rd_cornerRadius="15dp"
+            app:rd_enable="true"
+            app:rd_rippleColor="@color/colorGreenReadyLight"
+            app:rd_rippleType="wave"/>
+      </LinearLayout>
+
+      <com.rey.material.widget.Switch
+          android:id="@+id/readySwitch"
+          android:layout_width="56dp"
+          android:layout_height="wrap_content"
+          android:layout_alignParentEnd="true"
+          android:layout_centerVertical="true"
+          android:layout_marginEnd="16dp"
+          android:checked="false"
+          app:sw_thumbColor="@color/colorGreenReady"
+          app:sw_trackColor="@android:color/white"
+          style="@style/Material.Widget.Switch"/>
+
+      <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
+          android:id="@+id/readyTextView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_centerVertical="true"
+          android:layout_marginEnd="16dp"
+          android:layout_toStartOf="@id/readySwitch"
+          android:text="@string/ready"
+          android:textColor="@android:color/black"
+          android:textSize="26sp"/>
+
+    </RelativeLayout>
+
+  </LinearLayout>
+
+  <include
+      layout="@layout/dialog_set_task_name"
+      android:id="@+id/setTaskNameDialog"
+      android:visibility="gone"/>
+</FrameLayout>
