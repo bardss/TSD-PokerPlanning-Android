@@ -1,13 +1,9 @@
 package com.tsdproject.pokerplanning.service
 
-import android.widget.Toast
-import com.tsdproject.pokerplanning.R
-import com.tsdproject.pokerplanning.base.ApplicationContext
 import com.tsdproject.pokerplanning.database.LocalDatabase
 import com.tsdproject.pokerplanning.model.transportobjects.*
-import com.tsdproject.pokerplanning.model.utils.ResUtil
-import com.tsdproject.pokerplanning.model.utils.ToastUtil
 import com.tsdproject.pokerplanning.service.receivers.*
+import retrofit2.HttpException
 import rx.Observable
 import rx.Subscription
 import rx.android.schedulers.AndroidSchedulers
@@ -26,8 +22,9 @@ object ServiceManager {
                 receiver.onLoginSuccess(it as String)
             },
             Action1 { e ->
-                handleError()
-                receiver.onLoginError()
+                if (e is HttpException) {
+                    receiver.onLoginError(e.response().errorBody()?.string())
+                }
             },
             Action0 {
                 Timber.e("login completed")
@@ -42,8 +39,9 @@ object ServiceManager {
                 receiver.onRegisterSuccess()
             },
             Action1 { e ->
-                handleError()
-                receiver.onRegisterError()
+                if (e is HttpException) {
+                    receiver.onRegisterError(e.response().errorBody()?.string())
+                }
             },
             Action0 {
                 Timber.e("register completed")
@@ -58,7 +56,6 @@ object ServiceManager {
                 receiver.onGetDynamicAddressSuccess(it as String)
             },
             Action1 { e ->
-                handleError()
                 receiver.onGetDynamicAddressError()
             },
             Action0 {
@@ -74,7 +71,6 @@ object ServiceManager {
                 receiver.onCreateTableSuccess(it as String)
             },
             Action1 { e ->
-                handleError()
                 receiver.onCreateTableError()
             },
             Action0 {
@@ -90,7 +86,6 @@ object ServiceManager {
                 receiver.onJoinTableSuccess()
             },
             Action1 { e ->
-                handleError()
                 receiver.onJoinTableError()
             },
             Action0 {
@@ -106,7 +101,6 @@ object ServiceManager {
                 receiver.onGetParticipantsSuccess(it as ParticipantsTO)
             },
             Action1 { e ->
-                handleError()
                 receiver.onGetParticipantsError()
             },
             Action0 {
@@ -122,7 +116,6 @@ object ServiceManager {
                 receiver.onSetTableReadyStatusSuccess()
             },
             Action1 { e ->
-                handleError()
                 receiver.onSetTableReadyStatusError()
             },
             Action0 {
@@ -168,7 +161,6 @@ object ServiceManager {
                 receiver.onSendAnswerSuccess()
             },
             Action1 { e ->
-                handleError()
                 receiver.onSendAnswerError()
             },
             Action0 {
@@ -184,7 +176,6 @@ object ServiceManager {
                 receiver.onKickParticipantSuccess()
             },
             Action1 { e ->
-                handleError()
                 receiver.onKickParticipantError()
             },
             Action0 {
@@ -200,7 +191,6 @@ object ServiceManager {
                 receiver.onSetTaskNameSuccess()
             },
             Action1 { e ->
-                handleError()
                 receiver.onSetTaskNameError()
             },
             Action0 {
@@ -215,7 +205,6 @@ object ServiceManager {
                 receiver.onGetResultsSuccess(it as List<ResultTO>)
             },
             Action1 { e ->
-                handleError()
                 receiver.onGetResultsError()
             },
             Action0 {
@@ -231,7 +220,6 @@ object ServiceManager {
                 receiver.onSetGameReadyStatusSuccess()
             },
             Action1 { e ->
-                handleError()
                 receiver.onSetGameReadyStatusError()
             },
             Action0 {
@@ -247,7 +235,6 @@ object ServiceManager {
                 receiver.onIsGameFinishedSuccess(it as Boolean?)
             },
             Action1 { e ->
-                handleError()
                 receiver.onIsGameFinishedError()
             },
             Action0 {
@@ -265,14 +252,5 @@ object ServiceManager {
             ?.subscribeOn(Schedulers.newThread())
             ?.observeOn(AndroidSchedulers.mainThread())
             ?.subscribe(onNext, onError, onCompleted)
-    }
-
-    private fun handleError() {
-        val context = ApplicationContext.appContext
-        ToastUtil.show(
-            context,
-            ResUtil.getString(R.string.something_went_wrong),
-            Toast.LENGTH_LONG
-        )
     }
 }
