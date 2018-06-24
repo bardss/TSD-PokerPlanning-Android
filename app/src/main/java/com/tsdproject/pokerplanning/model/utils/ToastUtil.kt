@@ -8,11 +8,11 @@ import android.widget.Toast
 
 object ToastUtil {
 
-    fun show(context: Context?, message: String, duration: Int) {
+    fun show(context: Context?, message: String?, duration: Int) {
         val toast = Toast.makeText(context, message, duration)
-        val toastLayout = toast.view as LinearLayout
-        val toastTextView = toastLayout.getChildAt(0) as TextView
-        toastTextView.gravity = Gravity.CENTER
+        val toastLayout = toast.view as? LinearLayout
+        val toastTextView = toastLayout?.getChildAt(0) as? TextView
+        toastTextView?.gravity = Gravity.CENTER
         toast.show()
     }
 }
