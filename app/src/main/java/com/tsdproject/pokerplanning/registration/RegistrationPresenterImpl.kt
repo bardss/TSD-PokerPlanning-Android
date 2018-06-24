@@ -17,10 +17,7 @@ class RegistrationPresenterImpl(var view: RegistrationView) : RegistrationPresen
         ServiceManager.register(addUser, this)
     }
 
-    override fun onRegisterError(error: String?) {
-        error?.let {
-            view.showToast(error)
-        }
+    override fun onRegisterError() {
         view.stopProgressDialog()
     }
 
