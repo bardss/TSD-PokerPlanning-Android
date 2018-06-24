@@ -23,7 +23,7 @@
         android:background="@android:color/white"
         android:orientation="vertical">
 
-        <TextView
+        <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -38,8 +38,7 @@
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-
-        <com.rey.material.widget.Button
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
             android:id="@+id/createRoomButton"
             android:layout_width="100dp"
             android:layout_height="40dp"
@@ -61,11 +60,11 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
-        android:layout_weight="1"
+        android:layout_weight="2"
         android:orientation="vertical"
         android:background="@android:color/white">
 
-        <TextView
+        <com.tsdproject.pokerplanning.model.customviews.RobotoMediumTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -80,13 +79,13 @@
             android:layout_height="0dp"
             android:layout_weight="1">
 
-            <com.rey.material.widget.EditText
+            <com.tsdproject.pokerplanning.model.customviews.RobotoLightEditText
                 android:id="@+id/tableIdEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="20dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginStart="40dp"
                 android:background="@android:color/transparent"
                 android:hint="@string/table_id"
                 android:imeOptions="actionSearch"
@@ -104,7 +103,7 @@
                 app:et_supportTextErrorColor="@color/colorError" />
         </FrameLayout>
 
-        <com.rey.material.widget.Button
+        <com.tsdproject.pokerplanning.model.customviews.RobotoLightButton
             android:id="@+id/joinRoomButton"
             android:layout_width="100dp"
             android:layout_height="40dp"

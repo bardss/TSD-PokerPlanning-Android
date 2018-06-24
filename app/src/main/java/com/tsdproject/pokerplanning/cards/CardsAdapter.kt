@@ -53,14 +53,16 @@ class CardsAdapter : RecyclerView.Adapter<CardsAdapter.ViewHolder>() {
         holder.cardLayout.background = ResUtil.getDrawable(R.drawable.rounded_frame_blue)
         holder.valueTextView.setTextColor(ResUtil.getColor(android.R.color.white))
         holder.chooseCardButton.background = ResUtil.getDrawable(R.drawable.rounded_card_white)
-        holder.chooseCardButton.text = ResUtil.getString(R.string.uncheck)
+        holder.chooseCardButton.setTextColor(ResUtil.getColor(android.R.color.black))
+        holder.chooseCardButton.text = ResUtil.getString(R.string.uncheck).toUpperCase()
     }
 
     fun unhighlightCard(holder: ViewHolder) {
         holder.cardLayout.background = ResUtil.getDrawable(R.drawable.rounded_card_white)
         holder.valueTextView.setTextColor(ResUtil.getColor(R.color.colorAccent))
         holder.chooseCardButton.background = ResUtil.getDrawable(R.drawable.rounded_frame_blue)
-        holder.chooseCardButton.text = ResUtil.getString(R.string.check)
+        holder.chooseCardButton.setTextColor(ResUtil.getColor(android.R.color.white))
+        holder.chooseCardButton.text = ResUtil.getString(R.string.check).toUpperCase()
     }
 
     override fun getItemCount(): Int {

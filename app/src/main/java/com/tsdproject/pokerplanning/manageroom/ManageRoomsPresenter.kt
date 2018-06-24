@@ -1,4 +1,4 @@
-package com.tsdproject.pokerplanning.createroom
+package com.tsdproject.pokerplanning.manageroom
 
 import com.tsdproject.pokerplanning.base.BasePresenter
 

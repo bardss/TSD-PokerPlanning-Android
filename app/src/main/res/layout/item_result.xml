@@ -12,7 +12,7 @@
         android:layout_gravity="center_horizontal"
         android:src="@drawable/user" />
 
-    <TextView
+    <com.tsdproject.pokerplanning.model.customviews.RobotoLightTextView
         android:id="@+id/fullNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         android:background="@drawable/rounded_card_white"
         android:elevation="5dp">
 
-        <TextView
+        <com.tsdproject.pokerplanning.model.customviews.SourceProRegularTextView
             android:id="@+id/valueTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -130,6 +130,11 @@ class ParticipantsActivity : BaseActivity(), ParticipantsView {
     }
 
     override fun updateTaskName(taskName: String) {
-        nextTashNameTextView.text = taskName
+        if (taskName.isNotEmpty()) {
+            nextTaskNameLayout.visibility = View.VISIBLE
+            nextTaskNameTextView.text = taskName
+        } else {
+            nextTaskNameLayout.visibility = View.GONE
+        }
     }
 }
