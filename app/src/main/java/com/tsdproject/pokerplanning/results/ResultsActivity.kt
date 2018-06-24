@@ -19,6 +19,7 @@ class ResultsActivity : BaseActivity(), ResultsView {
         presenter = ResultsPresenterImpl(this)
         setupRecyclerView()
         presenter.getResults()
+        setupButton()
     }
 
     override fun providePresenter(): BasePresenter? {
@@ -36,4 +37,11 @@ class ResultsActivity : BaseActivity(), ResultsView {
         val listOfIntValues: List<Int> = presenter.convertValuesToInt(values)
         averageTextView.text = listOfIntValues.average().toFloat().toString()
     }
+
+    private fun setupButton() {
+        backToRoomButton.setOnClickListener {
+            performOnBackPressed()
+        }
+    }
+
 }
