@@ -10,4 +10,5 @@ interface ParticipantsPresenter : BasePresenter {
     fun setUserReadyStatus(checked: Boolean)
     fun startGame()
     fun kickParticipant(email: String)
+    fun setTaskName(taskName: String)
 }

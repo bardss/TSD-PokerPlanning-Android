@@ -48,5 +48,6 @@
     <string name="cancel">Cancel</string>
     <string name="set_next_estimation_topic">Set next estimation topic</string>
     <string name="back_to_room">Back to Room</string>
-
+    <string name="topic">Topic:</string>
+    <string name="can_not_set_task_name">Can not set task name</string>
 </resources>

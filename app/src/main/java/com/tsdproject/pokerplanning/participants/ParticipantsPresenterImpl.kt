@@ -3,6 +3,7 @@ package com.tsdproject.pokerplanning.participants
 import android.content.Intent
 import com.tsdproject.pokerplanning.R
 import com.tsdproject.pokerplanning.model.IntentKeys
+import com.tsdproject.pokerplanning.model.transportobjects.ParticipantsTO
 import com.tsdproject.pokerplanning.model.transportobjects.UserTO
 import com.tsdproject.pokerplanning.model.utils.ResUtil
 import com.tsdproject.pokerplanning.service.ServiceManager
@@ -11,7 +12,8 @@ import java.util.*
 import kotlin.concurrent.schedule
 
 class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresenter,
-    GetParticipantsReceiver, SetTableReadyStatusReceiver, StartGameReceiver, IsGameStartedReceiver, KickParticipantReceiver {
+    GetParticipantsReceiver, SetTableReadyStatusReceiver, StartGameReceiver, IsGameStartedReceiver, KickParticipantReceiver,
+    SetTaskNameReceiver  {
 
     private var tableId: String? = null
     override var isRoomCreator: Boolean = false
@@ -46,8 +48,9 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         getParticipantsAfterDelay()
     }
 
-    override fun onGetParticipantsSuccess(users: List<UserTO>) {
-        view.updateParticipantsList(users)
+    override fun onGetParticipantsSuccess(participantsTO: ParticipantsTO) {
+        view.updateParticipantsList(participantsTO.participants)
+        view.updateTaskName(participantsTO.taskName)
         getParticipantsAfterDelay()
     }
 
@@ -117,4 +120,18 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         view.stopProgressDialog()
     }
 
+    override fun setTaskName(taskName: String) {
+        view.startProgressDialog(ResUtil.getString(R.string.progress_loading_text))
+        ServiceManager.setEstimationTaskName(this, taskName)
+    }
+
+    override fun onSetTaskNameSuccess() {
+        view.hideTaskNameDialog()
+        view.stopProgressDialog()
+    }
+
+    override fun onSetTaskNameError() {
+        view.showToast(ResUtil.getString(R.string.can_not_set_task_name))
+        view.stopProgressDialog()
+    }
 }

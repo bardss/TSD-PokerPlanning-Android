@@ -103,7 +103,7 @@ object ServiceManager {
             .playTablesService
             ?.getParticipants(LocalDatabase.getUserToken()),
             Action1 {
-                receiver.onGetParticipantsSuccess(it as List<UserTO>)
+                receiver.onGetParticipantsSuccess(it as ParticipantsTO)
             },
             Action1 { e ->
                 handleError()
@@ -192,6 +192,21 @@ object ServiceManager {
             })
     }
 
+    fun setEstimationTaskName(receiver: SetTaskNameReceiver, taskName: String) {
+        setupRequest(ServiceProvider
+            .playTablesService
+            ?.setTaskName(TaskNameTokenTO(LocalDatabase.getUserToken(), taskName)),
+            Action1 {
+                receiver.onSetTaskNameSuccess()
+            },
+            Action1 { e ->
+                handleError()
+                receiver.onSetTaskNameError()
+            },
+            Action0 {
+                Timber.e("on set estimation task name completed")
+            })
+    }
     fun getResults(receiver: GetResultsReceiver) {
         setupRequest(ServiceProvider
             .gamesService
