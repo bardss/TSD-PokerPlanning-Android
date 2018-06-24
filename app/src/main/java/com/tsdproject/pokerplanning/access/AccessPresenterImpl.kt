@@ -39,7 +39,10 @@ class AccessPresenterImpl(var view: AccessView) : AccessPresenter, LoginReceiver
         }
     }
 
-    override fun onLoginError() {
+    override fun onLoginError(error: String?) {
+        error?.let {
+            view.showToast(error)
+        }
         view.setInputErrors()
         view.stopProgressDialog()
     }
