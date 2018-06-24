@@ -7,4 +7,5 @@ interface CardsPresenter : BasePresenter {
     var canScrollHorizontally: Boolean
     fun getCarouselLayoutManager(): RecyclerView.LayoutManager
     fun sendAnswer(cardValue: String)
+    fun setGameReadyStatus(isReady: Boolean)
 }

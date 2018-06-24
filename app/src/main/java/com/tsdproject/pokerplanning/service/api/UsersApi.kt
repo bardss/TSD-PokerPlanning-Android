@@ -16,5 +16,5 @@ interface UsersApi {
     fun register(@Body addUser: AddUserTO): Observable<Void>
 
     @POST("users/setreadystatus")
-    fun setReadyStatus(@Body readyToken: ReadyTokenTO): Observable<Void>
+    fun setTableReadyStatus(@Body readyToken: ReadyTokenTO): Observable<Void>
 }

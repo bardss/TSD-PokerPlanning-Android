@@ -11,7 +11,7 @@ import java.util.*
 import kotlin.concurrent.schedule
 
 class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresenter,
-    GetParticipantsReceiver, SetReadyStatusReceiver, StartGameReceiver, IsGameStartedReceiver, KickParticipantReceiver {
+    GetParticipantsReceiver, SetTableReadyStatusReceiver, StartGameReceiver, IsGameStartedReceiver, KickParticipantReceiver {
 
     private var tableId: String? = null
     override var isRoomCreator: Boolean = false
@@ -33,7 +33,7 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
     }
 
     override fun setUserReadyStatus(checked: Boolean) {
-        ServiceManager.setReadyStatus(checked, this)
+        ServiceManager.setTableReadyStatus(checked, this)
     }
 
     override fun kickParticipant(email: String) {
@@ -51,12 +51,12 @@ class ParticipantsPresenterImpl(var view: ParticipantsView) : ParticipantsPresen
         getParticipantsAfterDelay()
     }
 
-    override fun onSetReadyStatusError() {
+    override fun onSetTableReadyStatusError() {
         view.switchBackReadyStatus()
         view.showToast(ResUtil.getString(R.string.cannot_change_ready_status))
     }
 
-    override fun onSetReadyStatusSuccess() {
+    override fun onSetTableReadyStatusSuccess() {
 
     }
 
